@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Potree Viewer</title>
+
+	<link rel="stylesheet" type="text/css" href="../build/potree/potree.css">
+	<link rel="stylesheet" type="text/css" href="../libs/jquery-ui-1.11.4/jquery-ui.css">
+	<link rel="stylesheet" href="../libs/openlayers3/ol.css" type="text/css">
+  </head>
+
+  <body>
+  
+	<script src="../libs/jquery-2.1.4/jquery-2.1.4.min.js"></script>
+	<script src="../libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+	<script src="../libs/three.js/build/three.js"></script>
+	<script src="../libs/other/stats.min.js"></script>
+	<script src="../libs/other/BinaryHeap.js"></script>
+	<script src="../libs/tween/tween.min.js"></script>
+	<script src="../libs/d3/d3.js"></script>
+	<script src="../libs/proj4/proj4.js"></script>
+	<script src="../libs/openlayers3/ol.js"></script>
+	
+	<script src="../build/potree/potree.js"></script>
+	<script src="../raycast.js"></script>
+	
+	<!-- uncomment this to debug individual js files -->
+	<!--
+	<script src="../src/viewer/viewer.js"></script>
+	<script src="../src/viewer/profile.js"></script>
+	<script src="../src/viewer/ProgressBar.js"></script>
+	<script src="../src/viewer/map.js"></script>
+	<script src="../src/PointCloudOctree.js"></script>
+	<script src="../src/PointCloudOctreeGeometry.js"></script>
+	<script src="../src/loader/POCLoader.js"></script>
+	<script src="../src/loader/BinaryLoader.js"></script>
+	<script src="../src/loader/LasLazLoader.js"></script>
+	<script src="../src/materials/PointCloudMaterial.js"></script>
+	<script src="../src/materials/EyeDomeLightingMaterial.js"></script>
+	<script src="../src/EarthControls.js"></script>
+	<script src="../src/OrbitControls.js"></script>
+	<script src="../src/FirstPersonControls.js"></script>
+	<script src="../src/GeoControls.js"></script>
+	<script src="../src/utils/ProfileTool.js"></script>
+	<script src="../src/utils/MeasuringTool.js"></script>
+	<script src="../src/utils/TransformationTool.js"></script>
+	<script src="../src/utils/VolumeTool.js"></script>
+	<script src="../src/utils.js"></script>
+	<script src="../src/LRU.js"></script>
+	<script src="../src/Annotation.js"></script>
+	<script src="../src/TextSprite.js"></script>
+	<script src="../src/Features.js"></script>
+	<script src="../src/extensions/PerspectiveCamera.js"></script>
+	<script src="../src/arena4d/PointCloudArena4D.js"></script>
+	<script src="../src/arena4d/PointCloudArena4DGeometry.js"></script>
+	-->
+	
+	<!-- INCLUDE ADDITIONAL DEPENDENCIES HERE -->
+	<!-- INCLUDE SETTINGS HERE -->
+	<!--
+	<script src="../libs/plasio/js/laslaz.js"></script>
+	<script src="../libs/plasio/vendor/bluebird.js"></script>
+	<script src="../build/potree/laslaz.js"></script>
+	-->
+
+    <div class="potree_container" style="position: absolute; width: 100%; height: 100%; left: 0px; top: 0px; ">
+	
+		<div id="potree_render_area">
+			
+			<img class="potree_menu_toggle" src="../resources/icons/menu_button.svg" onclick="viewer.toggleSidebar()" />
+			<img id="potree_map_toggle" src="../resources/icons/map_icon.png" onclick="viewer.toggleMap()" style="display: none"/>
+			
+			<div id="potree_map" class="mapBox" style="position: absolute; left: 50px; top: 50px; width: 400px; height: 400px; display: none">
+				<div id="potree_map_header" style="position: absolute; width: 100%; height: 25px; top: 0px; background-color: rgba(0,0,0,0.5); z-index: 1000; border-top-left-radius: 3px; border-top-right-radius: 3px;">
+				</div>
+				<div id="potree_map_content" class="map" style="position: absolute; z-index: 100; top: 25px; width: 100%; height: calc(100% - 25px); border: 2px solid rgba(0,0,0,0.5); box-sizing: border-box;"></div>
+			</div>
+		
+			<!-- HEADING -->
+			<div id="potree_description" class="potree_info_text"></div>
+		</div>
+		
+		<div id="potree_sidebar_container"> </div>
+    </div>
+	
+	<script>
+
+
+	
+		var onPointCloudLoaded = function(event){
+			// do stuff here that should be executed whenever a point cloud has been loaded.
+			// event.pointcloud returns the point cloud object
+			console.log("a point cloud has been loaded");
+			
+   //  		document.addEventListener('mousemove', onMouseMove, false);
+
+		}; 
+
+	
+		viewer = new Potree.Viewer(document.getElementById("potree_render_area"), {
+			"onPointCloudLoaded": onPointCloudLoaded
+		});
+		
+		viewer.setEDLEnabled(false);
+		viewer.setPointSize(3);
+		viewer.setMaterial("RGB");
+		viewer.setFOV(60);
+		viewer.setPointSizing("Fixed");
+		viewer.setQuality("Squares");
+		viewer.setPointBudget(1*1000*1000);
+		//viewer.setOpacity(0.03);
+		//viewer.setMinNodeSize(100);
+		
+		// viewer.setDescription("Potree 1.4RC. Use this for testing purposes only! Check <a href='https://twitter.com/m_schuetz' target='_blank'>here</a> for new updates.<br>"
+		// 	+ "Report issues on the <a href='https://github.com/potree/potree' target='_blank'>github repository</a> or <a href='mailto:mschuetz@potree.org' target='_blank'>mschuetz@potree.org</a><br>"
+		//);
+		
+	viewer.addPointCloud("../resources/pointclouds/castle/cloud.js");
+	// viewer.addPointCloud("../resources/pointclouds/door/cloud.js");
+	// viewer.addPointCloud("../resources/pointclouds/door2/cloud.js");
+	// viewer.addPointCloud("../resources/pointclouds/walls_outside/cloud.js");
+	// viewer.addPointCloud("../resources/pointclouds/castleEast/cloud.js");
+	// viewer.addPointCloud("../resources/pointclouds/castleWest/cloud.js");
+
+
+
+		viewer.loadGUI();
+
+		var materialImg1 = THREE.ImageUtils.loadTexture('../img/castle_ground.png');
+		var img1 = new THREE.MeshBasicMaterial({ map: materialImg1, transparent:true });
+	    //img.map.needsUpdate = true;
+
+	    var materialImg2 = THREE.ImageUtils.loadTexture('../img/castle_floor.png');
+		var img2 = new THREE.MeshBasicMaterial({ map: materialImg2, transparent:true });
+
+
+		var materialImg_hs = THREE.ImageUtils.loadTexture('../img/torre.png');
+		var img_hs= new THREE.MeshBasicMaterial({ map: materialImg_hs, transparent:true });
+
+
+		hotspots = new THREE.Object3D();
+		planes=new THREE.Object3D();
+
+		geom = new THREE.BoxGeometry( 13, 13, 13 )
+		mat = new THREE.MeshBasicMaterial({color: 0xFF00FF, transparent: true, opacity: 0})
+		cube = new THREE.Mesh(geom, mat );
+		cube.position.x = 52;
+		cube.position.y = 32;
+		cube.position.z = 80 
+
+		geom = new THREE.BoxGeometry( 5, 18, 12)
+		mat = new THREE.MeshBasicMaterial({color: 0xFF00FF, transparent: true, opacity: 0.5})
+		cube2 = new THREE.Mesh(geom, mat);
+		cube2.position.x = -38
+		cube2.position.y = 10
+		cube2.position.z = -90
+		//cube2.rotation.x = (-Math.PI / 2);
+	    cube2.rotation.y = (0.31);
+
+
+		plane1 = new THREE.Mesh(new THREE.PlaneGeometry(2281, 614),img1);
+		plane1.overdraw = true;
+		plane1.rotation.x = (-Math.PI / 2);
+	    plane1.rotation.z = (-1.15);
+	    plane1.position.x = 25;
+	    plane1.position.y = 3;
+	    plane1.position.z = -48;
+	    plane1.scale.x = 0.116;
+	    plane1.scale.y = 0.160;
+	    plane1.scale.z= 0.14;   
+
+		plane2 = new THREE.Mesh(new THREE.PlaneGeometry(2281, 614),img2);
+		plane2.overdraw = true;
+		plane2.rotation.x = (-Math.PI / 2);
+	    plane2.rotation.z = (-1.15);
+	    plane2.position.x = 25;
+	    plane2.position.y = 15;
+	    plane2.position.z = -48;
+	    plane2.scale.x = 0.116;
+	    plane2.scale.y = 0.160;
+	    plane2.scale.z= 0.14; 
+
+		plane_hs = new THREE.Mesh(new THREE.PlaneGeometry(961, 870),img_hs);
+		plane_hs.overdraw = true;
+		plane_hs.position.x = 52;
+		plane_hs.position.y = 80;
+		plane_hs.position.z = 80;
+		plane_hs.scale.x = 0.05;
+		plane_hs.scale.y = 0.05;
+		plane_hs.scale.z = 0.05;
+
+
+		viewer.scenePointCloud.add(hotspots);
+		hotspots.add(cube);
+		//hotspots.add(cube2);
+		//hotspots.add(cube3);
+
+
+		viewer.scenePointCloud.add(planes);
+		planes.add(plane1);
+		planes.add(plane2);
+		planes.add(plane_hs);
+
+		plane1.visible=false
+		plane2.visible=false
+		plane_hs.visible=false
+		//addCheckRaster(plane1,plane2)
+		//document.addEventListener('mouseover', onMouseOver, false);
+		document.addEventListener('mousedown', onDocumentMouseDown, false);
+		document.addEventListener('mousemove', onMouseMove, false);
+
+
+	// 	function onMouseOver(evt){
+	// 		var camera = viewer.camera;
+
+	// // calculate mouse position in normalized device coordinates
+	// // (-1 to +1) for both components
+	// var mouse = { x : 0 , y : 0 };
+	// mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+	// mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+	// // update the picking ray with the camera and mouse position	
+	// raycaster.setFromCamera( mouse, camera );
+
+	// // create an array containing all objects in the scene with which the ray intersects
+	// var intersects = raycaster.intersectObjects( [cube] );
+	
+	// // if there is one (or more) intersections
+	// if ( intersects.length > 0 )
+	// {
+	// 	console.log("Hit @ " + toString( intersects[0].point ) );
+	// 	// change the color of the closest face.
+	// 	intersects[ 0 ].object.material.color.setRGB( 0,1,0); 
+	// 	intersects[ 0 ].object.geometry.colorsNeedUpdate = true;
+		
+	// }
+	// else {
+	// 	cube.material.color.setRGB( 1,0,0); 
+	// 	cube.geometry.colorsNeedUpdate = true;
+	// }
+	// plane.lookAt(camera.position); 
+	// 	};
+		
+	</script>
+  </body>
+</html>
