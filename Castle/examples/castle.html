@@ -5,27 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Potree Viewer</title>
+    <title>Buonconsiglio</title>
 
-	<link rel="stylesheet" type="text/css" href="../build/potree/potree.css">
-	<link rel="stylesheet" type="text/css" href="../libs/jquery-ui-1.11.4/jquery-ui.css">
-	<link rel="stylesheet" href="../libs/openlayers3/ol.css" type="text/css">
+	<link rel="stylesheet" type="text/css" href="Castle/build/potree/potree.css">
+	<link rel="stylesheet" type="text/css" href="Castle/libs/jquery-ui-1.11.4/jquery-ui.css">
+	<link rel="stylesheet" href="Castle/libs/openlayers3/ol.css" type="text/css">
   </head>
 
   <body>
   
-	<script src="../libs/jquery-2.1.4/jquery-2.1.4.min.js"></script>
-	<script src="../libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
-	<script src="../libs/three.js/build/three.js"></script>
-	<script src="../libs/other/stats.min.js"></script>
-	<script src="../libs/other/BinaryHeap.js"></script>
-	<script src="../libs/tween/tween.min.js"></script>
-	<script src="../libs/d3/d3.js"></script>
-	<script src="../libs/proj4/proj4.js"></script>
-	<script src="../libs/openlayers3/ol.js"></script>
+	<script src="Castle/libs/jquery-2.1.4/jquery-2.1.4.min.js"></script>
+	<script src="Castle/libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+	<script src="Castle/libs/three.js/build/three.js"></script>
+	<script src="Castle/libs/other/stats.min.js"></script>
+	<script src="Castle/libs/other/BinaryHeap.js"></script>
+	<script src="Castle/libs/tween/tween.min.js"></script>
+	<script src="Castle/libs/d3/d3.js"></script>
+	<script src="Castle/libs/proj4/proj4.js"></script>
+	<script src="Castle/libs/openlayers3/ol.js"></script>
 	
-	<script src="../build/potree/potree.js"></script>
-	<script src="../raycast.js"></script>
+	<script src="Castle/build/potree/potree_v2.js"></script>
+	<script src="Castle/raycast.js"></script>
 	
 	<!-- uncomment this to debug individual js files -->
 	<!--
@@ -70,8 +70,8 @@
 	
 		<div id="potree_render_area">
 			
-			<img class="potree_menu_toggle" src="../resources/icons/menu_button.svg" onclick="viewer.toggleSidebar()" />
-			<img id="potree_map_toggle" src="../resources/icons/map_icon.png" onclick="viewer.toggleMap()" style="display: none"/>
+			<img class="potree_menu_toggle" src="Castle/resources/icons/menu_button.svg" onclick="viewer.toggleSidebar()" />
+			<img id="potree_map_toggle" src="Castle/resources/icons/map_icon.png" onclick="viewer.toggleMap()" style="display: none"/>
 			
 			<div id="potree_map" class="mapBox" style="position: absolute; left: 50px; top: 50px; width: 400px; height: 400px; display: none">
 				<div id="potree_map_header" style="position: absolute; width: 100%; height: 25px; top: 0px; background-color: rgba(0,0,0,0.5); z-index: 1000; border-top-left-radius: 3px; border-top-right-radius: 3px;">
@@ -118,17 +118,17 @@
 		// 	+ "Report issues on the <a href='https://github.com/potree/potree' target='_blank'>github repository</a> or <a href='mailto:mschuetz@potree.org' target='_blank'>mschuetz@potree.org</a><br>"
 		//);
 		
-		viewer.addPointCloud("../resources/pointclouds/castle/cloud.js");  //Aerial_Castle
+		viewer.addPointCloud("Castle/resources/pointclouds/castle/cloud.js");  //Aerial_Castle
 		
-		setTimeout(function(){viewer.addPointCloud("../resources/pointclouds/castleEast/cloud.js")}, 2000);	//Aerial_East
+		setTimeout(function(){viewer.addPointCloud("Castle/resources/pointclouds/castleEast/cloud.js")}, 2000);	//Aerial_East
 		
-		setTimeout(function(){viewer.addPointCloud("../resources/pointclouds/castleWest/cloud.js")}, 3500);	//Aerial_West
+		setTimeout(function(){viewer.addPointCloud("Castle/resources/pointclouds/castleWest/cloud.js")}, 3500);	//Aerial_West
 		
-		setTimeout(function(){viewer.addPointCloud("../resources/pointclouds/walls_outside/cloud.js")}, 5500);  //Terrestrial_walls
+		setTimeout(function(){viewer.addPointCloud("Castle/resources/pointclouds/walls_outside/cloud.js")}, 5500);  //Terrestrial_walls
 		
-		setTimeout(function(){viewer.addPointCloud("../resources/pointclouds/door/cloud.js")}, 6500);		//Main_door
+		setTimeout(function(){viewer.addPointCloud("Castle/resources/pointclouds/door/cloud.js")}, 6500);		//Main_door
 		
-		setTimeout(function(){viewer.addPointCloud("../resources/pointclouds/door2/cloud.js")}, 7600);	//Diamanti_door
+		setTimeout(function(){viewer.addPointCloud("Castle/resources/pointclouds/door2/cloud.js")}, 7600);	//Diamanti_door
 
 
 	
@@ -137,15 +137,15 @@
 
 		viewer.loadGUI();
 
-		var materialImg1 = THREE.ImageUtils.loadTexture('../img/castle_ground.png');
+		var materialImg1 = THREE.ImageUtils.loadTexture('Castle/img/castle_ground.png');
 		var img1 = new THREE.MeshBasicMaterial({ map: materialImg1, transparent:true });
 	    //img.map.needsUpdate = true;
 
-	    var materialImg2 = THREE.ImageUtils.loadTexture('../img/castle_floor.png');
+	    var materialImg2 = THREE.ImageUtils.loadTexture('Castle/img/castle_floor.png');
 		var img2 = new THREE.MeshBasicMaterial({ map: materialImg2, transparent:true });
 
 
-		var materialImg_hs = THREE.ImageUtils.loadTexture('../img/heart.png');
+		var materialImg_hs = THREE.ImageUtils.loadTexture('Castle/img/heart.png');
 		var img_hs= new THREE.MeshBasicMaterial({ map: materialImg_hs, transparent:true });
 
 
