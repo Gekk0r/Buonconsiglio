@@ -18,9 +18,13 @@
 
 		<!-- Override CSS file - add your own CSS rules -->
 		<link rel="stylesheet" href="assets/css/styles.css">
-		
+
 		<!--Potree css -->
-		
+
+			<!-- <link rel="stylesheet" type="text/css" href="../build/potree/potree.css">
+			<link rel="stylesheet" type="text/css" href="../libs/jquery-ui-1.11.4/jquery-ui.css">
+			<link rel="stylesheet" href="../libs/openlayers3/ol.css" type="text/css"> -->
+
 			<link rel="stylesheet" type="text/css" href="../torre/libs/potree/potree.css">
 			<link rel="stylesheet" type="text/css" href="../torre/libs/jquery-ui-1.11.4/jquery-ui.css">
 			<link rel="stylesheet" href="../torre/libs/openlayers3/ol.css" type="text/css">
@@ -34,7 +38,7 @@
 	<body>
 
 		<!-- Navigation -->
-		
+
 	    <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
 			<div class="container-fluid">
 
@@ -48,15 +52,15 @@
 					</button>
 					<a class="navbar-brand" href="index.html">HOME</a>
 				</div>
-				
+
 				<!-- /.navbar-header -->
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
-				
+
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li><a href="#">About</a></li>
-						
+
 						<li><a href="castle.html">Castle</a></li>
 						<!--<li><a href="#">Ciclo dei mesi</a></li>-->
 						<li class="dropdown">
@@ -67,23 +71,23 @@
 						        	<li><a href="january.html">January</a></li>
 						          <li><a href="#">February </a></li>
 						          <li><a href="#">April</a></li>
-						          
-						         
+
+
 						        </ul>
 						      </li>
-						<li><a href="#">General Info</a></li>      
+						<li><a href="#">General Info</a></li>
 					</ul>
 				</div>
-				
+
 				<!-- /.navbar-collapse -->
-				
+
 			</div>
-			
+
 			<!-- /.container-fluid -->
-			
+
 		</nav>
-		
-	
+
+
 		<!-- /.navbar -->
 
 
@@ -95,9 +99,9 @@
 
 		<!-- Page Content -->
 		<div class="container-fluid">
-			
+
 		<!-- header_row -->
-		
+
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="page-header">
@@ -105,21 +109,21 @@
 					</div>
 				</div>
 			</div>
-		
-		
+
+
 
 			<!-- /. header_row -->
 
 			<div class="row">
-				
+
 				<!-- 1st column 7 -->
-				
-				<div class="col-sm-7" style="height:500px"> 
-				
-					
+
+				<div class="col-sm-7" style="height:500px">
+
+
 
 						<!-- Insert Script here -->
-						
+
 						<script src="../torre/libs/jquery-2.1.4/jquery-2.1.4.min.js"></script>
 						<script src="../torre/libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
 						<script src="../torre/libs/three.js/build/three.js"></script>
@@ -129,44 +133,44 @@
 						<script src="../torre/libs/d3/d3.js"></script>
 						<script src="../torre/libs/proj4/proj4.js"></script>
 						<script src="../torre/libs/openlayers3/ol.js"></script>
-						
+
 						<script src="../torre/libs/potree/potree.js"></script>
 						<script src="assets/js/raycast_torre.js"></script>
-						
-						
-						
-						
-						<div class="potree_container" style="position: absolute; width: 90%; height: 100%; bottom: 50px;left: 10px; top: 10px; border: 10px solid #333;">
-						
+
+
+
+
+						<div class="potree_container" style="position: relative; width: 100%; height: 100%;  border: 10px solid #333;">
+
 							<div id="potree_render_area">
-								
+
 								<img class="potree_menu_toggle" src="../torre/resources/icons/menu_button.svg" onclick="viewer.toggleSidebar()" />
 								<img id="potree_map_toggle" src="../torre/resources/icons/map_icon.png" onclick="viewer.toggleMap()" style="display: none"/>
-								
+
 								<div id="potree_map" class="mapBox" style="position: absolute; left: 50px; top: 50px; width: 400px; height: 400px; display: none">
-								
+
 										<div id="potree_map_header" style="position: absolute; width: 100%; height: 25px; top: 0px; background-color: rgba(0,0,0,0.5); z-index: 1000; border-top-left-radius: 3px; border-top-right-radius: 3px;">
 										</div>
-										
+
 										<div id="potree_map_content" class="map" style="position: absolute; z-index: 100; top: 25px; width: 100%; height: calc(100% - 25px); border: 2px solid rgba(0,0,0,0.5); box-sizing: border-box;">
 										</div>
 
-								</div>							
-							
+								</div>
+
 							</div>
 							<div id="potree_sidebar_container"> </div>
 							<script>
-										
+
 										var onPointCloudLoaded = function(event){
 											// do stuff here that should be executed whenever a point cloud has been loaded.
 											// event.pointcloud returns the point cloud object
 											console.log("a point cloud has been loaded");
-										}; 
-									
+										};
+
 										viewer = new Potree.Viewer(document.getElementById("potree_render_area"), {
 											"onPointCloudLoaded": onPointCloudLoaded
 										});
-										
+
 										viewer.setEDLEnabled(false);
 										viewer.setPointSize(3);
 										viewer.setMaterial("RGB");
@@ -177,8 +181,9 @@
 										//viewer.setOpacity(0.03);
 										//viewer.setMinNodeSize(100);
 
-										// viewer.addPointCloud("../torre/pointclouds/torre/cloud.js");
+										//viewer.addPointCloud("../torre/pointclouds/torre/cloud.js");
 										viewer.addPointCloud("http://ginavulpes.github.io/torre_aquilla/torre/resources/pointclouds/torre/cloud.js");
+										//viewer.addPointCloud("../resources/pointclouds/torre/cloud.js");
 										viewer.loadGUI();
 
 										planes = new THREE.Object3D(); 	  // create empty container to put the frescoes' planes
@@ -208,7 +213,7 @@
 										poi_Jan.userData.name="Jan"
 										poi_Jan.material.opacity=poi_opacity;
 										// ----February----
-								    	
+
 										plane_Feb = new THREE.Mesh(new THREE.PlaneGeometry(2.0, 1.8),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
 										plane_Feb.position.x = 3.6;
 										plane_Feb.position.y = 5.2;
@@ -228,7 +233,7 @@
 										poi_Feb.userData.name="Feb"
 										poi_Feb.material.opacity=poi_opacity;
 										// ----April----
-										
+
 										plane_Apr= new THREE.Mesh(new THREE.PlaneGeometry(2, 3.2),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
 										plane_Apr.position.x = 0.8;
 										plane_Apr.position.y = 4.5;
@@ -285,7 +290,7 @@
 										poi_Jun.userData.name="Jun"
 										poi_Jun.material.opacity=poi_opacity;
 										// ----July----
-										
+
 										plane_Jul= new THREE.Mesh(new THREE.PlaneGeometry(2.2, 3.5),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
 										plane_Jul.position.x = -4.15;
 										plane_Jul.position.y = 4.8;
@@ -410,21 +415,21 @@
 								    	//generate event listeners!
 										document.addEventListener('mousedown', onDocumentMouseDown, false);
 										document.addEventListener('mousemove', onMouseMove, false);
-										
+
 									</script>
-									
-				
+
+
 						</div>
 
-					
+
 					<!-- Placeholder + text -->
-				
+
 				<!-- <figure class="margin-b-2">
 
 						<a target="_blank" href="assets/potree/torre_aquila/examples/torre.html"><img class="img-responsive" src="assets/img/torre.png" alt=""></a>
 						<figcaption class="margin-t-h">Click to open in a new window</figcaption>
 					</figure> -->
-					
+
 					<!-- /. Placeholder -->
 
 				<div>
@@ -432,45 +437,45 @@
 					<!-- <hr> -->
 					<!-- <p class="lead">Lorem ipsum dolor sit amet consect etuer adipi scing elit sed diam nonummy nibh euismod tinunt ut laoreet dolore magna aliquam erat volut. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper.</p> -->
 					<br>
-					
+
 					<!-- <p>Nella sezione qui sotto sarà possibile visualizzare i metadati relativi all'acquisizione del modello 3D </p> -->
 					<br>
-					
-				
-				</div>		  
+
+
+				</div>
 					 <!-- /. text -->
-					  
-					  
+
+
 					  <!-- Table basic -->
-					  
+
 					<!-- <table class="table table-hover">
 					 <tr>
 					     <td>Descriptor</td>
-					     <td>Value</td> 
-					     
+					     <td>Value</td>
+
 					   </tr>
 					   <tr>
 					     <td>Camera Used</td>
-					     <td>Nikon D3x</td> 
+					     <td>Nikon D3x</td>
 					   </tr>
 					   <tr>
 					     <td>Technique used</td>
-					     <td>Photogrammetry</td> 
+					     <td>Photogrammetry</td>
 					   </tr>
-					   
+
 					</table> -->
-				
+
 				<!--	<table class="table table-hover">
 					    <thead>
 					        <th>Descriptor</th>
 					        <th>Value</th>
 					    </thead>
-					    
+
 					    <tbody>
 					        <tr data-toggle="collapse" data-target="#accordion" class="clickable">
 					            <td>Ciclo dei Mesi</td>
 					            <td>Castello del Buonconsiglio</td>
-					          
+
 					        </tr>
 					        <tr>
 					            <td colspan="2">
@@ -481,19 +486,19 @@
 					        </tr>
 					    </tbody>
 					</table>
-					
-					
+
+
 					-->
-						
+
 				<!-- /.1st column -->
-						
-				</div>	
-				
-				
-									
-			
+
+				</div>
+
+
+
+
 				<!-- 2nd column -->
-				
+
 				<div class="col-sm-4">
 				        <p><h2>Description</h2>
 				        <p>Il Ciclo dei Mesi è un gruppo di affreschi nella Torre dell'Aquila nel castello del Buonconsiglio di Trento, dipinti dal maestro Venceslao (documentato in città nel 1397). Risalgono alla fine del XIV secolo-inizio del XV e sono il migliore esempio di gotico internazionale in Trentino e uno dei più significativi dell'Italia settentrionale.</p>
@@ -505,22 +510,22 @@
 				       <br>
 				       <p><h5>Fonte <italic>wikipedia.org</italic></h5></p>
 				        </p>
-				    
+
 				<!-- /.2nd column -->
-				
+
 				</div>
 
 
 
 			<!-- /.row -->
-			
+
 			</div>
 
 		<!-- /.container-fluid -->
-		
+
 		</div>
-		
-		<!-- JQuery scripts 
+
+		<!-- JQuery scripts
 	    <script src="assets/js/jquery-1.11.2.min.js"></script>-->
 
 		<!-- Bootstrap Core scripts -->
@@ -528,4 +533,3 @@
 
   </body>
 </html>
-
