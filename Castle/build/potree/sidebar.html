@@ -1008,16 +1008,30 @@ function initSceneList(){
 		elLi.append(elLabel);
 		elLabel.append(elInput);
 
-		elLabel.append(document.createTextNode(" Point Cloud: " + pointcloudMapping[pointcloud.pcoGeometry.url]));
+		elLabel.append(document.createTextNode(" Point Cloud: " + pointcloudMapping[pointcloud.pcoGeometry.url][0]));
 		scenelist.append(elLi);
 
 		id++;
 	}
 
+	// for(var i = 0; i < viewer.pointclouds.length; i++){
+	// 	var pointcloud = viewer.pointclouds[i];
+	// 	addPointcloud(pointcloud);
+	// }
+
+
+
 	for(var i = 0; i < viewer.pointclouds.length; i++){
-		var pointcloud = viewer.pointclouds[i];
-		addPointcloud(pointcloud);
-	}
+		for(var j = 0; j < viewer.pointclouds.length; j++){
+			pc=viewer.pointclouds[j]
+			if (pointcloudMapping[pc.pcoGeometry.url][1]==i){
+				var pointcloud = pc;
+				addPointcloud(pointcloud);
+				break;
+				};
+		};
+
+	};
 
 	viewer.addEventListener("pointcloud_loaded", function(event){
 		addPointcloud(event.pointcloud);
