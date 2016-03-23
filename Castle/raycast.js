@@ -92,42 +92,4 @@ function onMouseMove( event ) {
 	
 }
 
-// function drawImage(){
-// 	var camera = viewer.camera;
-// 	// var scene = viewer.scenePointCloud;
 
-
-//     // var img = new THREE.MeshBasicMaterial({ map:THREE.ImageUtils.loadTexture('d.jpg') });
-//     // img.map.needsUpdate = true; //ADDED
-
-//     // // plane
-//     // var plane = new THREE.Mesh(new THREE.PlaneGeometry(10, 10),img);
-//     // plane.overdraw = true;
-
-
-//     // plane.rotation.y = (-Math.PI / 2);
-//     // plane.position.y = 10;
-//     // plane.position.z = 10;
-//     // plane.position.x = -10;
-// 	// plane.rotation.z = (-Math.PI / 2);
-
-//     viewer.scenePointCloud.add(plane);
-    
-//     // add subtle ambient lighting
-//     // var ambientLight = new THREE.AmbientLight(0x555555);
-//     // scene.add(ambientLight);
-
-//     // add directional light source
-//     // var directionalLight = new THREE.DirectionalLight(0xffffff);
-//     // directionalLight.position.set(1, 1, 1).normalize();
-//     // scene.add(directionalLight);
-
-//     // create wrapper object that contains three.js objects
-//     // var three = {
-//     //     renderer: renderer,
-//     //     camera: camera,
-//     //     scene: scene,
-//     //     plane: plane
-//     // };
-//     // renderer.render(scene,camera);
-// }

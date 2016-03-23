@@ -990,16 +990,16 @@ function initSceneList(){
 
 	var id = 0;
 // <!-- 	var etichette = ["Aerial_front","Main_door","Aerial_front","Diamanti_door","Aerial_Castle","Terrestrial_wall"]; -->
-	var etichette = ["0-Aerial_Castle","1-Aerial_East","2-Aerial_West","3-Terrestrial_walls","4-Main_door","5-Diamanti_door"];
+	
 	var addPointcloud = function(pointcloud){
 		var elLi = $('<li>');
 		var elLabel = $('<label>');
 		var elInput = $('<input type="checkbox">');
 
 		elInput[0].checked = true;
-		elInput[0].id = "scene_list_item_pointcloud_" + etichette[id];
-		elLabel[0].id = "scene_list_item_label_pointcloud_" + etichette[id];
-		elLabel[0].htmlFor = "scene_list_item_pointcloud_" + etichette[id];
+		elInput[0].id = "scene_list_item_pointcloud_" + id;
+		elLabel[0].id = "scene_list_item_label_pointcloud_" + id;
+		elLabel[0].htmlFor = "scene_list_item_pointcloud_" + id;
 		elLabel.addClass("menu-item");
 		elInput.click(function(event){
 			pointcloud.visible = event.target.checked;
@@ -1008,7 +1008,7 @@ function initSceneList(){
 		elLi.append(elLabel);
 		elLabel.append(elInput);
 
-		elLabel.append(document.createTextNode(" Point Cloud: " + pointcloudMapping[pointcloud.pcoGeometry.url][0]));
+		elLabel.append(document.createTextNode(" Point Cloud: " + pointcloudMapping[pcPath[id]]));
 		scenelist.append(elLi);
 
 		id++;
@@ -1022,16 +1022,9 @@ function initSceneList(){
 
 
 	for(var i = 0; i < viewer.pointclouds.length; i++){
-		for(var j = 0; j < viewer.pointclouds.length; j++){
-			pc=viewer.pointclouds[j]
-			if (pointcloudMapping[pc.pcoGeometry.url][1]==i){
-				var pointcloud = pc;
-				addPointcloud(pointcloud);
-				break;
-				};
-		};
-
-	};
+		var pointcloud = viewer.pointclouds[i];
+		addPointcloud(pointcloud);
+	}
 
 	viewer.addEventListener("pointcloud_loaded", function(event){
 		addPointcloud(event.pointcloud);
@@ -1077,7 +1070,7 @@ function initSceneList(){
 		elLabel.append(document.createTextNode(" First Floor Plan"));
 
 		scenelist.append(elLi);
-	}, 8600);	//Diamanti_door
+	}, 2000);	//Diamanti_door
 
 };
 
