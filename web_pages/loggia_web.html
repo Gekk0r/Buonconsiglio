@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>LOGGIA ROMANINO</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="Description" lang="en" content="Potree representation">
+		<meta name="author" content="autore">
+		<meta name="robots" content="index, follow">
+
+		<!-- icons -->
+		<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+		<link rel="shortcut icon" href="favicon.ico">
+
+		<!-- Bootstrap Core CSS file -->
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+		<!-- Override CSS file - add your own CSS rules -->
+		<link rel="stylesheet" href="assets/css/styles.css">
+		
+		<!--Potree css -->
+		
+			<link rel="stylesheet" type="text/css" href="../torre/libs/potree/potree.css">
+			<link rel="stylesheet" type="text/css" href="../torre/libs/jquery-ui-1.11.4/jquery-ui.css">
+			<link rel="stylesheet" href="../torre/libs/openlayers3/ol.css" type="text/css">
+
+		<!-- Conditional comment containing JS files for IE6 - 8 -->
+		<!--[if lt IE 9]>
+			<script src="assets/js/html5.js"></script>
+			<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+
+		<!-- Navigation -->
+		
+	    <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+			<div class="container-fluid">
+
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="index.html">HOME</a>
+				</div>
+				
+				<!-- /.navbar-header -->
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li><a href="#">About</a></li>
+						
+						<li><a href="castle.html">Castle</a></li>
+						<!--<li><a href="#">Ciclo dei mesi</a></li>-->
+						<li class="dropdown">
+						        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ciclo di mesi <span class="caret"></span></a>
+						        <ul class="dropdown-menu">
+						        <li><a href="torre.html">Stanza</a></li>
+						        <li role="separator" class="divider"></li>
+						        	<li><a href="january.html">January</a></li>
+						          <li><a href="#">February </a></li>
+						          <li><a href="#">April</a></li>
+						          
+						         
+						        </ul>
+						      </li>
+						<li><a href="#">General Info</a></li>      
+					</ul>
+				</div>
+				
+				<!-- /.navbar-collapse -->
+				
+			</div>
+			
+			<!-- /.container-fluid -->
+			
+		</nav>
+		
+	
+		<!-- /.navbar -->
+
+
+
+
+
+
+
+
+		<!-- Page Content -->
+		<div class="container-fluid">
+			
+		<!-- header_row -->
+		
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="page-header">
+						<h1>Ciclo dei Mesi</h1>
+					</div>
+				</div>
+			</div>
+		
+		
+
+			<!-- /. header_row -->
+
+			<div class="row">
+				
+				<!-- 1st column 7 -->
+				
+				<div class="col-sm-7" style="height:500px"> 
+				
+					
+
+						<!-- Insert Script here -->
+						
+						<script src="../loggia/libs/jquery-2.1.4/jquery-2.1.4.min.js"></script>
+						<script src="../loggia/libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+						<script src="../loggia/libs/three.js/build/three.js"></script>
+						<script src="../loggia/libs/other/stats.min.js"></script>
+						<script src="../loggia/libs/other/BinaryHeap.js"></script>
+						<script src="../loggia/libs/tween/tween.min.js"></script>
+						<script src="../loggia/libs/d3/d3.js"></script>
+						<script src="../loggia/libs/proj4/proj4.js"></script>
+						<script src="../loggia/libs/openlayers3/ol.js"></script>
+						
+						<script src="../loggia/libs/potree/potree.js"></script>
+						<!-- <script src="assets/js/raycast_torre.js"></script> --> 
+						
+						
+						
+						
+						<div class="potree_container" style="position: absolute; width: 90%; height: 100%; bottom: 50px;left: 10px; top: 10px; border: 10px solid #333;">
+						
+							<div id="potree_render_area">
+								
+								<img class="potree_menu_toggle" src="../torre/resources/icons/menu_button.svg" onclick="viewer.toggleSidebar()" />
+								<img id="potree_map_toggle" src="../torre/resources/icons/map_icon.png" onclick="viewer.toggleMap()" style="display: none"/>
+								
+								<div id="potree_map" class="mapBox" style="position: absolute; left: 50px; top: 50px; width: 400px; height: 400px; display: none">
+								
+										<div id="potree_map_header" style="position: absolute; width: 100%; height: 25px; top: 0px; background-color: rgba(0,0,0,0.5); z-index: 1000; border-top-left-radius: 3px; border-top-right-radius: 3px;">
+										</div>
+										
+										<div id="potree_map_content" class="map" style="position: absolute; z-index: 100; top: 25px; width: 100%; height: calc(100% - 25px); border: 2px solid rgba(0,0,0,0.5); box-sizing: border-box;">
+										</div>
+
+								</div>							
+							
+							</div>
+							<div id="potree_sidebar_container"> </div>
+							<script>
+										
+										var onPointCloudLoaded = function(event){
+											// do stuff here that should be executed whenever a point cloud has been loaded.
+											// event.pointcloud returns the point cloud object
+											console.log("a point cloud has been loaded");
+										}; 
+									
+										viewer = new Potree.Viewer(document.getElementById("potree_render_area"), {
+											"onPointCloudLoaded": onPointCloudLoaded
+										});
+										
+										viewer.setEDLEnabled(false);
+										viewer.setPointSize(3);
+										viewer.setMaterial("RGB");
+										viewer.setFOV(60);
+										viewer.setPointSizing("Fixed");
+										viewer.setQuality("Squares");
+										viewer.setPointBudget(1*1000*1000);
+										//viewer.setOpacity(0.03);
+										//viewer.setMinNodeSize(100);
+										
+										//ADDING THE POINT CLOUD THAT SHOULD BE ON THE SMALL WINDOW
+										// viewer.addPointCloud("../torre/pointclouds/torre/cloud.js");
+										viewer.addPointCloud("../loggia/pointclouds/loggia/cloud.js");
+										
+										viewer.loadGUI();
+										/*
+										///INTERACTIVE PLANES POI ON THE WALLS
+										planes = new THREE.Object3D(); 	  // create empty container to put the frescoes' planes
+										hotspots = new THREE.Object3D(); // create empty container to put the POIs
+										// Specify the colour and opacity properties of the planes (to ensure homogeneity)
+										plane_colour= 0xFFE4C4;// white:0xFFFFFF; cream:0xFFE4C4; mint:0x98FB98; gold:0xDAA520; lightpink:0xDDA0DD;
+										plane_opacity=0.3;
+										//Specify POIs' opacity
+										poi_opacity=0.8;
+										// ----January ----
+										plane_Jan = new THREE.Mesh(new THREE.PlaneGeometry(2.2, 3.2),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
+										plane_Jan.position.x = 3.6;
+										plane_Jan.position.y = 4.6;
+										plane_Jan.position.z = -1.6 ;
+									    plane_Jan.rotation.x = (Math.PI / 60);
+									    plane_Jan.rotation.y = (-Math.PI / 2);
+									    plane_Jan.visible=false;
+									    plane_Jan.userData.name="Jan"
+									    var materialImg_Jan = THREE.ImageUtils.loadTexture('images/gennaio.png');
+										var img_Jan= new THREE.MeshBasicMaterial({ map: materialImg_Jan, transparent:true });
+									    poi_Jan = new THREE.Mesh(new THREE.PlaneGeometry(1.3, 2),img_Jan);
+										poi_Jan .overdraw = true;
+										poi_Jan.position.x = 3.3;
+										poi_Jan.position.y = 3.8;
+										poi_Jan.position.z = -1.5 ;
+										poi_Jan.visible=false
+										poi_Jan.userData.name="Jan"
+										poi_Jan.material.opacity=poi_opacity;
+										// ----February----
+								    	
+										plane_Feb = new THREE.Mesh(new THREE.PlaneGeometry(2.0, 1.8),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
+										plane_Feb.position.x = 3.6;
+										plane_Feb.position.y = 5.2;
+										plane_Feb.position.z = 0.5 ;
+									    plane_Feb.rotation.x = (Math.PI / 60);
+									    plane_Feb.rotation.y = (-Math.PI / 2);
+									    plane_Feb.visible=false;
+									    plane_Feb.userData.name="Feb"
+									    var materialImg_Feb = THREE.ImageUtils.loadTexture('images/febbraio.png');
+										var img_Feb= new THREE.MeshBasicMaterial({ map: materialImg_Feb, transparent:true });
+								    	poi_Feb = new THREE.Mesh(new THREE.PlaneGeometry(1.3, 2),img_Feb);
+										poi_Feb.overdraw = true;
+										poi_Feb.position.x = 3.3;
+										poi_Feb.position.y = 3.8;
+										poi_Feb.position.z = 0.5;
+								    	poi_Feb.visible=false;
+										poi_Feb.userData.name="Feb"
+										poi_Feb.material.opacity=poi_opacity;
+										// ----April----
+										
+										plane_Apr= new THREE.Mesh(new THREE.PlaneGeometry(2, 3.2),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
+										plane_Apr.position.x = 0.8;
+										plane_Apr.position.y = 4.5;
+										plane_Apr.position.z = 3.1 ;
+									    plane_Apr.rotation.y = (-Math.PI);
+									    plane_Apr.visible=false;
+									    plane_Apr.userData.name="Apr"
+									    var materialImg_Apr = THREE.ImageUtils.loadTexture('images/aprile.png');
+										var img_Apr= new THREE.MeshBasicMaterial({ map: materialImg_Apr, transparent:true });
+								    	poi_Apr = new THREE.Mesh(new THREE.PlaneGeometry(1.3, 2),img_Apr);
+										poi_Apr.overdraw = true;
+										poi_Apr.position.x = 0.8;
+										poi_Apr.position.y = 3.8;
+										poi_Apr.position.z = 2.8;
+								    	poi_Apr.visible=false;
+										poi_Apr.userData.name="Apr"
+										poi_Apr.material.opacity=poi_opacity;
+										// ----May----
+										plane_May= new THREE.Mesh(new THREE.PlaneGeometry(2, 3.2),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
+										plane_May.position.x = -1.2;
+										plane_May.position.y = 4.5;
+										plane_May.position.z = 2.9 ;
+									    plane_May.rotation.x = (Math.PI / 40);
+									    plane_May.rotation.y = (-Math.PI-Math.PI/60);
+									    plane_May.visible=false;
+									    plane_May.userData.name="May"
+									    var materialImg_May = THREE.ImageUtils.loadTexture('images/maggio.png');
+										var img_May= new THREE.MeshBasicMaterial({ map: materialImg_May, transparent:true });
+								    	poi_May = new THREE.Mesh(new THREE.PlaneGeometry(1.3, 2),img_May);
+										poi_May.overdraw = true;
+										poi_May.position.x = -1.2;
+										poi_May.position.y = 3.8;
+										poi_May.position.z = 2.7;
+								    	poi_May.visible=false;
+										poi_May.userData.name="May"
+										poi_May.material.opacity=poi_opacity;
+										// ----June----
+										plane_Jun= new THREE.Mesh(new THREE.PlaneGeometry(2, 3.2),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
+										plane_Jun.position.x = -3.2;
+										plane_Jun.position.y = 4.5;
+										plane_Jun.position.z = 2.9;
+									    plane_Jun.rotation.x = (Math.PI / 60);
+									    plane_Jun.rotation.y = (-Math.PI-Math.PI/60);
+									    plane_Jun.visible=false;
+									    plane_Jun.userData.name="Jun"
+									    var materialImg_Jun = THREE.ImageUtils.loadTexture('images/giugno.png');
+										var img_Jun= new THREE.MeshBasicMaterial({ map: materialImg_Jun, transparent:true });
+								    	poi_Jun = new THREE.Mesh(new THREE.PlaneGeometry(1.3, 2),img_Jun);
+										poi_Jun.overdraw = true;
+										poi_Jun.position.x = -3.2;
+										poi_Jun.position.y = 3.8;
+										poi_Jun.position.z = 2.5;
+								    	poi_Jun.visible=false;
+										poi_Jun.userData.name="Jun"
+										poi_Jun.material.opacity=poi_opacity;
+										// ----July----
+										
+										plane_Jul= new THREE.Mesh(new THREE.PlaneGeometry(2.2, 3.5),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
+										plane_Jul.position.x = -4.15;
+										plane_Jul.position.y = 4.8;
+										plane_Jul.position.z = 1.82;
+									    plane_Jul.rotation.x = (Math.PI/60);
+									    plane_Jul.rotation.y = (Math.PI/2);
+									    plane_Jul.visible=false;
+									    plane_Jul.userData.name="Jul"
+									    var materialImg_Jul = THREE.ImageUtils.loadTexture('images/luglio.png');
+										var img_Jul= new THREE.MeshBasicMaterial({ map: materialImg_Jul, transparent:true });
+								    	poi_Jul = new THREE.Mesh(new THREE.PlaneGeometry(1.3, 2),img_Jul);
+										poi_Jul.overdraw = true;
+										poi_Jul.position.x = -3.8;
+										poi_Jul.position.y = 4.0;
+										poi_Jul.position.z = 1.5;
+								    	poi_Jul.visible=false;
+										poi_Jul.userData.name="Jul"
+										poi_Jul.material.opacity=poi_opacity;
+										// ----August----
+										plane_Aug = new THREE.Mesh(new THREE.PlaneGeometry(2.5, 3.5),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
+										plane_Aug.position.x = -3.9;
+										plane_Aug.position.y = 4.8;
+										plane_Aug.position.z = -2.0 ;
+									    plane_Aug.rotation.x = (Math.PI/60);
+									    plane_Aug.rotation.y = (Math.PI/2); //2*Math.PI
+									    plane_Aug.visible=false;
+									    plane_Aug.userData.name="Aug"
+									    var materialImg_Aug = THREE.ImageUtils.loadTexture('images/agosto.png');
+										var img_Aug= new THREE.MeshBasicMaterial({ map: materialImg_Aug, transparent:true });
+									    poi_Aug = new THREE.Mesh(new THREE.PlaneGeometry(1.3, 2),img_Aug);
+										poi_Aug .overdraw = true;
+										poi_Aug.position.x = -3.6;
+										poi_Aug.position.y = 4.0;
+										poi_Aug.position.z = -2.6 ;
+										poi_Aug.visible=false
+										poi_Aug.userData.name="Aug"
+										poi_Aug.material.opacity=poi_opacity;
+										// ----September----
+										plane_Sep = new THREE.Mesh(new THREE.PlaneGeometry(2, 3.2),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
+										plane_Sep.position.x = -3;
+										plane_Sep.position.y = 4.7;
+										plane_Sep.position.z = -3.0 ;
+									    plane_Sep.rotation.x = (Math.PI / 60);
+									    plane_Sep.rotation.y = (-Math.PI/50); //2*Math.PI
+									    plane_Sep.visible=false;
+									    plane_Sep.userData.name="Sep"
+									    var materialImg_Sep = THREE.ImageUtils.loadTexture('images/settembre.png');
+										var img_Sep= new THREE.MeshBasicMaterial({ map: materialImg_Sep, transparent:true });
+									    poi_Sep = new THREE.Mesh(new THREE.PlaneGeometry(1.3, 2),img_Sep);
+										poi_Sep .overdraw = true;
+										poi_Sep.position.x = -3;
+										poi_Sep.position.y = 3.8;
+										poi_Sep.position.z = -2.6 ;
+										poi_Sep.visible=false
+										poi_Sep.userData.name="Sep"
+										poi_Sep.material.opacity=poi_opacity;
+										// ----October----
+										plane_Oct = new THREE.Mesh(new THREE.PlaneGeometry(2, 3.2),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
+										plane_Oct.position.x = -1;
+										plane_Oct.position.y = 4.8;
+										plane_Oct.position.z = -3.0 ;
+									    plane_Oct.rotation.x = (Math.PI / 60);
+									    plane_Oct.rotation.y = (-Math.PI/50); //2*Math.PI
+									    plane_Oct.visible=false;
+									    plane_Oct.userData.name="Oct"
+									    var materialImg_Oct = THREE.ImageUtils.loadTexture('images/ottobre.png');
+										var img_Oct= new THREE.MeshBasicMaterial({ map: materialImg_Oct, transparent:true });
+									    poi_Oct = new THREE.Mesh(new THREE.PlaneGeometry(1.3, 2),img_Oct);
+										poi_Oct .overdraw = true;
+										poi_Oct.position.x = -1;
+										poi_Oct.position.y = 3.8;
+										poi_Oct.position.z = -2.6 ;
+										poi_Oct.visible=false
+										poi_Oct.userData.name="Oct"
+										poi_Oct.material.opacity=poi_opacity;
+										// ----November----
+										plane_Nov = new THREE.Mesh(new THREE.PlaneGeometry(2, 3.2),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
+										plane_Nov.position.x = 1;
+										plane_Nov.position.y = 4.8;
+										plane_Nov.position.z = -2.9 ;
+									    plane_Nov.rotation.x = (Math.PI / 60);
+									    plane_Nov.rotation.y = (-Math.PI/50); //2*Math.PI
+									    plane_Nov.visible=false;
+									    plane_Nov.userData.name="Nov"
+									    var materialImg_Nov = THREE.ImageUtils.loadTexture('images/novembre.png');
+										var img_Nov= new THREE.MeshBasicMaterial({ map: materialImg_Nov, transparent:true });
+									    poi_Nov = new THREE.Mesh(new THREE.PlaneGeometry(1.3, 2),img_Nov);
+										poi_Nov.overdraw = true;
+										poi_Nov.position.x = 1;
+										poi_Nov.position.y = 3.8;
+										poi_Nov.position.z = -2.6 ;
+										poi_Nov.visible=false
+										poi_Nov.userData.name="Nov"
+										poi_Nov.material.opacity=poi_opacity;
+										// ----December----
+										plane_Dec = new THREE.Mesh(new THREE.PlaneGeometry(2.2, 3.2),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
+										plane_Dec.position.x = 3;
+										plane_Dec.position.y = 4.8;
+										plane_Dec.position.z = -2.8 ;
+									    plane_Dec.rotation.x = (Math.PI / 60);
+									    plane_Dec.rotation.y = (-Math.PI/50); //2*Math.PI
+									    plane_Dec.visible=false;
+									    plane_Dec.userData.name="Dec"
+									    var materialImg_Dec = THREE.ImageUtils.loadTexture('images/dicembre.png');
+										var img_Dec= new THREE.MeshBasicMaterial({ map: materialImg_Dec, transparent:true });
+									    poi_Dec = new THREE.Mesh(new THREE.PlaneGeometry(1.3, 2),img_Dec);
+										poi_Dec .overdraw = true;
+										poi_Dec.position.x = 2.8;
+										poi_Dec.position.y = 3.8;
+										poi_Dec.position.z = -2.5 ;
+										poi_Dec.visible=false
+										poi_Dec.userData.name="Dec"
+										poi_Dec.material.opacity=poi_opacity;
+										//add meshes to containers (add childred to object3D parents)
+										hotspots.add(poi_Jan, poi_Feb, poi_Apr, poi_May, poi_Jun, poi_Jul, poi_Aug, poi_Sep, poi_Oct, poi_Nov, poi_Dec);
+										planes.add(plane_Jan,plane_Feb, plane_Apr, plane_May, plane_Jun, plane_Jul, plane_Aug, plane_Sep, plane_Oct, plane_Nov, plane_Dec);
+
+										// add objects to the viewer!
+								    	viewer.scenePointCloud.add(hotspots);
+								    	viewer.scenePointCloud.add(planes);
+
+								    	//generate event listeners!
+										document.addEventListener('mousedown', onDocumentMouseDown, false);
+										document.addEventListener('mousemove', onMouseMove, false);
+										*/
+									</script>
+									
+				
+						</div>
+
+					
+					<!-- Placeholder + text -->
+				
+				<!-- <figure class="margin-b-2">
+
+						<a target="_blank" href="assets/potree/torre_aquila/examples/torre.html"><img class="img-responsive" src="assets/img/torre.png" alt=""></a>
+						<figcaption class="margin-t-h">Click to open in a new window</figcaption>
+					</figure> -->
+					
+					<!-- /. Placeholder -->
+
+				<div>
+					<br>
+					<!-- <hr> -->
+					<!-- <p class="lead">Lorem ipsum dolor sit amet consect etuer adipi scing elit sed diam nonummy nibh euismod tinunt ut laoreet dolore magna aliquam erat volut. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper.</p> -->
+					<br>
+					
+					<!-- <p>Nella sezione qui sotto sarà possibile visualizzare i metadati relativi all'acquisizione del modello 3D </p> -->
+					<br>
+					
+				
+				</div>		  
+					 <!-- /. text -->
+					  
+					  
+					  <!-- Table basic -->
+					  
+					<!-- <table class="table table-hover">
+					 <tr>
+					     <td>Descriptor</td>
+					     <td>Value</td> 
+					     
+					   </tr>
+					   <tr>
+					     <td>Camera Used</td>
+					     <td>Nikon D3x</td> 
+					   </tr>
+					   <tr>
+					     <td>Technique used</td>
+					     <td>Photogrammetry</td> 
+					   </tr>
+					   
+					</table> -->
+				
+				<!--	<table class="table table-hover">
+					    <thead>
+					        <th>Descriptor</th>
+					        <th>Value</th>
+					    </thead>
+					    
+					    <tbody>
+					        <tr data-toggle="collapse" data-target="#accordion" class="clickable">
+					            <td>Ciclo dei Mesi</td>
+					            <td>Castello del Buonconsiglio</td>
+					          
+					        </tr>
+					        <tr>
+					            <td colspan="2">
+					                <div id="accordion" class="collapse">Hidden by default</div>
+					                <td>Ciclo dei Mesi</td>
+					                <td>Castello del Buonconsiglio</td>
+					            </td>
+					        </tr>
+					    </tbody>
+					</table>
+					
+					
+					-->
+						
+				<!-- /.1st column -->
+						
+				</div>	
+				
+				
+									
+			
+				<!-- 2nd column -->
+				
+				<div class="col-sm-4">
+				        <p><h2>Description</h2>
+				        <p>Il Ciclo dei Mesi è un gruppo di affreschi nella Torre dell'Aquila nel castello del Buonconsiglio di Trento, dipinti dal maestro Venceslao (documentato in città nel 1397). Risalgono alla fine del XIV secolo-inizio del XV e sono il migliore esempio di gotico internazionale in Trentino e uno dei più significativi dell'Italia settentrionale.</p>
+				        <p>Il ciclo si articola oggi in undici diversi riquadri, poiché il mese di Marzo era stato dipinto su un supporto di legno ed è andato perduto durante un incendio. L'insieme è strutturato come una loggia architravata sostenuta da esili colonnine tortili, dalla quale si vedono, come in un ipotetico affaccio che sfonda la parete, le varie occupazioni signorili e contadine di ciascun mese. Tutti gli sfondi e i dettagli architettonici sono raccordati tra scena e scena, come in un panorama unitario.</p>
+				        <p>Le scene, ricchissime di particolari tratti dall'osservazione della vita reale (magari filtrate dalle illustrazioni dei Tacuina Sanitatis), mostrano la vita dei nobili, le attività dell'agricoltura e della pastorizia, con un continuo e pacato intreccio tra mondo cavalleresco e mondo quotidiano. Poche sono invece le concessioni al grottesco e al macabro, che caratterizzavano invece altre zone italiane ed europee.</p>
+				        <p>Viene prestata molta attenzione al succedersi delle stagioni: il paesaggio invernale spoglio e imbiancato dalla neve diventa rigoglioso di vegetazione in primavera, i raccolti estivi segnano l'apice dell'attività agricola, mentre gli alberi nel mese di novembre sono circondati dalle foglie secche cadute sul terreno. La cura dei particolari ritorna nella descrizione delle vesti, l'abbigliamento infatti permette di riconoscere i caratteri tipici della moda del tempo: per i nobili, occupati in svaghi e tornei, gli abiti sono ricchi di colori, mentre molto più semplici e pratici sono quelli delle classi umili, rappresentate sempre al lavoro. Si può vedere la minuziosità dei particolari anche nei cambiamenti delle stagioni.</p>
+				       <p>In ogni affresco è presente la figura del sole con accanto il segno zodiacale corrispondente ad ogni mese.</p>
+				       <p>Modelli iconografici del ciclo sono, oltre al già citato Tacuinum sanitatis, il Livre de la chasse di Gaston Phoebus e le Très riches heures du Duc de Berry.</p>
+				       <br>
+				       <p><h5>Fonte <italic>wikipedia.org</italic></h5></p>
+				        </p>
+				    
+				<!-- /.2nd column -->
+				
+				</div>
+
+
+
+			<!-- /.row -->
+			
+			</div>
+
+		<!-- /.container-fluid -->
+		
+		</div>
+		
+		<!-- JQuery scripts 
+	    <script src="assets/js/jquery-1.11.2.min.js"></script>-->
+
+		<!-- Bootstrap Core scripts -->
+		<script src="assets/js/bootstrap.min.js"></script>
+
+  </body>
+</html>
+
