@@ -10,15 +10,17 @@ function onDocumentMouseDown( event )
 	//drawImage();
 	var camera = viewer.camera;
 
-	var offsets = $('#potree_render_area').offset();
-	var top = offsets.top;
-	var left = offsets.left;
-
-
-	// calculate mouse position in normalized device coordinates
+	// the following line would stop any other event handler from firing
+	// (such as the mouse's TrackballControls)
+	// event.preventDefault();
+	
+	//console.log("Click.");
+	
+	
+	// update the mouse variable
 	var mouse = { x : 0 , y : 0 };
-	mouse.x =((event.clientX-left)/ $('#potree_render_area').width()) * 2 - 1;
-	mouse.y = - ((event.clientY-top)/ $('#potree_render_area').height() ) * 2 + 1;
+	mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+	mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
 
 
 	// mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
@@ -34,8 +36,8 @@ function onDocumentMouseDown( event )
 	// if there is one (or more) intersections
 	if ( intersects.length > 0 )
 	{
-		console.log("Hit right @ " + toString( intersects[0].point ) );
-		window.open("http://3dom.fbk.eu/repository/buonconsiglio/web_pages/torre.html")
+		//console.log("Hit right @ " + toString( intersects[0].point ) );
+		window.open("http://3dom.fbk.eu/repository/buonconsiglio_castle/web_pages/torre_web.html")
 		// change the color of the closest face.
 		//intersects[0].object.callback();
 		intersects[ 0 ].face.color.setRGB( 0.8 * Math.random() + 0.2, 0, 0 ); 
@@ -46,6 +48,23 @@ function onDocumentMouseDown( event )
 		// window.open("http://www.gazzetta.it", "_blank", " scrollbars=yes, resizable=yes, top=" + winH + ", left="+ winW +", width=400, height=400");
 		// window.open("", "MsgWindow", "resizable=yes", "top=500", "left=500", "width=100", "height=100");
 	}
+	
+	var intersects_3 = raycaster.intersectObjects( [cube3] );
+	
+	// if there is one (or more) intersections
+	if ( intersects_3.length > 0 )
+	{
+		//console.log("Hit right @ " + toString( intersects[0].point ) );
+		window.open("http://3dom.fbk.eu/repository/buonconsiglio_castle/web_pages/loggia_web.html")
+		// change the color of the closest face.
+		//intersects[0].object.callback();
+		intersects_3[ 0 ].face.color.setRGB( 0.8 * Math.random() + 0.2, 0, 0 ); 
+		intersects_3[ 0 ].object.geometry.colorsNeedUpdate = true;
+		winW = ""+(screen.width / 2) -200 ;
+		winH = ""+(screen.height / 2) -200 ;
+
+	}
+	
 	// else{
 	// 	viewer.scenePointCloud.remove(plane);
 	// }
@@ -54,25 +73,21 @@ function onDocumentMouseDown( event )
 function onMouseMove( event ) {
 	var camera = viewer.camera;
 
-	var offsets = $('#potree_render_area').offset();
-	var top = offsets.top;
-	var left = offsets.left;
-
-
 	// calculate mouse position in normalized device coordinates
+	// (-1 to +1) for both components
 	var mouse = { x : 0 , y : 0 };
-	mouse.x =((event.clientX-left)/ $('#potree_render_area').width()) * 2 - 1;
-	mouse.y = - ((event.clientY-top)/ $('#potree_render_area').height() ) * 2 + 1;
+	mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+	mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
 	// update the picking ray with the camera and mouse position	
 	raycaster.setFromCamera( mouse, camera );
 
 	// create an array containing all objects in the scene with which the ray intersects
-	var intersects = raycaster.intersectObjects( [cube,cube2] );
+	var intersects = raycaster.intersectObjects( [cube] );
 	
 	// if there is one (or more) intersections
 	if ( intersects.length > 0 )
 	{
-		console.log("Hit this @ " + toString( intersects[0].point ) );
+	//	console.log("Hit this @ " + toString( intersects[0].point ) );
 		// change the color of the closest face.
 		intersects[ 0 ].object.material.color.setRGB(1,0.3,1); 
 		intersects[ 0 ].object.material.opacity=[0.3]; 
@@ -88,8 +103,28 @@ function onMouseMove( event ) {
 		// cube2.material.opacity=[0]; 
 		plane_hs.visible=false
 	}
-	plane_hs.lookAt(camera.position);
+	
+	//for the loggia cube	// create an array containing all objects in the scene with which the ray intersects
+	var intersects_3 = raycaster.intersectObjects( [cube3] );
+	
+	// if there is one (or more) intersections
+	if ( intersects_3.length > 0 )
+	{
+
+		// change the color of the closest face.
+		intersects_3[ 0 ].object.material.color.setRGB(1,0.3,1); 
+		intersects_3[ 0 ].object.material.opacity=[0.3]; 
+		intersects_3[ 0 ].object.geometry.colorsNeedUpdate = true;
+		plane_hs2.visible=true
+	}
+	else {
+		cube3.material.color.setRGB( 1,0,1); 
+		cube3.geometry.colorsNeedUpdate = true;
+		cube3.material.opacity=[0]; 
+		plane_hs2.visible=false
+	}
+	plane_hs.lookAt(viewer.camera.position);
+	plane_hs2.lookAt(viewer.camera.position);
 	
 }
-
 
