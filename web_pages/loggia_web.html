@@ -138,6 +138,18 @@
 							viewer.setPointBudget(1*1000*1000);
 							
 							viewer.addPointCloud("../loggia/pointclouds/loggia/cloud.js");
+
+							var geometry = new THREE.SphereGeometry( 1, 32, 32 );
+					      	var material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
+					      	var sphere = new THREE.Mesh( geometry, material );
+
+					      	sphere.position.x = -6;
+					        sphere.position.y = 0.75;
+					        sphere.position.z = 4.6;
+
+					        viewer.scenePointCloud.add( sphere );
+					        viewer.zoomTo(sphere,15);
+
 							viewer.loadGUI();
 						</script>
 					</div>
