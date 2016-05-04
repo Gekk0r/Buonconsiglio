@@ -3573,6 +3573,7 @@ Potree.GeoControls = function ( object, domElement ) {
 			rotateStart.copy( rotateEnd );
 
 		} else if ( state === STATE.PAN ) {
+			console.log("PAN");
 			panEnd.set( event.clientX, event.clientY );
 			panDelta.subVectors( panEnd, panStart );
 			//panDelta.multiplyScalar(this.moveSpeed).multiplyScalar(0.0001);
@@ -4039,33 +4040,43 @@ Potree.OrbitControls = function ( object, domElement ) {
 	}
 
 	function onMouseDown( event ) {
+		
+//		var camera = viewer.camera;
+//		var mouse = { x : 0, y : 0);
+		
+//		mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+//		mouse.y = (event.clientY / window.innerHeight) * 2 + 1;
 
-		if ( scope.enabled === false ) return;
-		event.preventDefault();
+		var intersects = raycaster.intersectObjects([cube]);
+		var intersects_2 = raycaster.intersectObjects([cube3]);
+	
+		if ( intersects.length == 0 && intersects_2.length == 0 ){ 
+			console.log("ciao_");	
+			if ( scope.enabled === false ) return;
+			event.preventDefault();
 
-		if ( event.button === THREE.MOUSE.LEFT ) {
-			if ( scope.noRotate === true ) return;
+			if ( event.button === THREE.MOUSE.LEFT ) {
+				if ( scope.noRotate === true ) return;
 
-			state = STATE.ROTATE;
+				state = STATE.ROTATE;
+				rotateStart.set( event.clientX, event.clientY );
+			
+			} else if ( event.button === THREE.MOUSE.MIDDLE ) {
+				if ( scope.noZoom === true ) return;
 
-			rotateStart.set( event.clientX, event.clientY );
+				state = STATE.DOLLY;
 
-		} else if ( event.button === THREE.MOUSE.MIDDLE ) {
-			if ( scope.noZoom === true ) return;
+				dollyStart.set( event.clientX, event.clientY );
 
-			state = STATE.DOLLY;
+			} else if ( event.button === THREE.MOUSE.RIGHT ) {
+				if ( scope.noPan === true ) return;
 
-			dollyStart.set( event.clientX, event.clientY );
+				state = STATE.PAN;
+			
+				panStart.set( event.clientX, event.clientY );
 
-		} else if ( event.button === THREE.MOUSE.RIGHT ) {
-			if ( scope.noPan === true ) return;
-
-			state = STATE.PAN;
-
-			panStart.set( event.clientX, event.clientY );
-
+			}	
 		}
-
 		scope.domElement.addEventListener( 'mousemove', onMouseMove, false );
 		scope.domElement.addEventListener( 'mouseup', onMouseUp, false );
 		scope.dispatchEvent( startEvent );

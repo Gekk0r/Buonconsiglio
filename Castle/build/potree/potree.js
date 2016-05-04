@@ -3077,14 +3077,14 @@ THREE.FirstPersonControls = function ( object, domElement ) {
 
 			rotateStart.set( event.clientX, event.clientY );
 		} else if ( event.button === 2 ) {
-			state = STATE.PAN;
-
+			state = STATE.PAN;		
 			panStart.set( event.clientX, event.clientY );
 		}
 
 		scope.domElement.addEventListener( 'mousemove', onMouseMove, false );
 		scope.domElement.addEventListener( 'mouseup', onMouseUp, false );
 		scope.dispatchEvent( startEvent );
+	
 	}
 
 	function onMouseMove( event ) {
