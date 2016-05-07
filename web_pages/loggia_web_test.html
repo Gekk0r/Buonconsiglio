@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Ceiling</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="Description" lang="en" content="Potree representation">
+		<meta name="author" content="autore">
+		<meta name="robots" content="index, follow">
+
+		<!-- icons -->
+		<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+		<link rel="shortcut icon" href="favicon.ico">
+
+		<!-- Bootstrap Core CSS file -->
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+		<!-- Override CSS file - add your own CSS rules -->
+		<link rel="stylesheet" href="assets/css/styles.css">
+		
+		<!--Potree css -->
+		
+		<link rel="stylesheet" type="text/css" href="../torre/libs/potree/potree.css">
+		<link rel="stylesheet" type="text/css" href="../torre/libs/jquery-ui-1.11.4/jquery-ui.css">
+		<link rel="stylesheet" href="../torre/libs/openlayers3/ol.css" type="text/css">
+		
+
+		<style>
+	      html, body {
+	        height: 100%;
+	        margin: 0;
+	        padding: 0;
+	      }
+	      .navbar-default {
+	        /*background-color: #333;*/
+	      }
+	    </style>
+
+		<!-- Conditional comment containing JS files for IE6 - 8 -->
+		<!--[if lt IE 9]>
+			<script src="assets/js/html5.js"></script>
+			<script src="assets/js/respond.min.js"></script>
+		
+			
+		<![endif]-->
+	</head>
+	<body>
+
+		<!-- Navigation -->
+		
+	    <nav class="navbar navbar-default navbar-inverse" role="navigation">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="index.html">HOME</a>
+				</div>				
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				
+	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a href="#">Sul progetto</a></li>
+					<li><a href="../index.html">il Castello</a></li>
+					<li><a href="loggia_web.html">la Loggia del Romanino</a></li>
+					 <li class="dropdown">
+					        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">il Ciclo dei mesi <span class="caret"></span></a>
+					        <ul class="dropdown-menu">
+						        <li><a href="torre_web.html">Stanza</a></li>
+						        <li role="separator" class="divider"></li>
+						        <li><a href="torre_icon/january.html">Gennaio</a></li>
+						        <li><a href="torre_icon/february.html">Febbraio </a></li>
+						        <li><a href="torre_icon/april.html">Aprile</a></li>
+						        <li><a href="torre_icon/may.html">Maggio</a></li>
+						        <li><a href="torre_icon/june.html">Giugno</a></li>
+						        <li><a href="torre_icon/july.html">Luglio</a></li>
+						        <li><a href="torre_icon/august.html">Agosto</a></li>
+						        <li><a href="torre_icon/september.html">Settembre</a></li>
+						        <li><a href="torre_icon/october.html">Ottobre</a></li>
+						        <li><a href="torre_icon/november.html">Novembre</a></li>
+						        <li><a href="torre_icon/december.html">Dicembre</a></li>								        </ul>
+					      </li>
+					<li><a href="#">Informazioni</a></li>       
+				</ul>
+			</div>
+		</div>
+		<div class = "clearfix"></div>
+	</nav>
+	
+				
+		<!-- Page Content -->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-7">
+					<!-- <div class ="page-header"> -->
+						<h3>la Loggia del Romanino</h3>
+					<!-- </div> -->
+					<!-- <div class = "clearfix"></div> -->
+			
+			<div class="row">
+				<div class="col-sm-12" style="height:500px; width:100%"> 
+					<script src="../loggia/libs/jquery-2.1.4/jquery-2.1.4.min.js"></script>
+					<script src="../loggia/libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+					<script src="../loggia/libs/three.js/build/three.js"></script>
+					<script src="../loggia/libs/other/stats.min.js"></script>
+					<script src="../loggia/libs/other/BinaryHeap.js"></script>
+					<script src="../loggia/libs/tween/tween.min.js"></script>
+					<script src="../loggia/libs/d3/d3.js"></script>
+					<script src="../loggia/libs/proj4/proj4.js"></script>
+					<script src="../loggia/libs/openlayers3/ol.js"></script>
+					<script src="../loggia/libs/potree/potree.js"></script>
+
+					<div class="potree_container" style="position: absolute; width: 90%; height: 120%; bottom: 50px;left: 10px; top: 10px; border: 10px solid #333;">
+						<div id="potree_render_area">
+							<img class="potree_menu_toggle" src="../torre/resources/icons/menu_button.svg" onclick="viewer.toggleSidebar()" />
+							<img id="potree_map_toggle" src="../torre/resources/icons/map_icon.png" onclick="viewer.toggleMap()" style="display: none"/>
+							
+							<div id="potree_map" class="mapBox" style="position: absolute; left: 50px; top: 50px; width: 400px; height: 400px; display: none">
+								<div id="potree_map_header" style="position: absolute; width: 100%; height: 25px; top: 0px; background-color: rgba(0,0,0,0.5); z-index: 1000; border-top-left-radius: 3px; border-top-right-radius: 3px;">
+								</div>
+								
+								<div id="potree_map_content" class="map" style="position: absolute; z-index: 100; top: 25px; width: 100%; height: calc(100% - 25px); border: 2px solid rgba(0,0,0,0.5); box-sizing: border-box;">
+								</div>
+							</div>							
+						</div>
+						
+												
+						
+						
+						<div id="potree_sidebar_container"> </div>
+						<script>		
+							var onPointCloudLoaded = function(event){
+								// do stuff here that should be executed whenever a point cloud has been loaded.
+								// event.pointcloud returns the point cloud object
+								console.log("a point cloud has been loaded");
+							}; 
+						
+							viewer = new Potree.Viewer(document.getElementById("potree_render_area"), {
+								"onPointCloudLoaded": onPointCloudLoaded
+							});
+							
+							viewer.setEDLEnabled(false);
+							viewer.setPointSize(3);
+							viewer.setMaterial("RGB");
+							viewer.setFOV(60);
+							viewer.setPointSizing("Fixed");
+							viewer.setQuality("Squares");
+							viewer.setPointBudget(1*1000*1000);
+							
+							viewer.addPointCloud("../loggia/pointclouds/loggia/cloud.js", function(res){ 
+					            var geometry = new THREE.SphereGeometry( 1, 32, 32 );
+						      	var material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
+						      	var sphere = new THREE.Mesh( geometry, material );
+								
+								viewer.scenePointCloud.add( sphere );
+
+						      	sphere.position.x = -6;
+						        sphere.position.y = 7.75;
+						        sphere.position.z = -14.6;
+
+						        sphere.visible = false;
+
+						        var pc = new THREE.Object3D(); 
+						        pc = res.pointcloud;
+
+						        pc.rotation.x = 0.1;
+						  		// var quaternion = new THREE.Quaternion();
+								// quaternion.setFromAxisAngle( new THREE.Vector3( 0, 1, 0 ), 0.5 );
+								// pc.matrix.setRotationFromQuaternion(quaternion);
+
+								viewer.controls.rotateLeft(0.7);
+								viewer.controls.rotateUp(-1);
+						        
+						        // viewer.cameraPointCloud.lookAt(new THREE.Vector3( 100, 100, 100 ));
+						        viewer.zoomTo(sphere,1);
+
+						        // viewer.controls.rotateLeft(1.14);
+						        // viewer.camera.rotation._x = 1.14;
+						        // viewer.camera.rotation._y = 1.14;
+						        // viewer.camera.rotation._z = 1.14;
+
+						        
+            				});
+							
+
+							viewer.loadGUI();
+						</script>
+					</div>
+				</div>
+			</div>
+			</div>
+			
+			<div class="col-sm-5">
+			<div class="row">
+					<div>
+				        <p><h2>Descrizione</h2>
+				        Il friulano Marcello Fogolino fu attivo per un quinquennio al servizio del cardinale Cles, operando in numerosi ambienti. Sono completamente perduti gli affreschi che coprivano le pareti del centrale Cortile dei Leoni, che conserva della decorazioni originaria solo i tondi in terracotta con i ritratti all'antica (di profilo) della casata degli Asburgo (Massimiliano I, Filippo il Bello, Carlo V, Ferdinando I), che testimoniano la fedeltà del cardinale alla dinastia imperiale. Sempre un tributo agli imperatori è rappresentato dall'affreco del Fogolino, ben conservato, nel cortile di Castelvecchio, che rappresenta Carlo Magno. Ancora in Castelvecchio è attribuita al pittore friulano la decorazione ad affresco della sala superiore con la serie dei ritratti dei vescovi di Trento, a partire dall'anno Mille, quando ebbe inizio del principato vescovile. La lunga teoria dei porporati è sormontata dalla galleria degli imperatori del Sacro Romano Impero, da cui essi dipendevano. La decorazione dell'ambiente è evidentemente inspirata alla Sala del Maggior Consiglio del Palazzo ducale di Venezia. La decorazione della volta del refettorio al piano terreno, che funge da anticamera alle cantine, utilizzato per la degustazione del vino, ha invece un carattere puramente decorativo abbandonando ogni intento celebrativo presente negli altri ambienti, dato che l'ambiente non aveva funzioni di rappresentanza. Qui sulla volta a sfondo giallo la fantasia del Fogolino a libero sfogo nell'inventare minute decorazioni a grottesche e festoni di fiori e frutta secondo i tradizionali motivi rinascimentali, insieme con festosi episodi della vita di corte quali concerti e banchetti. Il maggior capolavoro del Fogolino è la volta della Camera terrena del Torrion da basso, perfettamente circolare. L'intera superficie è coperta da un raffinato stucco bianco a motivi vegetali, in cui sono incastonati gli ovali e le lunette affrescati. Anche qui sono ripresi episodi esemplari della Roma antica, ed in particolare della vita di Cesare, oltre alle lunette con la serie degli imperatori antichi. Completano la decorazione gli ovali con nudi maschili e femminili e i pennacchi con figure fantastiche. Le storie della vita di Giulio Cesare narrano: Tolomeo che presenta la testa di Pompeo, il Triumvirato, Cesare in Senato e un Trionfo notturno in cui l'artista si esibisce in una virtuosistica illuminazione a fiaccole.
+				       <br>
+				       <p><h5>Fonte <italic>wikipedia.org</italic></h5></p>
+				        </p>
+					</div>
+			</div>
+			</div>
+
+
+<div class="col-sm-12">
+<div class="row">
+<p><h2>Description</h2>
+Il friulano Marcello Fogolino fu attivo per un quinquennio al servizio del cardinale Cles, operando in numerosi ambienti. Sono completamente perduti gli affreschi che coprivano le pareti del centrale Cortile dei Leoni, che conserva della decorazioni originaria solo i tondi in terracotta con i ritratti all'antica (di profilo) della casata degli Asburgo (Massimiliano I, Filippo il Bello, Carlo V, Ferdinando I), che testimoniano la fedeltà del cardinale alla dinastia imperiale. Sempre un tributo agli imperatori è rappresentato dall'affreco del Fogolino, ben conservato, nel cortile di Castelvecchio, che rappresenta Carlo Magno. Ancora in Castelvecchio è attribuita al pittore friulano la decorazione ad affresco della sala superiore con la serie dei ritratti dei vescovi di Trento, a partire dall'anno Mille, quando ebbe inizio del principato vescovile. La lunga teoria dei porporati è sormontata 
+
+</div>
+</div>
+
+
+
+	
+
+		
+		<!-- JQuery scripts 
+	    <script src="assets/js/jquery-1.11.2.min.js"></script>-->
+
+		<!-- Bootstrap Core scripts -->
+		<script src="assets/js/bootstrap.min.js"></script>
+
+  </body>
+</html>
+
