@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>Castle</title>
+		<title>Ceiling</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="Description" lang="en" content="Potree representation">
 		<meta name="author" content="autore">
@@ -18,6 +18,23 @@
 
 		<!-- Override CSS file - add your own CSS rules -->
 		<link rel="stylesheet" href="assets/css/styles.css">
+		
+		<!--Potree css -->
+		
+		<link rel="stylesheet" type="text/css" href="../torre/libs/potree/potree.css">
+		<link rel="stylesheet" type="text/css" href="../torre/libs/jquery-ui-1.11.4/jquery-ui.css">
+		<link rel="stylesheet" href="../torre/libs/openlayers3/ol.css" type="text/css">
+
+		<style>
+	      html, body {
+	        height: 100%;
+	        margin: 0;
+	        padding: 0;
+	      }
+	      .navbar-default {
+	        /*background-color: #333;*/
+	      }
+	    </style>
 
 		<!-- Conditional comment containing JS files for IE6 - 8 -->
 		<!--[if lt IE 9]>
@@ -28,9 +45,9 @@
 	<body>
 
 		<!-- Navigation -->
-	    <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+		
+	    <nav class="navbar navbar-default navbar-inverse" role="navigation">
 			<div class="container-fluid">
-
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -39,36 +56,40 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-						<a class="navbar-brand" href="index.html">HOME</a>
-				</div>
-				<!-- /.navbar-header -->
-
+					<a class="navbar-brand" href="index.html">HOME</a>
+				</div>				
 				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-						<li><a href="#">About</a></li>
-						
-						<li><a href="https://www.buonconsiglio.it/">Castle</a></li>
-						<!--<li><a href="#">Ciclo dei mesi</a></li>-->
-						<li class="dropdown">
-						       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ciclo di mesi <span class="caret"></span></a>
-						       <ul class="dropdown-menu">
-						       <li><a href="torre.html">Stanza</a></li>
-						       <li role="separator" class="divider"></li>
-						       	<li><a href="january.html">January</a></li>
-						         <li><a href="#">February </a></li>
-						         <li><a href="#">April</a></li>
-						         
-						        </ul>
-						      </li>
-						<li><a href="#">General Info</a></li>      
-					</ul>
+				
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							<li><a href="#">About</a></li>
+							<li><a href="../index.html">Castle</a></li>
+							<li><a href="loggia_web.html">Loggia del Romanino</a></li>
+							 <li class="dropdown">
+							        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ciclo di mesi <span class="caret"></span></a>
+							        <ul class="dropdown-menu">
+								        <li><a href="torre_web.html">Room</a></li>
+								        <li role="separator" class="divider"></li>
+								        <li><a href="torre_icon/january.html">January</a></li>
+								        <li><a href="torre_icon/february.html">February </a></li>
+								        <li><a href="torre_icon/april.html">April</a></li>
+								        <li><a href="torre_icon/may.html">May</a></li>
+								        <li><a href="torre_icon/june.html">June</a></li>
+								        <li><a href="torre_icon/july">July</a></li>
+								        <li><a href="torre_icon/august">August</a></li>
+								        <li><a href="torre_icon/september">September</a></li>
+								        <li><a href="torre_icon/october">October</a></li>
+								        <li><a href="torre_icon/november">November</a></li>
+								        <li><a href="torre_icon/december.html">December</a></li>							        
+								        </ul> 
+							      </li>
+							<li><a href="#">General Info</a></li>       
+						</ul>
+					</div>
 				</div>
-				<!-- /.navbar-collapse -->
-			</div>
-			<!-- /.container-fluid -->
-		</nav>
-		<!-- /.navbar -->
+				<div class = "clearfix"></div>
+			</nav>
+				
 
 		<!-- Page Content -->
 		<div class="container-fluid">
@@ -90,7 +111,7 @@
 				<div class="col-sm-12">
 
 
-					<p class="lead">Intro.</p>
+					
 					<p> Il castello è stato edificato con funzioni difensive sopra un rilievo roccioso, originariamente sede di un castrum romano.
 					Il dosso in cui venne edificata la fortezza a partire dal XIII secolo era denominato Malconsey. Già a partire dal 1300 il toponimo anticamente utilizzato per indicare il piccolo colle non venne più utilizzato e si preferì modificare il nome originario, adottando un termine più positivo: il castello Malconsey divenne Buonconsilii (del Buonconsiglio).
 					La sua attuale struttura è il risultato di una plurisecolare aggregazione edilizia: sono infatti ben distinguibili diverse sezioni e strutture, risalenti a secoli diversi. Il castello del Buonconsiglio rappresenta uno dei più grandi complessi fortificati delle Alpi.
