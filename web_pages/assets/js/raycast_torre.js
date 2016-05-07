@@ -19,28 +19,28 @@ function onDocumentMouseDown( event )
 			//...and if the first intersected poi (in space) is visible...
 			if (intersects_poi[ 0 ].object.visible==true) {
 				//..then check which poi is it and open to a new window the appropriate link
-				if (intersects_poi[ 0 ].object.userData.name=="Jan")
-					{window.open("../../web_pages/january.html")}
-				if (intersects_poi[ 0 ].object.userData.name=="Feb")
-					{window.open("../../web_pages/index.html")}
-				if (intersects_poi[ 0 ].object.userData.name=="Apr")
-					{window.open("../../web_pages/index.html")}
-				if (intersects_poi[ 0 ].object.userData.name=="May")
-					{window.open("../../web_pages/index.html")}
-				if (intersects_poi[ 0 ].object.userData.name=="Jun")
-					{window.open("../../web_pages/index.html")}
-				if (intersects_poi[ 0 ].object.userData.name=="Jul")
-					{window.open("../../web_pages/index.html")}
-				if (intersects_poi[ 0 ].object.userData.name=="Aug")
-					{window.open("../../web_pages/index.html")}
-				if (intersects_poi[ 0 ].object.userData.name=="Sep")
-					{window.open("../../web_pages/index.html")}
-				if (intersects_poi[ 0 ].object.userData.name=="Oct")
-					{window.open("../../web_pages/index.html")}
-				if (intersects_poi[ 0 ].object.userData.name=="Nov")
-					{window.open("../../web_pages/index.html")}
-				if (intersects_poi[ 0 ].object.userData.name=="Dec")
-					{window.open("../../web_pages/index.html")}
+			if (intersects_poi[ 0 ].object.userData.name=="Jan")
+				{window.open("../web_pages/torre_icon/january.html")}
+			if (intersects_poi[ 0 ].object.userData.name=="Feb")
+				{window.open("../web_pages/torre_icon/february.html")}
+			if (intersects_poi[ 0 ].object.userData.name=="Apr")
+				{window.open("../web_pages/torre_icon/april.html")}
+			if (intersects_poi[ 0 ].object.userData.name=="May")
+				{window.open("../web_pages/torre_icon/may.html")}
+			if (intersects_poi[ 0 ].object.userData.name=="Jun")
+				{window.open("../web_pages/torre_icon/june.html")}
+			if (intersects_poi[ 0 ].object.userData.name=="Jul")
+				{window.open("../web_pages/torre_icon/july.html")}
+			if (intersects_poi[ 0 ].object.userData.name=="Aug")
+				{window.open("../web_pages/torre_icon/august.html")}
+			if (intersects_poi[ 0 ].object.userData.name=="Sep")
+				{window.open("../web_pages/torre_icon/september.html")}
+			if (intersects_poi[ 0 ].object.userData.name=="Oct")
+				{window.open("../web_pages/torre_icon/october.html")}
+			if (intersects_poi[ 0 ].object.userData.name=="Nov")
+				{window.open("../web_pages/torre_icon/november.html")}
+			if (intersects_poi[ 0 ].object.userData.name=="Dec")
+				{window.open("../web_pages/torre_icon/december.html")}
 			}
 		}
 
