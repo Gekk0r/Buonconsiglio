@@ -34,7 +34,7 @@ function onDocumentMouseDown( event )
 	if ( intersects.length > 0 )
 	{
 		//console.log("Hit right @ " + toString( intersects[0].point ) )
-		window.open("http://3dom.fbk.eu/repository/buonconsiglio_castle/web_pages/torre_web.html")
+		window.open("web_pages/torre_web.html")
 		// change the color of the closest face.
 		//intersects[0].object.callback();
 		intersects[ 0 ].face.color.setRGB( 0.8 * Math.random() + 0.2, 0, 0 ); 
@@ -52,7 +52,7 @@ function onDocumentMouseDown( event )
 	if ( intersects_3.length > 0 )
 	{
 		//console.log("Hit right @ " + toString( intersects[0].point ) );
-		window.open("http://3dom.fbk.eu/repository/buonconsiglio_castle/web_pages/loggia_web.html")
+		window.open("web_pages/loggia_web.html")
 		// change the color of the closest face.
 		//intersects[0].object.callback();
 		intersects_3[ 0 ].face.color.setRGB( 0.8 * Math.random() + 0.2, 0, 0 ); 
