@@ -140,8 +140,8 @@
 							//viewer.setOpacity(0.03);
 							//viewer.setMinNodeSize(100);
 
-							// viewer.addPointCloud("../torre/pointclouds/torre/cloud.js");
-							viewer.addPointCloud("http://ginavulpes.github.io/torre_aquilla/torre/resources/pointclouds/torre/cloud.js");
+							viewer.addPointCloud("../torre/pointclouds/torre/cloud.js");
+							//viewer.addPointCloud("http://ginavulpes.github.io/torre_aquilla/torre/resources/pointclouds/torre/cloud.js");
 							viewer.loadGUI();
 
 							planes = new THREE.Object3D(); 	  // create empty container to put the frescoes' planes
@@ -151,11 +151,16 @@
 							plane_opacity=0.3;
 							//Specify POIs' opacity
 							poi_opacity=0.8;
+
+
+							dif_y=-0.3;
+							dif_x=0.2;
+							dif_z=0.1;
 							// ----January ----
 							plane_Jan = new THREE.Mesh(new THREE.PlaneGeometry(2.2, 3.2),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
-							plane_Jan.position.x = 3.6;
-							plane_Jan.position.y = 4.6;
-							plane_Jan.position.z = -1.6 ;
+							plane_Jan.position.x = 3.6+dif_x;
+							plane_Jan.position.y = 4.6+dif_y;
+							plane_Jan.position.z = -1.6+dif_z;
 						    plane_Jan.rotation.x = (Math.PI / 60);
 						    plane_Jan.rotation.y = (-Math.PI / 2);
 						    plane_Jan.visible=false;
@@ -173,9 +178,9 @@
 							// ----February----
 					    	
 							plane_Feb = new THREE.Mesh(new THREE.PlaneGeometry(2.0, 1.8),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
-							plane_Feb.position.x = 3.6;
-							plane_Feb.position.y = 5.2;
-							plane_Feb.position.z = 0.5 ;
+							plane_Feb.position.x = 3.6+dif_x;
+							plane_Feb.position.y = 5.2+dif_y;
+							plane_Feb.position.z = 0.5+dif_z;
 						    plane_Feb.rotation.x = (Math.PI / 60);
 						    plane_Feb.rotation.y = (-Math.PI / 2);
 						    plane_Feb.visible=false;
@@ -193,9 +198,9 @@
 							// ----April----
 							
 							plane_Apr= new THREE.Mesh(new THREE.PlaneGeometry(2, 3.2),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
-							plane_Apr.position.x = 0.8;
-							plane_Apr.position.y = 4.5;
-							plane_Apr.position.z = 3.1 ;
+							plane_Apr.position.x = 0.8+dif_x;
+							plane_Apr.position.y = 4.5+dif_y;
+							plane_Apr.position.z = 3.1+dif_z;
 						    plane_Apr.rotation.y = (-Math.PI);
 						    plane_Apr.visible=false;
 						    plane_Apr.userData.name="Apr"
@@ -211,9 +216,9 @@
 							poi_Apr.material.opacity=poi_opacity;
 							// ----May----
 							plane_May= new THREE.Mesh(new THREE.PlaneGeometry(2, 3.2),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
-							plane_May.position.x = -1.2;
-							plane_May.position.y = 4.5;
-							plane_May.position.z = 2.9 ;
+							plane_May.position.x = -1.2+dif_x;
+							plane_May.position.y = 4.5+dif_y;
+							plane_May.position.z = 2.9+dif_z;
 						    plane_May.rotation.x = (Math.PI / 40);
 						    plane_May.rotation.y = (-Math.PI-Math.PI/60);
 						    plane_May.visible=false;
@@ -230,9 +235,9 @@
 							poi_May.material.opacity=poi_opacity;
 							// ----June----
 							plane_Jun= new THREE.Mesh(new THREE.PlaneGeometry(2, 3.2),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
-							plane_Jun.position.x = -3.2;
-							plane_Jun.position.y = 4.5;
-							plane_Jun.position.z = 2.9;
+							plane_Jun.position.x = -3.2+dif_x;
+							plane_Jun.position.y = 4.5+dif_y;
+							plane_Jun.position.z = 2.9+dif_z;
 						    plane_Jun.rotation.x = (Math.PI / 60);
 						    plane_Jun.rotation.y = (-Math.PI-Math.PI/60);
 						    plane_Jun.visible=false;
@@ -250,9 +255,9 @@
 							// ----July----
 							
 							plane_Jul= new THREE.Mesh(new THREE.PlaneGeometry(2.2, 3.5),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
-							plane_Jul.position.x = -4.15;
-							plane_Jul.position.y = 4.8;
-							plane_Jul.position.z = 1.82;
+							plane_Jul.position.x = -4.15+dif_x;
+							plane_Jul.position.y = 4.8+dif_y;
+							plane_Jul.position.z = 1.82+dif_z;
 						    plane_Jul.rotation.x = (Math.PI/60);
 						    plane_Jul.rotation.y = (Math.PI/2);
 						    plane_Jul.visible=false;
@@ -269,9 +274,9 @@
 							poi_Jul.material.opacity=poi_opacity;
 							// ----August----
 							plane_Aug = new THREE.Mesh(new THREE.PlaneGeometry(2.5, 3.5),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
-							plane_Aug.position.x = -3.9;
-							plane_Aug.position.y = 4.8;
-							plane_Aug.position.z = -2.0 ;
+							plane_Aug.position.x = -3.9+dif_x;
+							plane_Aug.position.y = 4.8+dif_y;
+							plane_Aug.position.z = -2.0+dif_z;
 						    plane_Aug.rotation.x = (Math.PI/60);
 						    plane_Aug.rotation.y = (Math.PI/2); //2*Math.PI
 						    plane_Aug.visible=false;
@@ -288,9 +293,9 @@
 							poi_Aug.material.opacity=poi_opacity;
 							// ----September----
 							plane_Sep = new THREE.Mesh(new THREE.PlaneGeometry(2, 3.2),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
-							plane_Sep.position.x = -3;
-							plane_Sep.position.y = 4.7;
-							plane_Sep.position.z = -3.0 ;
+							plane_Sep.position.x = -3+dif_x;
+							plane_Sep.position.y = 4.7+dif_y;
+							plane_Sep.position.z = -3.0+dif_z;
 						    plane_Sep.rotation.x = (Math.PI / 60);
 						    plane_Sep.rotation.y = (-Math.PI/50); //2*Math.PI
 						    plane_Sep.visible=false;
@@ -307,9 +312,9 @@
 							poi_Sep.material.opacity=poi_opacity;
 							// ----October----
 							plane_Oct = new THREE.Mesh(new THREE.PlaneGeometry(2, 3.2),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
-							plane_Oct.position.x = -1;
-							plane_Oct.position.y = 4.8;
-							plane_Oct.position.z = -3.0 ;
+							plane_Oct.position.x = -1+dif_x;
+							plane_Oct.position.y = 4.8+dif_y;
+							plane_Oct.position.z = -3.0+dif_z;
 						    plane_Oct.rotation.x = (Math.PI / 60);
 						    plane_Oct.rotation.y = (-Math.PI/50); //2*Math.PI
 						    plane_Oct.visible=false;
@@ -326,9 +331,9 @@
 							poi_Oct.material.opacity=poi_opacity;
 							// ----November----
 							plane_Nov = new THREE.Mesh(new THREE.PlaneGeometry(2, 3.2),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
-							plane_Nov.position.x = 1;
-							plane_Nov.position.y = 4.8;
-							plane_Nov.position.z = -2.9 ;
+							plane_Nov.position.x = 1+dif_x;
+							plane_Nov.position.y = 4.8+dif_y;
+							plane_Nov.position.z = -2.9+dif_z;
 						    plane_Nov.rotation.x = (Math.PI / 60);
 						    plane_Nov.rotation.y = (-Math.PI/50); //2*Math.PI
 						    plane_Nov.visible=false;
@@ -345,9 +350,9 @@
 							poi_Nov.material.opacity=poi_opacity;
 							// ----December----
 							plane_Dec = new THREE.Mesh(new THREE.PlaneGeometry(2.2, 3.2),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
-							plane_Dec.position.x = 3;
-							plane_Dec.position.y = 4.8;
-							plane_Dec.position.z = -2.8 ;
+							plane_Dec.position.x = 3+dif_x;
+							plane_Dec.position.y = 4.8+dif_y;
+							plane_Dec.position.z = -2.8+dif_z;
 						    plane_Dec.rotation.x = (Math.PI / 60);
 						    plane_Dec.rotation.y = (-Math.PI/50); //2*Math.PI
 						    plane_Dec.visible=false;
