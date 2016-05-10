@@ -10,17 +10,13 @@ function onDocumentMouseDown( event )
 	//drawImage();
 	var camera = viewer.camera;
 
-	// the following line would stop any other event handler from firing
-	// (such as the mouse's TrackballControls)
-	// event.preventDefault();
-	
-	//console.log("Click.");
-	
-	
-	// update the mouse variable
+	var scroll = $('body').scrollTop();
+	var top = $('#potree_render_area').offset().top;
+	var left = $('#potree_render_area').offset().left;
+	// calculate mouse position in normalized device coordinates
 	var mouse = { x : 0 , y : 0 };
-	mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-	mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+	mouse.x =((event.clientX-left)/ $('#potree_render_area').width()) * 2 - 1;
+	mouse.y = - ((event.clientY-top+scroll)/ $('#potree_render_area').height() ) * 2 + 1;
 
 
 	// mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
@@ -55,12 +51,13 @@ function onDocumentMouseDown( event )
 }
 function onMouseMove( event ) {
 	var camera = viewer.camera;
-
+	var scroll = $('body').scrollTop();
+	var top = $('#potree_render_area').offset().top;
+	var left = $('#potree_render_area').offset().left;
 	// calculate mouse position in normalized device coordinates
-	// (-1 to +1) for both components
 	var mouse = { x : 0 , y : 0 };
-	mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-	mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+	mouse.x =((event.clientX-left)/ $('#potree_render_area').width()) * 2 - 1;
+	mouse.y = - ((event.clientY-top+scroll)/ $('#potree_render_area').height() ) * 2 + 1;
 	// update the picking ray with the camera and mouse position	
 	raycaster.setFromCamera( mouse, camera );
 
