@@ -4051,7 +4051,7 @@ Potree.OrbitControls = function ( object, domElement ) {
 		var intersects_2 = raycaster.intersectObjects([cube3]);
 	
 		if ( intersects.length == 0 && intersects_2.length == 0 ){ 
-			console.log("ciao_");	
+		
 			if ( scope.enabled === false ) return;
 			event.preventDefault();
 
