@@ -17,12 +17,12 @@ body { padding-top: 70px; }
 
 
 /**
- * Bootstrap requires a containing element to wrap site contents 
+ * Bootstrap requires a containing element to wrap site contents
  * and house the grid system. You may choose one of two containers.
  * Use .container for a responsive fixed width container.
  * Use .container-fluid for a full width container.
 
- * If using container-fluid, you may need to set a maximum width, 
+ * If using container-fluid, you may need to set a maximum width,
  * so that the container will not spread to the entire viewport.
 */
 
@@ -76,3 +76,17 @@ body { padding-top: 70px; }
 	margin-top: 3em;
 	margin-bottom: 3em;
 }
+
+#descrizione {
+	height:800px;
+}
+
+img {
+	max-height: 90%;
+    max-width: 100%;
+
+}
+
+.month_img {
+	border: 10px solid #333;
+	}
