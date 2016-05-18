@@ -18,9 +18,9 @@
 
 		<!-- Override CSS file - add your own CSS rules -->
 		<link rel="stylesheet" href="assets/css/styles.css">
-
+		
 		<!--Potree css -->
-
+		
 		<link rel="stylesheet" type="text/css" href="../torre/libs/potree/potree.css">
 		<link rel="stylesheet" type="text/css" href="../torre/libs/jquery-ui-1.11.4/jquery-ui.css">
 		<link rel="stylesheet" href="../torre/libs/openlayers3/ol.css" type="text/css">
@@ -40,44 +40,30 @@
 		<!--[if lt IE 9]>
 			<script src="assets/js/html5.js"></script>
 			<script src="assets/js/respond.min.js"></script>
-			<script src="http://s.codepen.io/assets/libs/modernizr.js" type="text/javascript"></script>
-			
-			
 		<![endif]-->
 	</head>
 	<body>
 
 		<!-- Navigation -->
-
+		
 <nav class="navbar navbar-default navbar-inverse" role="navigation">
-		<div class="container-fluid">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="index.html">HOME</a>
-			</div>				
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			
+	<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="index.html">HOME</a>
+		</div>				
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="progetto.html">Sul progetto</a></li>
-				<li class="dropdown">
-				        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">il Castello<span class="caret"></span></a>
-				        <ul class="dropdown-menu">
-					        <li><a href="../index.html">Castello</a></li>
-					        <li role="separator" class="divider"></li>
-					        <li><a href="diamond_door.html">Porta del diamante</a></li>
-					        <li><a href="terrestrial_wall.html">Mura esterne</a></li>
-					        <li><a href="facade.html">Facade</a></li>
-					        <li><a href="aerial.html">Aerial Acquisition</a></li>
-					        <li><a href="door.html">Porta ingresso</a></li>
-					        </li>  
-			</ul>
+				<li><a href="../index.html">il Castello</a></li>
 				<li><a href="loggia_web.html">la Loggia del Romanino</a></li>
 				 <li class="dropdown">
 				        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">il Ciclo dei mesi <span class="caret"></span></a>
@@ -95,7 +81,7 @@
 					        <li><a href="torre_icon/october.html">Ottobre</a></li>
 					        <li><a href="torre_icon/november.html">Novembre</a></li>
 					        <li><a href="torre_icon/december.html">Dicembre</a></li>								        </ul>
-				      </li>       
+				      </li>     
 			</ul>
 		</div>
 	</div>
@@ -103,21 +89,20 @@
 </nav>
 
 
-
+				
 
 		<!-- Page Content -->
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-md-7">
+				<div class="col-md-12">
 					<!-- <div class ="page-header"> -->
 						<h3>Ciclo dei Mesi</h3>
 					<!-- </div> -->
 					<!-- <div class = "clearfix"></div> -->
-
-
+				</div>
+			</div>
 			<div class="row">
-				<div class="col-sm-12" style="height:500px; width:100%">
-					<script src="../torre/libs/jquery-2.1.4/jquery-2.1.4.min.js"></script>
+				<div class="col-sm-12" style="height:500px; width:100%"> 
 					<script src="../torre/libs/jquery-2.1.4/jquery-2.1.4.min.js"></script>
 					<script src="../torre/libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
 					<script src="../torre/libs/three.js/build/three.js"></script>
@@ -126,36 +111,35 @@
 					<script src="../torre/libs/tween/tween.min.js"></script>
 					<script src="../torre/libs/d3/d3.js"></script>
 					<script src="../torre/libs/proj4/proj4.js"></script>
-					<script src="../torre/libs/openlayers3/ol.js"></script>
+					<script src="../torre/libs/openlayers3/ol.js"></script>	
 					<script src="../torre/libs/potree/potree_v3.js"></script>
 					<script src="assets/js/raycast_torre.js"></script>
 
-
-					<div class="potree_container" style="position: absolute; width: 90%; height: 120%; bottom: 50px;left: 10px; top: 10px; border: 10px solid #333;">
+					<div class="potree_container" style="position: absolute; width: 90%; height: 100%; bottom: 50px;left: 10px; top: 10px; border: 10px solid #333;">
 						<div id="potree_render_area">
 							<img class="potree_menu_toggle" src="../torre/resources/icons/menu_button.svg" onclick="viewer.toggleSidebar()" />
 							<img id="potree_map_toggle" src="../torre/resources/icons/map_icon.png" onclick="viewer.toggleMap()" style="display: none"/>
-
+							
 							<div id="potree_map" class="mapBox" style="position: absolute; left: 50px; top: 50px; width: 400px; height: 400px; display: none">
 								<div id="potree_map_header" style="position: absolute; width: 100%; height: 25px; top: 0px; background-color: rgba(0,0,0,0.5); z-index: 1000; border-top-left-radius: 3px; border-top-right-radius: 3px;">
 								</div>
-
+								
 								<div id="potree_map_content" class="map" style="position: absolute; z-index: 100; top: 25px; width: 100%; height: calc(100% - 25px); border: 2px solid rgba(0,0,0,0.5); box-sizing: border-box;">
 								</div>
-							</div>
+							</div>							
 						</div>
 						<div id="potree_sidebar_container"> </div>
-						<script>
+						<script>		
 							var onPointCloudLoaded = function(event){
 								// do stuff here that should be executed whenever a point cloud has been loaded.
 								// event.pointcloud returns the point cloud object
 								console.log("a point cloud has been loaded");
-							};
-
+							}; 
+						
 							viewer = new Potree.Viewer(document.getElementById("potree_render_area"), {
 								"onPointCloudLoaded": onPointCloudLoaded
 							});
-
+							
 							viewer.setEDLEnabled(false);
 							viewer.setPointSize(3);
 							viewer.setMaterial("RGB");
@@ -178,15 +162,10 @@
 							//Specify POIs' opacity
 							poi_opacity=0.8;
 							// ----January ----
-
-							dif_y=-0.3;
-							dif_x=0.2;
-							dif_z=0.1;
-							// ----January ----
 							plane_Jan = new THREE.Mesh(new THREE.PlaneGeometry(2.2, 3.2),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
-							plane_Jan.position.x = 3.6+dif_x;
-							plane_Jan.position.y = 4.6+dif_y;
-							plane_Jan.position.z = -1.6+dif_z;
+							plane_Jan.position.x = 3.6;
+							plane_Jan.position.y = 4.6;
+							plane_Jan.position.z = -1.6 ;
 						    plane_Jan.rotation.x = (Math.PI / 60);
 						    plane_Jan.rotation.y = (-Math.PI / 2);
 						    plane_Jan.visible=false;
@@ -202,11 +181,11 @@
 							poi_Jan.userData.name="Jan"
 							poi_Jan.material.opacity=poi_opacity;
 							// ----February----
-
+					    	
 							plane_Feb = new THREE.Mesh(new THREE.PlaneGeometry(2.0, 1.8),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
-							plane_Feb.position.x = 3.6+dif_x;
-							plane_Feb.position.y = 5.2+dif_y;
-							plane_Feb.position.z = 0.5+dif_z;
+							plane_Feb.position.x = 3.6;
+							plane_Feb.position.y = 5.2;
+							plane_Feb.position.z = 0.5 ;
 						    plane_Feb.rotation.x = (Math.PI / 60);
 						    plane_Feb.rotation.y = (-Math.PI / 2);
 						    plane_Feb.visible=false;
@@ -222,11 +201,11 @@
 							poi_Feb.userData.name="Feb"
 							poi_Feb.material.opacity=poi_opacity;
 							// ----April----
-
+							
 							plane_Apr= new THREE.Mesh(new THREE.PlaneGeometry(2, 3.2),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
-							plane_Apr.position.x = 0.8+dif_x;
-							plane_Apr.position.y = 4.5+dif_y;
-							plane_Apr.position.z = 3.1+dif_z;
+							plane_Apr.position.x = 0.8;
+							plane_Apr.position.y = 4.5;
+							plane_Apr.position.z = 3.1 ;
 						    plane_Apr.rotation.y = (-Math.PI);
 						    plane_Apr.visible=false;
 						    plane_Apr.userData.name="Apr"
@@ -242,9 +221,9 @@
 							poi_Apr.material.opacity=poi_opacity;
 							// ----May----
 							plane_May= new THREE.Mesh(new THREE.PlaneGeometry(2, 3.2),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
-							plane_May.position.x = -1.2+dif_x;
-							plane_May.position.y = 4.5+dif_y;
-							plane_May.position.z = 2.9+dif_z;
+							plane_May.position.x = -1.2;
+							plane_May.position.y = 4.5;
+							plane_May.position.z = 2.9 ;
 						    plane_May.rotation.x = (Math.PI / 40);
 						    plane_May.rotation.y = (-Math.PI-Math.PI/60);
 						    plane_May.visible=false;
@@ -261,9 +240,9 @@
 							poi_May.material.opacity=poi_opacity;
 							// ----June----
 							plane_Jun= new THREE.Mesh(new THREE.PlaneGeometry(2, 3.2),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
-							plane_Jun.position.x = -3.2+dif_x;
-							plane_Jun.position.y = 4.5+dif_y;
-							plane_Jun.position.z = 2.9+dif_z;
+							plane_Jun.position.x = -3.2;
+							plane_Jun.position.y = 4.5;
+							plane_Jun.position.z = 2.9;
 						    plane_Jun.rotation.x = (Math.PI / 60);
 						    plane_Jun.rotation.y = (-Math.PI-Math.PI/60);
 						    plane_Jun.visible=false;
@@ -279,11 +258,11 @@
 							poi_Jun.userData.name="Jun"
 							poi_Jun.material.opacity=poi_opacity;
 							// ----July----
-
+							
 							plane_Jul= new THREE.Mesh(new THREE.PlaneGeometry(2.2, 3.5),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
-							plane_Jul.position.x = -4.15+dif_x;
-							plane_Jul.position.y = 4.8+dif_y;
-							plane_Jul.position.z = 1.82+dif_z;
+							plane_Jul.position.x = -4.15;
+							plane_Jul.position.y = 4.8;
+							plane_Jul.position.z = 1.82;
 						    plane_Jul.rotation.x = (Math.PI/60);
 						    plane_Jul.rotation.y = (Math.PI/2);
 						    plane_Jul.visible=false;
@@ -300,9 +279,9 @@
 							poi_Jul.material.opacity=poi_opacity;
 							// ----August----
 							plane_Aug = new THREE.Mesh(new THREE.PlaneGeometry(2.5, 3.5),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
-							plane_Aug.position.x = -3.9+dif_x;
-							plane_Aug.position.y = 4.8+dif_y;
-							plane_Aug.position.z = -2.0+dif_z;
+							plane_Aug.position.x = -3.9;
+							plane_Aug.position.y = 4.8;
+							plane_Aug.position.z = -2.0 ;
 						    plane_Aug.rotation.x = (Math.PI/60);
 						    plane_Aug.rotation.y = (Math.PI/2); //2*Math.PI
 						    plane_Aug.visible=false;
@@ -319,9 +298,9 @@
 							poi_Aug.material.opacity=poi_opacity;
 							// ----September----
 							plane_Sep = new THREE.Mesh(new THREE.PlaneGeometry(2, 3.2),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
-							plane_Sep.position.x = -3+dif_x;
-							plane_Sep.position.y = 4.7+dif_y;
-							plane_Sep.position.z = -3.0+dif_z;
+							plane_Sep.position.x = -3;
+							plane_Sep.position.y = 4.7;
+							plane_Sep.position.z = -3.0 ;
 						    plane_Sep.rotation.x = (Math.PI / 60);
 						    plane_Sep.rotation.y = (-Math.PI/50); //2*Math.PI
 						    plane_Sep.visible=false;
@@ -338,9 +317,9 @@
 							poi_Sep.material.opacity=poi_opacity;
 							// ----October----
 							plane_Oct = new THREE.Mesh(new THREE.PlaneGeometry(2, 3.2),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
-							plane_Oct.position.x = -1+dif_x;
-							plane_Oct.position.y = 4.8+dif_y;
-							plane_Oct.position.z = -3.0+dif_z;
+							plane_Oct.position.x = -1;
+							plane_Oct.position.y = 4.8;
+							plane_Oct.position.z = -3.0 ;
 						    plane_Oct.rotation.x = (Math.PI / 60);
 						    plane_Oct.rotation.y = (-Math.PI/50); //2*Math.PI
 						    plane_Oct.visible=false;
@@ -357,9 +336,9 @@
 							poi_Oct.material.opacity=poi_opacity;
 							// ----November----
 							plane_Nov = new THREE.Mesh(new THREE.PlaneGeometry(2, 3.2),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
-							plane_Nov.position.x = 1+dif_x;
-							plane_Nov.position.y = 4.8+dif_y;
-							plane_Nov.position.z = -2.9+dif_z;
+							plane_Nov.position.x = 1;
+							plane_Nov.position.y = 4.8;
+							plane_Nov.position.z = -2.9 ;
 						    plane_Nov.rotation.x = (Math.PI / 60);
 						    plane_Nov.rotation.y = (-Math.PI/50); //2*Math.PI
 						    plane_Nov.visible=false;
@@ -376,9 +355,9 @@
 							poi_Nov.material.opacity=poi_opacity;
 							// ----December----
 							plane_Dec = new THREE.Mesh(new THREE.PlaneGeometry(2.2, 3.2),new THREE.MeshBasicMaterial({color: plane_colour, transparent: true, opacity: plane_opacity}));
-							plane_Dec.position.x = 3+dif_x;
-							plane_Dec.position.y = 4.8+dif_y;
-							plane_Dec.position.z = -2.8+dif_z;
+							plane_Dec.position.x = 3;
+							plane_Dec.position.y = 4.8;
+							plane_Dec.position.z = -2.8 ;
 						    plane_Dec.rotation.x = (Math.PI / 60);
 						    plane_Dec.rotation.y = (-Math.PI/50); //2*Math.PI
 						    plane_Dec.visible=false;
@@ -408,14 +387,10 @@
 					</div>
 				</div>
 			</div>
-		</div>
-
-			<div class="col-md-5">
-
+			
 			<div class="row">
-
-					<div id="descrizione" >
-				        <p><h2>Description</h2>
+					<div class="col-sm-12" id="descrizione">
+				        <p><h2>Descrizione</h2>
 				        <p>Il Ciclo dei Mesi è un gruppo di affreschi nella Torre dell'Aquila nel castello del Buonconsiglio di Trento, dipinti dal maestro Venceslao (documentato in città nel 1397). Risalgono alla fine del XIV secolo-inizio del XV e sono il migliore esempio di gotico internazionale in Trentino e uno dei più significativi dell'Italia settentrionale.</p>
 				        <p>Il ciclo si articola oggi in undici diversi riquadri, poiché il mese di Marzo era stato dipinto su un supporto di legno ed è andato perduto durante un incendio. L'insieme è strutturato come una loggia architravata sostenuta da esili colonnine tortili, dalla quale si vedono, come in un ipotetico affaccio che sfonda la parete, le varie occupazioni signorili e contadine di ciascun mese. Tutti gli sfondi e i dettagli architettonici sono raccordati tra scena e scena, come in un panorama unitario.</p>
 				        <p>Le scene, ricchissime di particolari tratti dall'osservazione della vita reale (magari filtrate dalle illustrazioni dei Tacuina Sanitatis), mostrano la vita dei nobili, le attività dell'agricoltura e della pastorizia, con un continuo e pacato intreccio tra mondo cavalleresco e mondo quotidiano. Poche sono invece le concessioni al grottesco e al macabro, che caratterizzavano invece altre zone italiane ed europee.</p>
@@ -426,143 +401,113 @@
 				       <p><h5><em>Fonte wikipedia.org</em></h5></p>
 				        </p>
 					</div>
-
-
-
-			</div>
-			</div>
-
-
-				<div class="col-sm-9">
+					</div>
+					
 				<div class="row">
-
-
-				<!--script for the table-->
+				<div class="col-sm-12">
+				
+				<!--script for showing the rest of the table-->
 				<script type="text/javascript">
 				              $(document).ready(function() {
-				      	         $("#HiddenRowsNotice").html("<tr><td colspan='3'> <a href='#'><b>Cliccare qui per espandere la tabella</b> </a></td></tr>");
-				      	         $("#ShowHide").html("<tr><td colspan='3'><a href='#'><em>Mostra/Nascondi</em></a></td></tr>");
+				      	         $("#HiddenRowsNotice").html("<tr><td colspan='2'> <a href='#'><b>Cliccare qui per espandere la tabella</b> </a></td></tr>");
+				      	         $("#ShowHide").html("<tr><td colspan='2'><a href='#'><em>Mostra/Nascondi</em></a></td></tr>"); 
 				      	        $("#HiddenRows").hide();
-
+				  
 				      	        $('#ShowHide,#HiddenRowsNotice').click( function() {
-				      	            $('#HiddenRows').toggle();
+				      	            $('#HiddenRows').toggle();	
 				      		        $('#HiddenRowsNotice').toggle();
 				      	        });
 				              });
 				          </script>
-				          
-				         <script>
-				         $(document).ready(function(){
-				             $('[data-toggle="popover"]').popover();   
-				         });
-				         </script>
-
-
-
-
+				  
+				  
 				  <p><h2>Metadata</h2></p>
-
-
-
-
+				  
+				  
+				  
 				  <!-- table -->
-
-
 				<table class="table table-hover" style="position: relative; clear: both;" >
 				<tbody id="ShowHide" style="color: black;"></tbody>
 				 <tr>
-				     <td><b>Register</b></td>
 				     <td><b>Descriptor</b></td>
-				     <td><b>Value</b></td>
-
+				     <td><b>Value</b></td> 
+				     
 				   </tr>
 				   <tr>
-				     <td>Acquisition Activity Register</td>
-				     <td><a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Define the link between the acquisition activity and the overall acquisition plan">Part Of Acquisition</a></td>
-				     <td><a href="../index.html">Castello del Buonconsiglio</a></td>
+				     <td><a href="http://itndch.map.archi.fr/pacs/docs/acquisition/acquisition-project-register#Object%20and%20Acquisition%20Feature">AP: Object Part</a></td>
+				     <td>Torre dell'Aquila</td> 
 				   </tr>
 				   <tr>
-				   		<td>Acquisition Activity Register</td>
-				     	<td><a href="#" <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="The descriptor indicates the method used in this particular acquisition activity">Acquisition Method</a></td>
-				     	<td>Photogrammetry</td>
+				     <td><a href="http://itndch.map.archi.fr/pacs/docs/acquisition/acquisition-activity-register#Acquisition%20Method">AA: Acquisition Method</a></td>
+				     <td>Photogrammetry</td> 
 				   </tr>
 				   <tbody id="HiddenRowsNotice"></tbody>
 				   <tbody id="HiddenRows">
-				   
 				   <tr>
-				   		<td>Acquisition Activity Register</td>
-				     	<td><a href="#" <a href="#"  data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Here the individuals who carried out the particular acquisition activity are listed">Actor Operators</a></td>
-				     	<td>Diego Bellido</td>
+				     <td><a href="http://itndch.map.archi.fr/pacs/docs/acquisition/acquisition-activity-register#Actor%20Operators">AA: Actor Operators</a></td>
+				     <td>Diego Belido</td> 
 				   </tr>
 				   <tr>
-				   		<td>Acquisition Activity Register</td>
-					    <td><a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Here the starting date of the specific acquisition project is entered">Starting Time</a></td>
-					    <td>10:30</td>
+				     <td><a href="http://itndch.map.archi.fr/pacs/docs/acquisition/acquisition-activity-register#Starting%20time">AA: Starting Time</a></td>
+				     <td>10:30</td> 
 				   </tr>
 				   <tr>
-				   		<td>Acquisition Activity Register</td>
-					     <td><a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Here the ending date of the specific acquisition project is entered">Ending Time</a></td>
-					     <td>14:00</td>
+				     <td><a href="http://itndch.map.archi.fr/pacs/docs/acquisition/acquisition-activity-register#Ending%20time">AA: Ending Time</a></td>
+				     <td>14:00</td> 
 				   </tr>
 				   <tr>
-				   		<td>Object Acquisition Configuration Register</td>
-					     <td><a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Distance between two sequential image acquisition points (projection centers)">Baseline</a></td>
-					     <td>0.5</td>
+				     <td><a href="http://itndch.map.archi.fr/pacs/docs/acquisition/object-acquisition-configuration-register#Image%20base/baseline">OAC: Baseline</a></td>
+				     <td>0.5</td> 
 				   </tr>
 				   <tr>
-				   		<td>Object Acquisition Configuration Register</td>
-					     <td><a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="The distance between the acquisition point and the average object surface">Distance from the Object</a></td>
-					     <td>2 meters</td>
+				     <td><a href="http://itndch.map.archi.fr/pacs/docs/acquisition/object-acquisition-configuration-register#Average%20Distance%20From%20The%20Object">OAC: Distance from the Object</a></td>
+				     <td>2 meters</td> 
 				   </tr>
 				   <tr>
-				   		<td>Equipment Setup Parameters Register</td>
-					     <td><a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Here the name of the camera body actually used">Camera Body</a></td>
-					     <td>Nikon D3X</td>
+				     <td><a href="http://itndch.map.archi.fr/pacs/docs/acquisition/equipment-setup-parameters-register#Camera%20Body">ESP: Camera</a></td>
+				     <td>Nikon D3X</td> 
 				   </tr>
 				   <tr>
-				   		<td>Equipment Setup Parameters Register</td>
-					     <td><a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Platform from which the pictures were taken and its stability">Platform</a></td>
-					     <td>Tripod Manfrotto</td>
+				     <td><a href="http://itndch.map.archi.fr/pacs/docs/acquisition/equipment-setup-parameters-register#Platform">ESP: Platform</a></td>
+				     <td>Tripod Manfrotto</td> 
 				   </tr>
 				   <tr>
-				   		<td>Object Acquisition Configuration Register</td>
-					     <td><a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Define if a calibration process was performed on site before the actual camera acquisition">On-site Camera Calibration</a></td>
-					     <td>Self Calibration</td>
+				     <td><a href="http://itndch.map.archi.fr/pacs/docs/acquisition/object-acquisition-configuration-register#On-site%20Camera%20Calibration">OAC: Camera Calibration</a></td>
+				     <td>Self Calibration</td> 
 				   </tr>
 				   <tr>
-				   		<td>Equipment Setup Parameters Register</td>
-				     <td><a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="The amount of light to which the sensor is exposed (f-stops), regulates the brightness of the image">Aperture</a></td>
-				     <td>F/16</td>
+				     <td><a href="http://itndch.map.archi.fr/pacs/docs/acquisition/equipment-setup-parameters-register#Aperture%20/%20f-stops%20">ESP: Aperture</a></td>
+				     <td>F/16</td> 
 				   </tr>
 				   <tr>
-				   		<td>Equipment Setup Parameters Register</td>
-				     <td><a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Automatic or manual focus">Focus</a></td>
-				     <td>Manual</td>
+				     <td><a href="http://itndch.map.archi.fr/pacs/docs/acquisition/equipment-setup-parameters-register#Focus">ESP: Focus</a></td>
+				     <td>Manual</td> 
 				   </tr>
 				   <tr>
-				   		<td>Equipment Setup Parameters Register</td>
-				     <td><a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Distance from the principal point of the camera to the image plane. If it is blocked at minimum or maximum, otherwise leave as unknown">Focal Lenght</a></td>
-				     <td>28mm</td>
+				     <td><a href="http://itndch.map.archi.fr/pacs/docs/acquisition/equipment-setup-parameters-register#Focal%20Length">ESP: Focal Lenght</a></td>
+				     <td>28mm</td> 
 				   </tr>
 				   <tr>
-				   		<td>Equipment Setup Parameters Register</td>
-				     <td><a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Here the white balance employed: Automatic, pre-set or manual and the reference to the method used for defining the white balance.">White Balance</a></td>
-				     <td>Predefined Manually - Grey pattern and color checker</td>
+				     <td><a href="http://itndch.map.archi.fr/pacs/docs/acquisition/equipment-setup-parameters-register#White%20balance">ESP: White Balance</a></td>
+				     <td>Predefined Manually - Grey pattern and color checker</td> 
 				   </tr>
 				   </tbody>
 				</table>
-
+				
+		
+		</div>			
+					
 			</div>
 
 		</div>
 
-
-
+		
+		<!-- JQuery scripts 
+	    <script src="assets/js/jquery-1.11.2.min.js"></script>-->
 
 		<!-- Bootstrap Core scripts -->
 		<script src="assets/js/bootstrap.min.js"></script>
 
-
-
   </body>
 </html>
+

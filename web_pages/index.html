@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>Ceiling</title>
+		<title>la Loggia del Romanino</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="Description" lang="en" content="Potree representation">
 		<meta name="author" content="autore">
@@ -24,6 +24,7 @@
 		<link rel="stylesheet" type="text/css" href="../torre/libs/potree/potree.css">
 		<link rel="stylesheet" type="text/css" href="../torre/libs/jquery-ui-1.11.4/jquery-ui.css">
 		<link rel="stylesheet" href="../torre/libs/openlayers3/ol.css" type="text/css">
+		
 
 		<style>
 	      html, body {
@@ -38,119 +39,222 @@
 
 		<!-- Conditional comment containing JS files for IE6 - 8 -->
 		<!--[if lt IE 9]>
+		
 			<script src="assets/js/html5.js"></script>
 			<script src="assets/js/respond.min.js"></script>
+		
+			
 		<![endif]-->
 	</head>
 	<body>
 
 		<!-- Navigation -->
 		
-	    <nav class="navbar navbar-default navbar-inverse" role="navigation">
-			<div class="container-fluid">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="index.html">HOME</a>
-				</div>				
-				<!-- Collect the nav links, forms, and other content for toggling -->
+	        <nav class="navbar navbar-default navbar-inverse" role="navigation">
+	    		<div class="container-fluid">
+	    			<!-- Brand and toggle get grouped for better mobile display -->
+	    			<div class="navbar-header">
+	    				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	    					<span class="sr-only">Toggle navigation</span>
+	    					<span class="icon-bar"></span>
+	    					<span class="icon-bar"></span>
+	    					<span class="icon-bar"></span>
+	    				</button>
+	    				<a class="navbar-brand" href="index.html">HOME</a>
+	    			</div>				
+	    			<!-- Collect the nav links, forms, and other content for toggling -->
+	    			
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	    			<ul class="nav navbar-nav">
+	    				<li><a href="progetto.html">Sul progetto</a></li>
+	    				<li class="dropdown">
+	    				        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">il Castello<span class="caret"></span></a>
+	    				        <ul class="dropdown-menu">
+	    					        <li><a href="../index.html">Castello</a></li>
+	    					        <li role="separator" class="divider"></li>
+	    					        <li><a href="diamond_door.html">Porta del diamante</a></li>
+	    					        <li><a href="terrestrial_wall.html">Mura esterne</a></li>
+	    					        <li><a href="facade.html">Facade</a></li>
+	    					        <li><a href="aerial.html">Aerial Acquisition</a></li>
+	    					        <li><a href="door.html">Porta ingresso</a></li>
+	    					        </li>  
+	    			</ul>
+	    				<li><a href="loggia_web.html">Loggia del Romanino</a></li>
+	    				 <li class="dropdown">
+	    				        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">il Ciclo dei mesi <span class="caret"></span></a>
+	    				        <ul class="dropdown-menu">
+	    					        <li><a href="torre_web.html">Stanza</a></li>
+	    					        <li role="separator" class="divider"></li>
+	    					        <li><a href="torre_icon/january.html">Gennaio</a></li>
+	    					        <li><a href="torre_icon/february.html">Febbraio </a></li>
+	    					        <li><a href="torre_icon/april.html">Aprile</a></li>
+	    					        <li><a href="torre_icon/may.html">Maggio</a></li>
+	    					        <li><a href="torre_icon/june.html">Giugno</a></li>
+	    					        <li><a href="torre_icon/july.html">Luglio</a></li>
+	    					        <li><a href="torre_icon/august.html">Agosto</a></li>
+	    					        <li><a href="torre_icon/september.html">Settembre</a></li>
+	    					        <li><a href="torre_icon/october.html">Ottobre</a></li>
+	    					        <li><a href="torre_icon/november.html">Novembre</a></li>
+	    					        <li><a href="torre_icon/december.html">Dicembre</a></li>								        </ul>
+	    				      </li>       
+	    			</ul>
+	    		</div>
+	    	</div>
+	    	<div class = "clearfix"></div>
+	    </nav>	
 				
-<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
-				<li><a href="progetto.html">Sul progetto</a></li>
-				<li><a href="../index.html">il Castello</a></li>
-				<li><a href="loggia_web.html">la Loggia del Romanino</a></li>
-				 <li class="dropdown">
-				        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">il Ciclo dei mesi <span class="caret"></span></a>
-				        <ul class="dropdown-menu">
-					        <li><a href="torre_web.html">Stanza</a></li>
-					        <li role="separator" class="divider"></li>
-					        <li><a href="torre_icon/january.html">Gennaio</a></li>
-					        <li><a href="torre_icon/february.html">Febbraio </a></li>
-					        <li><a href="torre_icon/april.html">Aprile</a></li>
-					        <li><a href="torre_icon/may.html">Maggio</a></li>
-					        <li><a href="torre_icon/june.html">Giugno</a></li>
-					        <li><a href="torre_icon/july.html">Luglio</a></li>
-					        <li><a href="torre_icon/august.html">Agosto</a></li>
-					        <li><a href="torre_icon/september.html">Settembre</a></li>
-					        <li><a href="torre_icon/october.html">Ottobre</a></li>
-					        <li><a href="torre_icon/november.html">Novembre</a></li>
-					        <li><a href="torre_icon/december.html">Dicembre</a></li>								        </ul>
-				      </li>      
-			</ul>
-		</div>
-	</div>
-	<div class = "clearfix"></div>
-</nav>
-				
-
 		<!-- Page Content -->
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-sm-12">
-					<div class="page-header">
-						<h1>Castello del Buonconsiglio</h1>
+				<div class="col-md-7">
+					<!-- <div class ="page-header"> -->
+						<h2>Castello del Buonconsiglio</h2>
+						<br>
+					<!-- </div> -->
+					<!-- <div class = "clearfix"></div> -->
+			
+			<div class="row">
+				<div class="col-sm-12" style="height:500px; width:100%"> 
+				<div>
+					<figure class="margin-b-2">
+						<a target="_blank" href="../index.html"><img class="img-responsive" src="https://placehold.it/800x400"></a>
+						<figcaption class="margin-t-h">Click to open in a new window</figcaption>
+					</figure>
 					</div>
+					<div>
+					 <p class="lead">This is some sample text. This is some sample text.  This is some sample text. This is some sample text. This is some sample text. This is some sample text.  This is some sample text. This is some sample text.This is some sample text. This is some sample text.This is some sample text. This is some sample text.</p>
+					
+</div>
+					
 				</div>
+			</div>
+			</div>
+			
+			<div class="col-sm-5">
+			<div class="row">
+					<div>
+				        <p><h2>Elements used</h2>
+				        <br>
+
+				        <p>Here a list of the elements used</p>
+				        						
+				        <div class = "media" id="bottom_el">
+				           <a class = "pull-left" href = "terrestrial_wall.html">
+				              <img class = "media-object" width="60" height="60" src="assets/img/ext_wall.png" >
+				           </a>
+				           
+				           <div class = "media-body">
+				              <h4 class = "media-heading">External Walls</h4>
+				              This is some sample text. This is some sample text. 
+				              This is some sample text. This is some sample text.
+				              This is some sample text. This is some sample text. 
+				              This is some sample text. This is some sample text.
+				           </div>
+				        	
+				        </div>
+				        
+				        <div class = "media">
+				           <a class = "pull-left" href = "facade.html">
+				              <img class = "media-object" width="60" height="60" src="assets/img/facade.png" >
+				           </a>
+				           
+				           <div class = "media-body">
+				              <h4 class = "media-heading">Facade</h4>
+				              This is some sample text. This is some sample text. 
+				              This is some sample text. This is some sample text.
+				              This is some sample text. This is some sample text. 
+				              This is some sample text. This is some sample text.
+				           </div>
+				        	
+				        </div>
+				        
+				        <div class = "media">
+				           <a class = "pull-left" href = "diamond_door.html">
+				              <img class = "media-object" width="60" height="60" src="assets/img/door2.png" >
+				           </a>
+				           
+				           <div class = "media-body">
+				              <h4 class = "media-heading">Porta del diamante</h4>
+				              This is some sample text. This is some sample text. 
+				              This is some sample text. This is some sample text.
+				              This is some sample text. This is some sample text. 
+				              This is some sample text. This is some sample text.
+				           </div>
+				        	
+				        </div>
+				        
+				        <div class = "media">
+				           <a class = "pull-left" href = "door.html">
+				              <img class = "media-object" width="60" height="60" src="assets/img/door1.png" >
+				           </a>
+				           
+				           <div class = "media-body">
+				              <h4 class = "media-heading">Porta d'ingresso</h4>
+				              This is some sample text. This is some sample text. 
+				              This is some sample text. This is some sample text.
+				              This is some sample text. This is some sample text. 
+				              This is some sample text. This is some sample text.
+				           </div>
+				        	</br>
+				        </div>
+				        			
+				        <div class = "media">
+				           <a class = "pull-left" href = "aerial.html">
+				              <img class = "media-object" width="60" height="60" src="assets/img/aerial.png" >
+				           </a>
+				           
+				           <div class = "media-body">
+				              <h4 class = "media-heading">Aerial Data</h4>
+				              This is some sample text. This is some sample text. 
+				              This is some sample text. This is some sample text.
+				              This is some sample text. This is some sample text. 
+				              This is some sample text. This is some sample text.
+				           </div>
+				        	</br>
+				        </div>
+				        
+			
+				  					</div>
+			</div>
 			</div>
 
 
-			<!-- /.row -->
 
-			<div class="row">
+<div class="col-sm-12">
+<div class="row">
+<h2>Description</h2>
+<p>
+Il castello è stato edificato con funzioni difensive sopra un rilievo roccioso, originariamente sede di un castrum romano. Il dosso in cui venne edificata la fortezza a partire dal XIII secolo era denominato Malconsey. Già a partire dal 1300 il toponimo anticamente utilizzato per indicare il piccolo colle non venne più utilizzato e si preferì modificare il nome originario, adottando un termine più positivo: il castello Malconsey divenne Buonconsilii (del Buonconsiglio). La sua attuale struttura è il risultato di una plurisecolare aggregazione edilizia: sono infatti ben distinguibili diverse sezioni e strutture, risalenti a secoli diversi. Il castello del Buonconsiglio rappresenta uno dei più grandi complessi fortificati delle Alpi.La parte più antica è quella di gusto romanico, rappresentata dal nucleo duecentesco del Castelvecchio (che venne poi ricostruito nel 1440) e dell'ampio torrione circolare (chiamato torre d'Augusto). In una fase successiva, tra la fine del Trecento e l'inizio del Quattrocento, la struttura venne profondamente modificata dai principi vescovi Giorgio di Liechtenstein e Giovanni IV Hinderbach. Il primo collegò al Castelvecchio la torre Aquila, che fece affrescare con il Ciclo dei Mesi, uno straordinario esempio di Gotico Internazionale. Giovanni IV Hiderbach fece costruire la grande merlatura e il loggiato di gusto gotico-veneziano. Nel 1500 il cardinale Bernardo Clesio, impegnato in un progetto di ristrutturazione e riqualificazione urbanistica dell'intera città, fece edificare a sud del complesso una costruzione rinascimentale, il Magno Palazzo, nuova dimora di principi vescovi, affrescata da Dosso Dossi e da Girolamo Romanino. In età barocca, il vescovo Francesco Alberto Poia costruì la Giunta Albertiana, struttura che permette la comunicazione diretta fra la sezione medievale e il Magno Palazzo.</p>
+ <br>
+<p><h5><em>Fonte wikipedia.org</em></h5></p>
+ </p>
+
+			
 				
-				
-				
-				<div class="col-sm-12">
+</div>
 
 
-					
-					<p> Il castello è stato edificato con funzioni difensive sopra un rilievo roccioso, originariamente sede di un castrum romano.
-					Il dosso in cui venne edificata la fortezza a partire dal XIII secolo era denominato Malconsey. Già a partire dal 1300 il toponimo anticamente utilizzato per indicare il piccolo colle non venne più utilizzato e si preferì modificare il nome originario, adottando un termine più positivo: il castello Malconsey divenne Buonconsilii (del Buonconsiglio).
-					La sua attuale struttura è il risultato di una plurisecolare aggregazione edilizia: sono infatti ben distinguibili diverse sezioni e strutture, risalenti a secoli diversi. Il castello del Buonconsiglio rappresenta uno dei più grandi complessi fortificati delle Alpi.
-					La parte più antica è quella di gusto romanico, rappresentata dal nucleo duecentesco del Castelvecchio (che venne poi ricostruito nel 1440) e dell'ampio torrione circolare (chiamato torre d'Augusto). In una fase successiva, tra la fine del Trecento e l'inizio del Quattrocento, la struttura venne profondamente modificata dai principi vescovi Giorgio di Liechtenstein e Giovanni IV Hinderbach. Il primo collegò al Castelvecchio la torre Aquila, che fece affrescare con il Ciclo dei Mesi, uno straordinario esempio di Gotico Internazionale. Giovanni IV Hiderbach fece costruire la grande merlatura e il loggiato di gusto gotico-veneziano.</p>
-					
-					<div class="row">
-					
-					
-					<div class="col-sm-6">
-					
-					<figure class="margin-b-2">
-							<img class="img-responsive" src="assets/img/castello_durer.jpg" alt="">
-						</figure>
-					
-					</div>
-					
-					<div class="col-sm-6">
-					
-					<p>Nel 1500 il cardinale Bernardo Clesio, impegnato in un progetto di ristrutturazione e riqualificazione urbanistica dell'intera città, fece edificare a sud del complesso una costruzione rinascimentale, il Magno Palazzo, nuova dimora di principi vescovi, affrescata da Dosso Dossi e da Girolamo Romanino.
-					In età barocca, il vescovo Francesco Alberto Poia costruì la Giunta Albertiana, struttura che permette la comunicazione diretta fra la sezione medievale e il Magno Palazzo.
-					Nel 1796 la città venne invasa dalle truppe napoleoniche e l'ultimo principe vescovo, Pietro Vigilio Thun, lasciò il castello e si rifugiò nella fortezza di famiglia in Val di Non. Con la secolarizzazione del Principato vescovile di Trento e la sua annessione alla contea del Tirolo, il Buonconsiglio si ridusse da sede di rappresentanza a caserma militare austriaca.</p>
-					<p>Durante la prima guerra mondiale, la sala del Tribunale (la cinquecentesca Stua della Famea) fu sede del processo (1916) agli irredentisti Cesare Battisti, Fabio Filzi e Damiano Chiesa. Dopo la sentenza, che sanciva la condanna a morte per alto tradimento, i tre irredentisti vennero condotti nelle celle ricavate nel loggiato. La sentenza venne eseguita nel prato tra il castello e le mura poste ad est (la Fossa dei Martiri): il 19 maggio 1916 venne fucilato il sottotenente roveretano Damiano Chiesa, volontario nell'esercito italiano; il tenente Battisti e il sottotenente Filzi vennero impiccati il 12 luglio successivo.</p>
-					<p>Nel 1918 lo Stato italiano divenne proprietario del Castello, che passò alla Provincia autonoma di Trento nel 1974. Il castello è maniero d'Onore dell'Ordine di Vittorio Veneto figurando in alto a sinistra nel diploma di Cavaliere.</p>	
-					</p>
-					
-					</div>
-					
-					
-					</div>
-					
-					
-					</div>
-					</div>
-					
-		<!-- /.container-fluid -->
+	
+  
+  
 
-		<!-- JQuery scripts -->
+  
+
+
+</div>
+</div>
+</div>
+
+
+	
+
+		
+	<!--	 JQuery scripts -->
 	    <script src="assets/js/jquery-1.11.2.min.js"></script>
 
 		<!-- Bootstrap Core scripts -->
 		<script src="assets/js/bootstrap.min.js"></script>
+
   </body>
 </html>
 
