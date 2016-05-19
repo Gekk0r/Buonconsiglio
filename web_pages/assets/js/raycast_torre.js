@@ -1,6 +1,15 @@
 
 var raycaster = new THREE.Raycaster();
 
+var onDropDown=false;
+	$('.dropdown-menu li a').mouseover(function(){
+onDropDown=true;
+	});
+	$('.dropdown-menu li a').mouseout(function(){
+onDropDown=false;
+	});
+
+
 
 function onDocumentMouseDown( event )
 {   var camera = viewer.camera;
@@ -9,7 +18,9 @@ function onDocumentMouseDown( event )
 	var top = $('#potree_render_area').offset().top;
 	var left = $('#potree_render_area').offset().left;
 	// calculate mouse position in normalized device coordinates
-	if (event.clientX-left>0 && event.clientY-top+scroll>0 && event.clientX < $('#potree_render_area').width()+left && event.clientY < $('#potree_render_area').height()+top - scroll)
+
+
+	if (event.clientX-left>0 && event.clientY-top+scroll>0 && event.clientX < $('#potree_render_area').width()+left && event.clientY < $('#potree_render_area').height()+top - scroll && onDropDown==false)
 	{var mouse = { x : 0 , y : 0 };
 	mouse.x =((event.clientX-left)/ $('#potree_render_area').width()) * 2 - 1;
 	mouse.y = - ((event.clientY-top+scroll)/ $('#potree_render_area').height() ) * 2 + 1;
@@ -18,39 +29,57 @@ function onDocumentMouseDown( event )
 	// update the picking ray with the camera and mouse position
 	raycaster.setFromCamera( mouse, camera );
 
-	// //check first if the "click" was on a poi and create an array with them
-	// var intersects_poi = raycaster.intersectObjects( hotspots.children );
-	// 	// if there is an intersection with a poi...
-	// 	if ( intersects_poi.length > 0 ) {
-	// 		//...and if the first intersected poi (in space) is visible...
-	// 		if (intersects_poi[ 0 ].object.visible==true) {
-	// 			//..then check which poi is it and open to a new window the appropriate link
-	// 			if (intersects_poi[ 0 ].object.userData.name=="Jan")
-	// 				{window.open("../../web_pages/january.html")}
-	// 			if (intersects_poi[ 0 ].object.userData.name=="Feb")
-	// 				{window.open("../../web_pages/index.html")}
-	// 			if (intersects_poi[ 0 ].object.userData.name=="Apr")
-	// 				{window.open("../../web_pages/index.html")}
-	// 			if (intersects_poi[ 0 ].object.userData.name=="May")
-	// 				{window.open("../../web_pages/index.html")}
-	// 			if (intersects_poi[ 0 ].object.userData.name=="Jun")
-	// 				{window.open("../../web_pages/index.html")}
-	// 			if (intersects_poi[ 0 ].object.userData.name=="Jul")
-	// 				{window.open("../../web_pages/index.html")}
-	// 			if (intersects_poi[ 0 ].object.userData.name=="Aug")
-	// 				{window.open("../../web_pages/index.html")}
-	// 			if (intersects_poi[ 0 ].object.userData.name=="Sep")
-	// 				{window.open("../../web_pages/index.html")}
-	// 			if (intersects_poi[ 0 ].object.userData.name=="Oct")
-	// 				{window.open("../../web_pages/index.html")}
-	// 			if (intersects_poi[ 0 ].object.userData.name=="Nov")
-	// 				{window.open("../../web_pages/index.html")}
-	// 			if (intersects_poi[ 0 ].object.userData.name=="Dec")
-	// 				{window.open("../../web_pages/index.html")}
-	// 		}
-	// 	}
+	linkText_empty="<div id=\"descrizione_box\">\
+						<div class=\"pull-left\">\
+							<img class=\"month_img\" src=\"img/aquila_frescoes/maggio.jpg\" alt=\"Empty\">\
+						</div>\
+	        			<h4 id=\"month_name\">MonthName</h4>\
+	        			<div id=\"month_desc\">\
+							<p>Vivamus risus ex, varius et libero quis, placerat rhoncus mi. Aenean sit amet aliquam nibh. Aliquam tortor est, consequat vitae libero at, vehicula mattis tellus. In condimentum consequat tempor. Nullam at lorem semper, ultricies mi et, mollis turpis. Mauris ut leo ac magna dapibus luctus. Mauris mi nibh, ornare et ipsum vel, finibus molestie nulla. Nunc eleifend leo eget ipsum pellentesque, vel varius ipsum placerat. Mauris tincidunt sapien et efficitur commodo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec at pellentesque arcu. Pellentesque justo enim, porttitor a arcu non, mollis venenatis felis.</p>\
+					        <p>Praesent viverra pellentesque enim, vitae porta erat elementum quis. Maecenas posuere mattis velit rutrum iaculis. Duis non efficitur nibh. Aliquam laoreet risus a nulla auctor interdum. Ut cursus leo eu justo laoreet porttitor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse vitae nisi dictum, vulputate odio sed, blandit tortor. Fusce eu turpis ut mi porta bibendum nec eu libero.</p>\
+					        <p>Praesent libero sem, feugiat dapibus mattis et, vehicula eu turpis. In vitae consequat leo, quis venenatis justo. Fusce auctor bibendum aliquet. Nullam eu mi lectus. Maecenas risus mauris, feugiat nec ullamcorper non, efficitur et elit. Sed porta tellus ut aliquam auctor. Vivamus id lectus sed tellus cursus sodales sit amet a velit.</p>\
+					        <p>Quisque eu aliquam leo. Sed feugiat nulla massa, a faucibus nulla sagittis eget. Donec ullamcorper tincidunt risus et pharetra. Vivamus tristique dui metus, vitae gravida nisl volutpat eu. Vivamus dapibus leo sit amet metus luctus dapibus. Vivamus sodales tempor elit, at pellentesque elit eleifend sit amet. Aliquam erat volutpat.</p>\
+						</div>\
+					</div>"
+
+	fake_text="<p>Vivamus risus ex, varius et libero quis, placerat rhoncus mi. Aenean sit amet aliquam nibh. Aliquam tortor est, consequat vitae libero at, vehicula mattis tellus. In condimentum consequat tempor. Nullam at lorem semper, ultricies mi et, mollis turpis. Mauris ut leo ac magna dapibus luctus. Mauris mi nibh, ornare et ipsum vel, finibus molestie nulla. Nunc eleifend leo eget ipsum pellentesque, vel varius ipsum placerat. Mauris tincidunt sapien et efficitur commodo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec at pellentesque arcu. Pellentesque justo enim, porttitor a arcu non, mollis venenatis felis.</p>\
+				        <p>Praesent viverra pellentesque enim, vitae porta erat elementum quis. Maecenas posuere mattis velit rutrum iaculis. Duis non efficitur nibh. Aliquam laoreet risus a nulla auctor interdum. Ut cursus leo eu justo laoreet porttitor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse vitae nisi dictum, vulputate odio sed, blandit tortor. Fusce eu turpis ut mi porta bibendum nec eu libero.</p>\
+				        <p>Praesent libero sem, feugiat dapibus mattis et, vehicula eu turpis. In vitae consequat leo, quis venenatis justo. Fusce auctor bibendum aliquet. Nullam eu mi lectus. Maecenas risus mauris, feugiat nec ullamcorper non, efficitur et elit. Sed porta tellus ut aliquam auctor. Vivamus id lectus sed tellus cursus sodales sit amet a velit.</p>\
+				        <p>Quisque eu aliquam leo. Sed feugiat nulla massa, a faucibus nulla sagittis eget. Donec ullamcorper tincidunt risus et pharetra. Vivamus tristique dui metus, vitae gravida nisl volutpat eu. Vivamus dapibus leo sit amet metus luctus dapibus. Vivamus sodales tempor elit, at pellentesque elit eleifend sit amet. Aliquam erat volutpat.</p>"
+
+	April_text="<p>Il mese di Aprile segna la ripresa delle attività agricole dopo i mesi invernali: in basso due contadini si affaccendano con un aratro, mentre in alto si procede con le successive attività di semina e di erpicatura. Anche le giovani dame al centro sono intente a curare il loro piccolo orto.\
+				        In alto un orso, appena uscito dal letargo invernale, si nutre con delle erbe particolari chiamate \"arum\", che servono per pulire l\'intestino.</p>\
+				        <p>Il mese di Aprile segna la ripresa delle attività agricole dopo i mesi invernali: in basso due contadini si affaccendano con un aratro, mentre in alto si procede con le successive attività di semina e di erpicatura. Anche le giovani dame al centro sono intente a curare il loro piccolo orto. \
+				        In alto un orso, appena uscito dal letargo invernale, si nutre con delle erbe particolari chiamate \"arum\", che servono per pulire l\'intestino</p>\
+				        <p>In questo pannello vi sono ripresi agricoltori intenti nell'attività di erpicatura: l'erpice, strumento in legno a telaio quadrato o rettangolare armato di denti in legno o in ferro, serve per sminuzzare ancora di più il terreno dopo l\'aratura oppure, avvenuta la semina, per ricoprirlo. Il lavoratore che semina (insieme all\'accatastatore di agosto) si distingue da tutti gli altri per la diversità dei vestiti che mostrano una certa agiatezza. Indossa cappello in panno con fasce pendenti, guarnelli in colore, orlati e faldati, brache aderenti colorate a tinta unite e calzature in pelle. Si tratta probabilmente di fattori che gestiscono l\'azienda agricola di qualche ricco mercante</p>"
+
+	June_text=" <p>L'impaginazione dell'affresco del mese di Giugno è del tutto analoga a quella del vicino mese di Maggio, essendo ripartita in tre scene ben distinte.\
+				        In basso un giardino paradisiaco accoglie una danza di cinque coppie aristocratiche accompagnate da cinque musicanti.</p>\
+				       <p> In alto a sinistra, come nel mese precedente, una città è messa in comunicazione da un ponte con un luogo alpestre dove le mucche accovacciate sono munte dalle pastore che trasportano il latte e lavorano il burro accanto a piccole malghe in legno coperte da tetti di scandole. Anche questo mese presenta alcuni restauri cinquecenteschi: uno dei musici porta sulle vesti lo stemma del Cles e lo stesso cardinale è rappresentato in uno dei personaggi del corteo.</p>\
+				       <p>Verso la fine di giugno iniziano gli spostamenti del bestiame in malga: vacche da latte, vitelli, manze e a volte cavalle vengono contrassegnati e consegnati al pastore che li conduce nei pascoli ad alta quota. \
+				       Nell'affresco di questo mese si trovano tutte le costruzioni concentrate in un solo luogo: necessaria è la cascina - un edificio in muratura o legno con tetto di paglia o come in questo caso in scandole – che rappresenta ambiente protetto per il lavoro caseario e rifugio per i pastori, mentre un'area esterna delimitata da un recinto raccoglie la mandria che vi dorme di notte. \
+				       Il pittore ha voluto rappresentare in maniera estremamente accurata le principali attività svolte dai malgari quali la mungitura del bestiame, la produzione del burro mediante la zangola (un recipiente cilindrico con un pistone in legno immanicato) e del formaggio. Per quest'ultima attività il pittore ha rappresentato in primo piano un cascinaio che pigia con le mani una parte di pasta di formaggio dentro una fascina di legno dopo averla presa da un mastello.</p>"
+
+	July_text="<p>Le attività umili dominano la rappresentazione di questo mese, il cui stato di conservazione è migliore di quello dei vicini mesi di maggio e giugno.\
+				        La nota cortese è data in basso dall \'offerta del falco alla dama e dall'elegante dimora rossa circondata da mura, con finestre e vetrate e cicogne che nidificano sul tetto.</p>\
+				        <p>A popolare la scena sono i servi che trasportano i falchi, i pescatori nel lago al centro e soprattutto i contadini intenti a rastrellare e a falciare il fieno.\
+				        Tutti gli strumenti agricoli, come le falci fienaie, i rastrelli, i forconi a tre denti e gli astucci per portare la cote, sono accuratamente rappresentati, così come le diverse occupazioni dei contadini: c'è chi falcia, chi aguzza il filo e chi smuove il fieno.\
+				        Un seguito di rocce di diversi colori chiude la scena nella sua parte superiore con superbi e variati effetti cromatici.</p>\
+				        <p>Un particolare dell'affresco di Luglio: sulle cuspidi della facciata di accesso e quella retrostante si trovano due nidi di cicogne. Si tratta di un'usanza tipicamente boema-moraviana che resiste fino quasi ai nostri giorni e che viene predisposta sistemando sui tetti una ruota da carro per nidificare.</p>"
+
+     May_text=" <p>In basso un prato cosparso di fiori chiuso da una spalliera di rose. Sul prato, seduti, in piedi o inginocchiati, sono giovani aristocratici o dame, cinque coppie e un gruppo di due dame con un personaggio maschile più anziano. Entro il roseto si scorse una figura, quasi illeggibile per le cadute di colore, che minaccia con una lunga spada un leone che si avventa su di lui. Nella parte superiore è rappresentata una città cinta da una cortina di mura che ha al suo centro una bianca chiesa gotica. Un ponte di assi che attraversa un fossato porta ad un prato ai piedi della montagna dove due coppie siedono attorno ad una tavola imbandita accanto ad una fontana di marmo rosso da cui l'acqua fluisce attraverso una fenditura. La scena, molto danneggiata, è stata ridipinta nel restauro cinquecentesco.</p>\
+				        <p>In un particolare del mese di Maggio, sopra la sfilata di nobili, seminascosto dalla vegetazione, un cavaliere si difende dall'assalto di un leone. Questa scena evidenzia l'ideale eroico tipico del mondo cortese nel quale è stato elaborato il Ciclo dei Mesi di Torre Aquila</p>\
+				        <p>Rimane invece ancora sconosciuta l'identità della cittadella fortificata rappresentata in questo pannello. Alcuni studiosi hanno ipotizzato che il principe vescovo l'abbia suggerita al pittore in ricordo di un luogo amato. Le mura sono frastagliate da merlature e protette con torri alte e robuste fornite di feritoie e bertesche. L'ingresso alla cittadella è garantito da un ponte in legno sospeso su un fossato. Al centro di un'ampia piazza si trova una chiesa gotica, con ampio portale ed i caratteristici contrafforti, munita di due campanili in facciata. A destra dell'edificio di culto un lungo portico architravato ospita alcune botteghe dove operavano sarti, calzolai, e altri artigiani</p>"
+
+	October_text=" <p>La vendemmia, la spremitura dell’uva, la preparazione del mosto occupano interamente il mese di Ottobre. Unici componenti del mondo aristocratico sono le due dame in basso e il gentiluomo che assaggia il mosto. Il vigneto si arrampica in alto fino alle pendici delle montagne, ancora una volta rappresentate con forme e colori di grande suggestione. Una profonda fenditura, causa di estese lacune, attraversa la scena dall’alto in basso, mentre numerose sono le cadute di colore, le abrasioni e le ridipinture che l’unica parte integra risulta essere quella attorno al tornio</p>	"			        
+
+	September_text=" <p>Le scene di vita signorile occupano il mese di settembre: si tratta di scene di caccia con il falco, elemento cortese che accomuna i mesi di Luglio, Agosto e Settembre come il roseto e la corte d’amore caratterizzano i mesi di Aprile, Maggio e Giugno. </p>\
+				        <p>In basso due dame e un cavaliere escono dalla porta di un castello per una partita di caccia, mentre più in alto vi sono due cavalieri ugualmente intenti nella caccia con il falco.\
+				        Nella zona mediana una contadina raccoglie rape in un campo, mentre in alto due contadini conducono un aratro.\
+				        Il castello rosso e il fienile in alto fanno da seguito alla cinta merlata e al villaggio del mese di Agosto, dando una continuità al paesaggio.</p>"
 
 
+	
 	// create an array with intersections with planes
 	var intersects = raycaster.intersectObjects( planes.children );
 	// if there is one (or more) intersections
@@ -62,80 +91,81 @@ function onDocumentMouseDown( event )
 		//change the opacity of the intersected plane --> to demonstrate interaction
 		intersects[ 0 ].object.material.opacity=[0.5];
 
+		$('#descrizione').html(linkText_empty);
+
+		// console.log(intersects[ 0 ].object.position);
+		// camera.position.x = 1;
+		// camera.position.y = 4.5;
+		// camera.position.z = 1;
+		// camera.lookAt(intersects[ 0 ].object.position);
+
+
+
 		if (intersects[ 0 ].object.userData.name=="Jan")
-			{linkText="<p><h3>January</h3> \
-		<img class=\"month_img\" src=\"img/aquila_frescoes/gennaio.jpg\" alt=\"January\" > \
-		</p>"}
+			{$('.month_img').attr("src", "img/aquila_frescoes/gennaio.jpg", "alt", "gennaio");
+			 $('#month_name').text("Gennaio");
+			 $('#month_desc').html(fake_text);}
 		if (intersects[ 0 ].object.userData.name=="Feb")
-			{linkText="<p><h3>February</h3> \
-		<img class=\"month_img\" src=\"img/aquila_frescoes/febbraio.jpg\" alt=\"February\"> \
-		</p>"}
+			{$('.month_img').attr("src", "img/aquila_frescoes/febbraio.jpg", "alt", "febbraio");
+			 $('#month_name').text("Febbraio");
+			 $('#month_desc').html(fake_text);}
 		if (intersects[ 0 ].object.userData.name=="Apr")
-			{linkText="<p><h3>April</h3> \
-		<img class=\"month_img\" src=\"img/aquila_frescoes/aprile.jpg\" alt=\"April\"> \
-		</p>"}
+			{$('.month_img').attr("src", "img/aquila_frescoes/aprile.jpg", "alt", "aprile");
+			 $('#month_name').text("Aprile");
+			 $('#month_desc').html(April_text);}
 		if (intersects[ 0 ].object.userData.name=="May")
-			{linkText="<p><h3>May</h3> \
-		<img class=\"month_img\" src=\"img/aquila_frescoes/maggio.jpg\" alt=\"May\"> \
-		</p>"}
+			{$('.month_img').attr("src", "img/aquila_frescoes/maggio.jpg", "alt", "maggio");
+			 $('#month_name').text("Maggio");
+			 $('#month_desc').html(May_text);}
 		if (intersects[ 0 ].object.userData.name=="Jun")
-			{linkText="<p><h3>June</h3> \
-		<img class=\"month_img\" src=\"img/aquila_frescoes/giugno.jpg\" alt=\"June\"> \
-		</p>"}
+			{$('.month_img').attr("src", "img/aquila_frescoes/giugno.jpg", "alt", "giugno");
+			 $('#month_name').text("Giugno");
+			 $('#month_desc').html(June_text);}
 		if (intersects[ 0 ].object.userData.name=="Jul")
-			{linkText="<p><h3>July</h3> \
-		<img class=\"month_img\" src=\"img/aquila_frescoes/luglio.jpg\" alt=\"July\"> \
-		</p>"}
+			{$('.month_img').attr("src", "img/aquila_frescoes/luglio.jpg", "alt", "luglio");
+			 $('#month_name').text("Luglio");
+			 $('#month_desc').html(July_text);}
 		if (intersects[ 0 ].object.userData.name=="Aug")
-			{linkText="<p><h3>August</h3> \
-		<img class=\"month_img\" src=\"img/aquila_frescoes/agosto.jpg\" alt=\"August\"> \
-		</p>"}
+			{$('.month_img').attr("src", "img/aquila_frescoes/agosto.jpg", "alt", "agosto");
+			 $('#month_name').text("Agosto");
+			 $('#month_desc').html(fake_text);}
 		if (intersects[ 0 ].object.userData.name=="Sep")
-			{linkText="<p><h3>September</h3> \
-		<img class=\"month_img\" src=\"img/aquila_frescoes/settembre.jpg\" alt=\"September\"> \
-		</p>"}
+			{$('.month_img').attr("src", "img/aquila_frescoes/settembre.jpg", "alt", "settembre");
+			 $('#month_name').text("Settembre");
+			  $('#month_desc').html(September_text);}
 		if (intersects[ 0 ].object.userData.name=="Oct")
-			{linkText="<p><h3>October</h3> \
-		<img class=\"month_img\" src=\"img/aquila_frescoes/ottobre.jpg\" alt=\"October\"> \
-		</p>"}
+			{$('.month_img').attr("src", "img/aquila_frescoes/ottobre.jpg", "alt", "ottobre");
+			 $('#month_name').text("Ottobre");
+			 $('#month_desc').html(October_text);}
 		if (intersects[ 0 ].object.userData.name=="Nov")
-			{linkText="<p><h3>November</h3> \
-		<img class=\"month_img\" src=\"img/aquila_frescoes/novembre.jpg\" alt=\"November\"> \
-		</p>"}
+			{$('.month_img').attr("src", "img/aquila_frescoes/novembre.jpg", "alt", "novembre");
+			 $('#month_name').text("Novembre");
+			 $('#month_desc').html(fake_text);}
 		if (intersects[ 0 ].object.userData.name=="Dec")
-			{linkText="<p><h3>December</h3> \
-		<img class=\"month_img\" src=\"img/aquila_frescoes/dicembre.jpg\" alt=\"December\"> \
-		</p>"}
-
-	
-
-		//var linkText = 'lalalalala';
-		//document.getElementById('descrizione').innerHTML = "<p><h3>Description AUgust</h3></p>";
-
-    	// replace the contents of the div with the link text
-    	$('#descrizione').html(linkText);
-
-		// Turn on the poi that has the same name as the intersected plane
-		//hotspots.children.forEach(function( hotspot ) {if (hotspot.userData.name==intersects[ 0 ].object.userData.name){hotspot.visible=true; console.log("Clicked " +intersects[ 0 ].object.userData.name);}});
+			{$('.month_img').attr("src", "img/aquila_frescoes/dicembre.jpg", "alt", "dicembre");
+			 $('#month_name').text("Dicembre");
+			 $('#month_desc').html(fake_text);}
 
 	}
 	else{
 		planes.children.forEach(function( plane ) {plane.material.opacity=[0.3];});
 		planes.children.forEach(function( plane ) {plane.visible=false;});
-		hotspots.children.forEach(function( hotspot ) {hotspot.visible=false;});
+		//hotspots.children.forEach(function( hotspot ) {hotspot.visible=false;});
 
 
 
-		$('#descrizione').html("<p><h3>Description</h3> \
-				        <p>Il Ciclo dei Mesi è un gruppo di affreschi nella Torre dell'Aquila nel castello del Buonconsiglio di Trento, dipinti dal maestro Venceslao (documentato in città nel 1397). Risalgono alla fine del XIV secolo-inizio del XV e sono il migliore esempio di gotico internazionale in Trentino e uno dei più significativi dell'Italia settentrionale.</p> \
-				        <p>Il ciclo si articola oggi in undici diversi riquadri, poiché il mese di Marzo era stato dipinto su un supporto di legno ed è andato perduto durante un incendio. L'insieme è strutturato come una loggia architravata sostenuta da esili colonnine tortili, dalla quale si vedono, come in un ipotetico affaccio che sfonda la parete, le varie occupazioni signorili e contadine di ciascun mese. Tutti gli sfondi e i dettagli architettonici sono raccordati tra scena e scena, come in un panorama unitario.</p> \
-				        <p>Le scene, ricchissime di particolari tratti dall'osservazione della vita reale (magari filtrate dalle illustrazioni dei Tacuina Sanitatis), mostrano la vita dei nobili, le attività dell'agricoltura e della pastorizia, con un continuo e pacato intreccio tra mondo cavalleresco e mondo quotidiano. Poche sono invece le concessioni al grottesco e al macabro, che caratterizzavano invece altre zone italiane ed europee.</p> \
-				        <p>Viene prestata molta attenzione al succedersi delle stagioni: il paesaggio invernale spoglio e imbiancato dalla neve diventa rigoglioso di vegetazione in primavera, i raccolti estivi segnano l'apice dell'attività agricola, mentre gli alberi nel mese di novembre sono circondati dalle foglie secche cadute sul terreno. La cura dei particolari ritorna nella descrizione delle vesti, l'abbigliamento infatti permette di riconoscere i caratteri tipici della moda del tempo: per i nobili, occupati in svaghi e tornei, gli abiti sono ricchi di colori, mentre molto più semplici e pratici sono quelli delle classi umili, rappresentate sempre al lavoro. Si può vedere la minuziosità dei particolari anche nei cambiamenti delle stagioni.</p> \
-				       <p>In ogni affresco è presente la figura del sole con accanto il segno zodiacale corrispondente ad ogni mese.</p> \
-				       <p>Modelli iconografici del ciclo sono, oltre al già citato Tacuinum sanitatis, il Livre de la chasse di Gaston Phoebus e le Très riches heures du Duc de Berry.</p> \
-				       <br> \
-				       <p><h5><em>Fonte wikipedia.org</em></h5></p> \
-				        </p> ");
+		$('#descrizione').html("<div id=\"descrizione_box\">\
+						     	<div id=\"description_paragraph\" >\
+							        <p>Il Ciclo dei Mesi è un gruppo di affreschi nella Torre dell'Aquila nel castello del Buonconsiglio di Trento, dipinti dal maestro Venceslao (documentato in città nel 1397). Risalgono alla fine del XIV secolo-inizio del XV e sono il migliore esempio di gotico internazionale in Trentino e uno dei più significativi dell'Italia settentrionale.</p>\
+							        <p>Il ciclo si articola oggi in undici diversi riquadri, poiché il mese di Marzo era stato dipinto su un supporto di legno ed è andato perduto durante un incendio. L\'insieme è strutturato come una loggia architravata sostenuta da esili colonnine tortili, dalla quale si vedono, come in un ipotetico affaccio che sfonda la parete, le varie occupazioni signorili e contadine di ciascun mese. Tutti gli sfondi e i dettagli architettonici sono raccordati tra scena e scena, come in un panorama unitario.</p>\
+							        <p>Le scene, ricchissime di particolari tratti dall\'osservazione della vita reale (magari filtrate dalle illustrazioni dei Tacuina Sanitatis), mostrano la vita dei nobili, le attività dell\'agricoltura e della pastorizia, con un continuo e pacato intreccio tra mondo cavalleresco e mondo quotidiano. Poche sono invece le concessioni al grottesco e al macabro, che caratterizzavano invece altre zone italiane ed europee.</p>\
+							        <p>Viene prestata molta attenzione al succedersi delle stagioni: il paesaggio invernale spoglio e imbiancato dalla neve diventa rigoglioso di vegetazione in primavera, i raccolti estivi segnano l\'apice dell\'attività agricola, mentre gli alberi nel mese di novembre sono circondati dalle foglie secche cadute sul terreno. La cura dei particolari ritorna nella descrizione delle vesti, l\'abbigliamento infatti permette di riconoscere i caratteri tipici della moda del tempo: per i nobili, occupati in svaghi e tornei, gli abiti sono ricchi di colori, mentre molto più semplici e pratici sono quelli delle classi umili, rappresentate sempre al lavoro. Si può vedere la minuziosità dei particolari anche nei cambiamenti delle stagioni.</p>\
+							       <p>In ogni affresco è presente la figura del sole con accanto il segno zodiacale corrispondente ad ogni mese.</p>\
+							       <p>Modelli iconografici del ciclo sono, oltre al già citato Tacuinum sanitatis, il Livre de la chasse di Gaston Phoebus e le Très riches heures du Duc de Berry.</p>\
+							       <br>\
+							       <p><h5><em>Fonte wikipedia.org</em></h5></p>\
+						       </div>\
+					       </div>");
 	}
 }
 
@@ -150,7 +180,7 @@ function onMouseMove( event ) {
 	var top = $('#potree_render_area').offset().top;
 	var left = $('#potree_render_area').offset().left;
 	// calculate mouse position in normalized device coordinates
-	if (event.clientX-left>0 && event.clientY-top+scroll>0 && event.clientX < $('#potree_render_area').width()+left && event.clientY < $('#potree_render_area').height()+top - scroll)
+	if (event.clientX-left>0 && event.clientY-top+scroll>0 && event.clientX < $('#potree_render_area').width()+left && event.clientY < $('#potree_render_area').height()+top - scroll && onDropDown==false)
 	{var mouse = { x : 0 , y : 0 };
 	mouse.x =((event.clientX-left)/ $('#potree_render_area').width()) * 2 - 1;
 	mouse.y = - ((event.clientY-top+scroll)/ $('#potree_render_area').height() ) * 2 + 1;
@@ -161,19 +191,19 @@ function onMouseMove( event ) {
 	raycaster.setFromCamera( mouse, camera );
 
 
-	//Find the intersections with POIs
-	var intersects_poi = raycaster.intersectObjects( hotspots.children );
-	// if there is one (or more) intersections with POIs...
-	if ( intersects_poi.length > 0 ){
-		// And the first one is visible...
-		if (intersects_poi[ 0 ].object.visible==true) {
-			//....then change (slightly) the scale and the opacity to demonstrate interaction/"clickability"
-			intersects_poi[ 0 ].object.scale.set(1.1,1.1,1.1);
-			intersects_poi[ 0 ].object.material.opacity=[1];
+	// //Find the intersections with POIs
+	// var intersects_poi = raycaster.intersectObjects( hotspots.children );
+	// // if there is one (or more) intersections with POIs...
+	// if ( intersects_poi.length > 0 ){
+	// 	// And the first one is visible...
+	// 	if (intersects_poi[ 0 ].object.visible==true) {
+	// 		//....then change (slightly) the scale and the opacity to demonstrate interaction/"clickability"
+	// 		intersects_poi[ 0 ].object.scale.set(1.1,1.1,1.1);
+	// 		intersects_poi[ 0 ].object.material.opacity=[1];
 
-		}}
+	// 	}}
 	//else return to default scale and opacity
-	else {hotspots.children.forEach(function( hotspot ) {hotspot.scale.set(1,1,1); hotspot.material.opacity=[poi_opacity];});}
+	//else {hotspots.children.forEach(function( hotspot ) {hotspot.scale.set(1,1,1); hotspot.material.opacity=[poi_opacity];});}
 
 
 	//Find the intersections with planes
@@ -197,7 +227,7 @@ function onMouseMove( event ) {
 
 
 	// Make the POIs rotate towards the camera when moving  ---> If deactivated the rotation of the ROIs must be set in torre.html
-	hotspots.children.forEach(function( hotspot ) {hotspot.lookAt(camera.position);});
+	//hotspots.children.forEach(function( hotspot ) {hotspot.lookAt(camera.position);});
 
 
 }
@@ -209,68 +239,74 @@ function onMouseMove( event ) {
 
 $('.dropdown-menu li a').click(function() {
 
-		event.stopPropagation();
+		// event.stopPropagation();
 		
 
 		if ($(this).text()=="Stanza")
-			{linkText="<p><h3>Description</h3> \
-				        <p>Il Ciclo dei Mesi è un gruppo di affreschi nella Torre dell'Aquila nel castello del Buonconsiglio di Trento, dipinti dal maestro Venceslao (documentato in città nel 1397). Risalgono alla fine del XIV secolo-inizio del XV e sono il migliore esempio di gotico internazionale in Trentino e uno dei più significativi dell'Italia settentrionale.</p> \
-				        <p>Il ciclo si articola oggi in undici diversi riquadri, poiché il mese di Marzo era stato dipinto su un supporto di legno ed è andato perduto durante un incendio. L'insieme è strutturato come una loggia architravata sostenuta da esili colonnine tortili, dalla quale si vedono, come in un ipotetico affaccio che sfonda la parete, le varie occupazioni signorili e contadine di ciascun mese. Tutti gli sfondi e i dettagli architettonici sono raccordati tra scena e scena, come in un panorama unitario.</p> \
-				        <p>Le scene, ricchissime di particolari tratti dall'osservazione della vita reale (magari filtrate dalle illustrazioni dei Tacuina Sanitatis), mostrano la vita dei nobili, le attività dell'agricoltura e della pastorizia, con un continuo e pacato intreccio tra mondo cavalleresco e mondo quotidiano. Poche sono invece le concessioni al grottesco e al macabro, che caratterizzavano invece altre zone italiane ed europee.</p> \
-				        <p>Viene prestata molta attenzione al succedersi delle stagioni: il paesaggio invernale spoglio e imbiancato dalla neve diventa rigoglioso di vegetazione in primavera, i raccolti estivi segnano l'apice dell'attività agricola, mentre gli alberi nel mese di novembre sono circondati dalle foglie secche cadute sul terreno. La cura dei particolari ritorna nella descrizione delle vesti, l'abbigliamento infatti permette di riconoscere i caratteri tipici della moda del tempo: per i nobili, occupati in svaghi e tornei, gli abiti sono ricchi di colori, mentre molto più semplici e pratici sono quelli delle classi umili, rappresentate sempre al lavoro. Si può vedere la minuziosità dei particolari anche nei cambiamenti delle stagioni.</p> \
-				       <p>In ogni affresco è presente la figura del sole con accanto il segno zodiacale corrispondente ad ogni mese.</p> \
-				       <p>Modelli iconografici del ciclo sono, oltre al già citato Tacuinum sanitatis, il Livre de la chasse di Gaston Phoebus e le Très riches heures du Duc de Berry.</p> \
-				       <br> \
-				       <p><h5><em>Fonte wikipedia.org</em></h5></p> \
-				        </p> "}
+			{linkText="<div id=\"descrizione_box\">\
+						     	<div id=\"description_paragraph\" >\
+							        <p>Il Ciclo dei Mesi è un gruppo di affreschi nella Torre dell'Aquila nel castello del Buonconsiglio di Trento, dipinti dal maestro Venceslao (documentato in città nel 1397). Risalgono alla fine del XIV secolo-inizio del XV e sono il migliore esempio di gotico internazionale in Trentino e uno dei più significativi dell'Italia settentrionale.</p>\
+							        <p>Il ciclo si articola oggi in undici diversi riquadri, poiché il mese di Marzo era stato dipinto su un supporto di legno ed è andato perduto durante un incendio. L\'insieme è strutturato come una loggia architravata sostenuta da esili colonnine tortili, dalla quale si vedono, come in un ipotetico affaccio che sfonda la parete, le varie occupazioni signorili e contadine di ciascun mese. Tutti gli sfondi e i dettagli architettonici sono raccordati tra scena e scena, come in un panorama unitario.</p>\
+							        <p>Le scene, ricchissime di particolari tratti dall\'osservazione della vita reale (magari filtrate dalle illustrazioni dei Tacuina Sanitatis), mostrano la vita dei nobili, le attività dell\'agricoltura e della pastorizia, con un continuo e pacato intreccio tra mondo cavalleresco e mondo quotidiano. Poche sono invece le concessioni al grottesco e al macabro, che caratterizzavano invece altre zone italiane ed europee.</p>\
+							        <p>Viene prestata molta attenzione al succedersi delle stagioni: il paesaggio invernale spoglio e imbiancato dalla neve diventa rigoglioso di vegetazione in primavera, i raccolti estivi segnano l\'apice dell\'attività agricola, mentre gli alberi nel mese di novembre sono circondati dalle foglie secche cadute sul terreno. La cura dei particolari ritorna nella descrizione delle vesti, l\'abbigliamento infatti permette di riconoscere i caratteri tipici della moda del tempo: per i nobili, occupati in svaghi e tornei, gli abiti sono ricchi di colori, mentre molto più semplici e pratici sono quelli delle classi umili, rappresentate sempre al lavoro. Si può vedere la minuziosità dei particolari anche nei cambiamenti delle stagioni.</p>\
+							       <p>In ogni affresco è presente la figura del sole con accanto il segno zodiacale corrispondente ad ogni mese.</p>\
+							       <p>Modelli iconografici del ciclo sono, oltre al già citato Tacuinum sanitatis, il Livre de la chasse di Gaston Phoebus e le Très riches heures du Duc de Berry.</p>\
+							       <br>\
+							       <p><h5><em>Fonte wikipedia.org</em></h5></p>\
+						       </div>\
+					       </div>"
+				$('#descrizione').html(linkText);	}
 
-    	if ($(this).text()=="Gennaio")
-			{linkText="<p><h3>January</h3> \
-		<img  class=\"month_img\" src=\"img/aquila_frescoes/gennaio.jpg\" alt=\"January\" > \
-		</p>"}
-		if ($(this).text()=="Febbraio ")
-			{linkText="<p><h3>February</h3> \
-		<img class=\"month_img\" src=\"img/aquila_frescoes/febbraio.jpg\" alt=\"February\"> \
-		</p>"}
-		if ($(this).text()=="Aprile")
-			{linkText="<p><h3>April</h3> \
-		<img class=\"month_img\" src=\"img/aquila_frescoes/aprile.jpg\" alt=\"April\"> \
-		</p>"}
-		if ($(this).text()=="Maggio")
-			{linkText="<p><h3>May</h3> \
-		<img class=\"month_img\" src=\"img/aquila_frescoes/maggio.jpg\" alt=\"May\"> \
-		</p>"}
-		if ($(this).text()=="Giugno")
-			{linkText="<p><h3>June</h3> \
-		<img class=\"month_img\" src=\"img/aquila_frescoes/giugno.jpg\" alt=\"June\"> \
-		</p>"}
-		if ($(this).text()=="Luglio")
-			{linkText="<p><h3>July</h3> \
-		<img class=\"month_img\" src=\"img/aquila_frescoes/luglio.jpg\" alt=\"July\"> \
-		</p>"}
-		if ($(this).text()=="Agosto")
-			{linkText="<p><h3>August</h3> \
-		<img class=\"month_img\" src=\"img/aquila_frescoes/agosto.jpg\" alt=\"August\"> \
-		</p>"}
-		if ($(this).text()=="Settembre")
-			{linkText="<p><h3>September</h3> \
-		<img class=\"month_img\" src=\"img/aquila_frescoes/settembre.jpg\" alt=\"September\"> \
-		</p>"}
-		if ($(this).text()=="Ottobre")
-			{linkText="<p><h3>October</h3> \
-		<img class=\"month_img\" src=\"img/aquila_frescoes/ottobre.jpg\" alt=\"October\"> \
-		</p>"}
-		if ($(this).text()=="Novembre")
-			{linkText="<p><h3>November</h3> \
-		<img class=\"month_img\" src=\"img/aquila_frescoes/novembre.jpg\" alt=\"November\"> \
-		</p>"}
-		if ($(this).text()=="Dicembre")
-			{linkText="<p><h3>December</h3> \
-		<img class=\"month_img\" src=\"img/aquila_frescoes/dicembre.jpg\" alt=\"December\"> \
-		</p>"}
+		else { $('#descrizione').html(linkText_empty);
+
+		    	if ($(this).text()=="Gennaio")
+					{$('.month_img').attr("src", "img/aquila_frescoes/gennaio.jpg", "alt", "gennaio");
+					 $('#month_name').text("Gennaio");
+					 $('#month_desc').html(fake_text);}
+				if ($(this).text()=="Febbraio ")
+					{$('.month_img').attr("src", "img/aquila_frescoes/febbraio.jpg", "alt", "febbraio");
+					 $('#month_name').text("Febbraio");
+					 $('#month_desc').html(fake_text);}
+				if ($(this).text()=="Aprile")
+					{$('.month_img').attr("src", "img/aquila_frescoes/aprile.jpg", "alt", "aprile");
+					 $('#month_name').text("Aprile");
+					 $('#month_desc').html(April_text);}
+				if ($(this).text()=="Maggio")
+					{$('.month_img').attr("src", "img/aquila_frescoes/maggio.jpg", "alt", "maggio");
+					 $('#month_name').text("Maggio");
+					 $('#month_desc').html(May_text);}
+				if ($(this).text()=="Giugno")
+					{$('.month_img').attr("src", "img/aquila_frescoes/giugno.jpg", "alt", "giugno");
+					 $('#month_name').text("Giugno");
+					 $('#month_desc').html(June_text);}
+				if ($(this).text()=="Luglio")
+					{$('.month_img').attr("src", "img/aquila_frescoes/luglio.jpg", "alt", "luglio");
+					 $('#month_name').text("Luglio");
+					 $('#month_desc').html(July_text);}
+				if ($(this).text()=="Agosto")
+					{$('.month_img').attr("src", "img/aquila_frescoes/agosto.jpg", "alt", "agosto");
+					 $('#month_name').text("Agosto");
+					 $('#month_desc').html(fake_text);}
+				if ($(this).text()=="Settembre")
+					{$('.month_img').attr("src", "img/aquila_frescoes/settembre.jpg", "alt", "settembre");
+					 $('#month_name').text("Settembre");
+					 $('#month_desc').html(September_text);}
+				if ($(this).text()=="Ottobre")
+					{$('.month_img').attr("src", "img/aquila_frescoes/ottobre.jpg", "alt", "ottobre");
+					 $('#month_name').text("Ottobre");
+					 $('#month_desc').html(October_text);}
+				if ($(this).text()=="Novembre")
+					{$('.month_img').attr("src", "img/aquila_frescoes/novembre.jpg", "alt", "novembre");
+					 $('#month_name').text("Novembre");
+					 $('#month_desc').html(fake_text);}
+				if ($(this).text()=="Dicembre")
+					{$('.month_img').attr("src", "img/aquila_frescoes/dicembre.jpg", "alt", "dicembre");
+					 $('#month_name').text("Dicembre");
+					 $('#month_desc').html(fake_text);}
+			}
 
 
-		$('#descrizione').html(linkText);
+	
 
 
 });
