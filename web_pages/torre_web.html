@@ -440,6 +440,12 @@
 				      	        });
 				              });
 				          </script>
+				          
+				          <script>
+				          $(document).ready(function(){
+				              $('[data-toggle="popover"]').popover();   
+				          });
+				          </script>
 
 
 
@@ -452,73 +458,90 @@
 				  <!-- table -->
 
 
-				<table class="table table-hover" style="position: relative; clear: both;" >
-				<tbody id="ShowHide" style="color: black;"></tbody>
-				 <tr>
-				     <td><b>Descriptor</b></td>
-				     <td><b>Value</b></td>
-
-				   </tr>
-				   <tr>
-				     <td><a href="http://itndch.map.archi.fr/pacs/docs/acquisition/acquisition-project-register#Object%20and%20Acquisition%20Feature">AP: Object Part</a></td>
-				     <td>Torre dell'Aquila</td>
-				   </tr>
-				   <tr>
-				     <td><a href="http://itndch.map.archi.fr/pacs/docs/acquisition/acquisition-activity-register#Acquisition%20Method">AA: Acquisition Method</a></td>
-				     <td>Photogrammetry</td>
-				   </tr>
-				   <tbody id="HiddenRowsNotice"></tbody>
-				   <tbody id="HiddenRows">
-				   <tr>
-				     <td><a href="http://itndch.map.archi.fr/pacs/docs/acquisition/acquisition-activity-register#Actor%20Operators">AA: Actor Operators</a></td>
-				     <td>Diego Belido</td>
-				   </tr>
-				   <tr>
-				     <td><a href="http://itndch.map.archi.fr/pacs/docs/acquisition/acquisition-activity-register#Starting%20time">AA: Starting Time</a></td>
-				     <td>10:30</td>
-				   </tr>
-				   <tr>
-				     <td><a href="http://itndch.map.archi.fr/pacs/docs/acquisition/acquisition-activity-register#Ending%20time">AA: Ending Time</a></td>
-				     <td>14:00</td>
-				   </tr>
-				   <tr>
-				     <td><a href="http://itndch.map.archi.fr/pacs/docs/acquisition/object-acquisition-configuration-register#Image%20base/baseline">OAC: Baseline</a></td>
-				     <td>0.5</td>
-				   </tr>
-				   <tr>
-				     <td><a href="http://itndch.map.archi.fr/pacs/docs/acquisition/object-acquisition-configuration-register#Average%20Distance%20From%20The%20Object">OAC: Distance from the Object</a></td>
-				     <td>2 meters</td>
-				   </tr>
-				   <tr>
-				     <td><a href="http://itndch.map.archi.fr/pacs/docs/acquisition/equipment-setup-parameters-register#Camera%20Body">ESP: Camera</a></td>
-				     <td>Nikon D3X</td>
-				   </tr>
-				   <tr>
-				     <td><a href="http://itndch.map.archi.fr/pacs/docs/acquisition/equipment-setup-parameters-register#Platform">ESP: Platform</a></td>
-				     <td>Tripod Manfrotto</td>
-				   </tr>
-				   <tr>
-				     <td><a href="http://itndch.map.archi.fr/pacs/docs/acquisition/object-acquisition-configuration-register#On-site%20Camera%20Calibration">OAC: Camera Calibration</a></td>
-				     <td>Self Calibration</td>
-				   </tr>
-				   <tr>
-				     <td><a href="http://itndch.map.archi.fr/pacs/docs/acquisition/equipment-setup-parameters-register#Aperture%20/%20f-stops%20">ESP: Aperture</a></td>
-				     <td>F/16</td>
-				   </tr>
-				   <tr>
-				     <td><a href="http://itndch.map.archi.fr/pacs/docs/acquisition/equipment-setup-parameters-register#Focus">ESP: Focus</a></td>
-				     <td>Manual</td>
-				   </tr>
-				   <tr>
-				     <td><a href="http://itndch.map.archi.fr/pacs/docs/acquisition/equipment-setup-parameters-register#Focal%20Length">ESP: Focal Lenght</a></td>
-				     <td>28mm</td>
-				   </tr>
-				   <tr>
-				     <td><a href="http://itndch.map.archi.fr/pacs/docs/acquisition/equipment-setup-parameters-register#White%20balance">ESP: White Balance</a></td>
-				     <td>Predefined Manually - Grey pattern and color checker</td>
-				   </tr>
-				   </tbody>
-				</table>
+			<table class="table table-hover" style="position: relative; clear: both;" >
+							<tbody id="ShowHide" style="color: black;"></tbody>
+							 <tr>
+							     <td><b>Register</b></td>
+							     <td><b>Descriptor</b></td>
+							     <td><b>Value</b></td>
+			
+							   </tr>
+							   <tr>
+							     <td>Acquisition Activity Register</td>
+							     <td><a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Define the link between the acquisition activity and the overall acquisition plan">Part Of Acquisition</a></td>
+							     <td><a href="../index.html">Castello del Buonconsiglio</a></td>
+							   </tr>
+							   <tr>
+							   		<td>Acquisition Activity Register</td>
+							     	<td><a href="#" <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="The descriptor indicates the method used in this particular acquisition activity">Acquisition Method</a></td>
+							     	<td>Photogrammetry</td>
+							   </tr>
+							   <tbody id="HiddenRowsNotice"></tbody>
+							   <tbody id="HiddenRows">
+							   
+							   <tr>
+							   		<td>Acquisition Activity Register</td>
+							     	<td><a href="#" <a href="#"  data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Here the individuals who carried out the particular acquisition activity are listed">Actor Operators</a></td>
+							     	<td>Diego Bellido</td>
+							   </tr>
+							   <tr>
+							   		<td>Acquisition Activity Register</td>
+								    <td><a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Here the starting date of the specific acquisition project is entered">Starting Time</a></td>
+								    <td>10:30</td>
+							   </tr>
+							   <tr>
+							   		<td>Acquisition Activity Register</td>
+								     <td><a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Here the ending date of the specific acquisition project is entered">Ending Time</a></td>
+								     <td>14:00</td>
+							   </tr>
+							   <tr>
+							   		<td>Object Acquisition Configuration Register</td>
+								     <td><a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Distance between two sequential image acquisition points (projection centers)">Baseline</a></td>
+								     <td>0.5</td>
+							   </tr>
+							   <tr>
+							   		<td>Object Acquisition Configuration Register</td>
+								     <td><a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="The distance between the acquisition point and the average object surface">Distance from the Object</a></td>
+								     <td>2 meters</td>
+							   </tr>
+							   <tr>
+							   		<td>Equipment Setup Parameters Register</td>
+								     <td><a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Here the name of the camera body actually used">Camera Body</a></td>
+								     <td>Nikon D3X</td>
+							   </tr>
+							   <tr>
+							   		<td>Equipment Setup Parameters Register</td>
+								     <td><a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Platform from which the pictures were taken and its stability">Platform</a></td>
+								     <td>Tripod Manfrotto</td>
+							   </tr>
+							   <tr>
+							   		<td>Object Acquisition Configuration Register</td>
+								     <td><a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Define if a calibration process was performed on site before the actual camera acquisition">On-site Camera Calibration</a></td>
+								     <td>Self Calibration</td>
+							   </tr>
+							   <tr>
+							   		<td>Equipment Setup Parameters Register</td>
+							     <td><a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="The amount of light to which the sensor is exposed (f-stops), regulates the brightness of the image">Aperture</a></td>
+							     <td>F/16</td>
+							   </tr>
+							   <tr>
+							   		<td>Equipment Setup Parameters Register</td>
+							     <td><a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Automatic or manual focus">Focus</a></td>
+							     <td>Manual</td>
+							   </tr>
+							   <tr>
+							   		<td>Equipment Setup Parameters Register</td>
+							     <td><a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Distance from the principal point of the camera to the image plane. If it is blocked at minimum or maximum, otherwise leave as unknown">Focal Lenght</a></td>
+							     <td>28mm</td>
+							   </tr>
+							   <tr>
+							   		<td>Equipment Setup Parameters Register</td>
+							     <td><a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Here the white balance employed: Automatic, pre-set or manual and the reference to the method used for defining the white balance.">White Balance</a></td>
+							     <td>Predefined Manually - Grey pattern and color checker</td>
+							   </tr>
+							   </tbody>
+							</table>
+			
 
 			</div>
 
