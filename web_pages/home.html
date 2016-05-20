@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Castello del Buonconsiglio</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="Description" lang="en" content="Potree representation">
+		<meta name="author" content="autore">
+		<meta name="robots" content="index, follow">
+
+		<!-- icons -->
+		<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+		<link rel="shortcut icon" href="favicon.ico">
+
+		<!-- Bootstrap Core CSS file -->
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+		<!-- Override CSS file - add your own CSS rules -->
+		<link rel="stylesheet" href="assets/css/styles.css">
+		
+		<!--Potree css -->
+		
+		<link rel="stylesheet" type="text/css" href="../torre/libs/potree/potree.css">
+		<link rel="stylesheet" type="text/css" href="../torre/libs/jquery-ui-1.11.4/jquery-ui.css">
+		<link rel="stylesheet" href="../torre/libs/openlayers3/ol.css" type="text/css">
+		
+
+		<style>
+	      html, body {
+	        height: 100%;
+	        margin: 0;
+	        padding: 0;
+	      }
+	      .navbar-default {
+	        /*background-color: #333;*/
+	      }
+	    </style>
+
+		<!-- Conditional comment containing JS files for IE6 - 8 -->
+		<!--[if lt IE 9]>
+			<script src="assets/js/html5.js"></script>
+			<script src="assets/js/respond.min.js"></script>
+		
+			
+		<![endif]-->
+	</head>
+	<body>
+		<script src="../libs/jquery-2.1.4/jquery-2.1.4.min.js"></script>
+		<script src="../libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+		<script src="../libs/three.js/build/three.js"></script>
+		<script src="../libs/other/stats.min.js"></script>
+		<script src="../libs/other/BinaryHeap.js"></script>
+		<script src="../libs/tween/tween.min.js"></script>
+		<script src="../libs/d3/d3.js"></script>
+		<script src="../libs/proj4/proj4.js"></script>
+		<script src="../libs/openlayers3/ol.js"></script>
+		<script src="../libs/potree/potree.js"></script>
+
+		<!-- Navigation -->
+
+		<nav class="navbar navbar-default navbar-inverse" role="navigation">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="home.html">HOME</a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li><a href="progetto.html">Sul progetto</a></li>
+						<li class="dropdown">
+					        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">il Castello<span class="caret"></span></a>
+					        <ul class="dropdown-menu">
+						        <li><a href="index.html">Castello</a></li>
+						        <li role="separator" class="divider"></li>
+						        <li><a href="diamond_door.html">Porta del diamante</a></li>
+						        <li><a href="terrestrial_wall.html">Mura esterne</a></li>
+						        <li><a href="facade.html">Facade</a></li>
+						        <li><a href="aerial.html">Aerial Acquisition</a></li>
+						        <li><a href="door.html">Porta ingresso</a></li>
+							</ul>
+						</li> 
+						<li><a href="loggia_web.html">La Loggia del Romanino</a></li>
+						<li><a href="torre_web.html">Ciclo dei mesi </a></li>
+						<!-- <li class="dropdown">
+						        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Il Ciclo dei mesi <span class="caret"></span></a>
+						        <ul class="dropdown-menu">
+							        <li><a href="#">Stanza</a></li>
+							        <li role="separator" class="divider"></li>
+							        <li><a href="#">Gennaio</a></li>
+							        <li><a href="#">Febbraio </a></li>
+							        <li><a href="#">Aprile</a></li>
+							        <li><a href="#">Maggio</a></li>
+							        <li><a href="#">Giugno</a></li>
+							        <li><a href="#">Luglio</a></li>
+							        <li><a href="#">Agosto</a></li>
+							        <li><a href="#">Settembre</a></li>
+							        <li><a href="#">Ottobre</a></li>
+							        <li><a href="#">Novembre</a></li>
+							        <li><a href="#">Dicembre</a></li>									        
+							    </ul>
+						</li> -->
+					</ul>
+				</div>
+			</div>
+			<div class = "clearfix">
+			</div>
+		</nav>
+
+	
+
+			<!-- Page Content -->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-6 col-md-7 col-sm-12 col-xs-12 col-xxs-12">
+					<h3>Castello del Buonconsiglio</h3>
+					<div id="viewer_box" style="height:500px; width:100% position: relative;" class="redbox">
+
+					<script src="../Castle/build/potree/potree_v2.js"></script>
+					<script src="../Castle/raycast.js"></script>
+						<div class="potree_container" >
+							<div id="potree_render_area">
+								<img class="potree_menu_toggle" src="../torre/resources/icons/menu_button.svg" onclick="viewer.toggleSidebar()" />
+								<img id="potree_map_toggle" src="../torre/resources/icons/map_icon.png" onclick="viewer.toggleMap()" style="display: none"/>
+								
+								<div id="potree_map" class="mapBox" style="position: absolute; left: 50px; top: 50px; width: 400px; height: 400px; display: none">
+									<div id="potree_map_header" style="position: absolute; width: 100%; height: 25px; top: 0px; background-color: rgba(0,0,0,0.5); z-index: 1000; border-top-left-radius: 3px; border-top-right-radius: 3px;">
+									</div>
+									
+									<div id="potree_map_content" class="map" style="position: absolute; z-index: 100; top: 25px; width: 100%; height: calc(100% - 25px); border: 2px solid rgba(0,0,0,0.5); box-sizing: border-box;">
+									</div>
+								</div>							
+							</div>
+						
+						<div id="potree_sidebar_container">
+						</div> 
+						</div>
+						<script>
+											// Hash table(Link:Label)
+											var pointcloudMapping = {
+												"../Castle/resources/pointclouds/castle/cloud.js": "Aerial Castle",
+												"../Castle/resources/pointclouds/castleEast/cloud.js": "Aerial Castle East",
+												"../Castle/resources/pointclouds/castleWest/cloud.js": "Aerial Castle West",
+												"../Castle/resources/pointclouds/walls_outside/cloud.js": "Walls",
+												"../Castle/resources/pointclouds/door/cloud.js": "Door",
+												"../Castle/resources/pointclouds/door2/cloud.js": "Door 2",
+												"../COF/pointclouds/COF/cloud.js": "Walls2"
+											};
+									
+											var pcPath = [];
+											var index = 0;
+									
+											for (url in pointcloudMapping) {
+										      	pcPath.push(url);
+										      	console.log(url);
+											}
+									
+											function nextPcl(){
+												index++;
+												if (index < pcPath.length){
+													viewer.addPointCloud(pcPath[index]);
+													// console.log();
+													//etichette.push(pointcloudMapping[pcPath[index]]);
+												}
+											}
+									
+											var onPointCloudLoaded = function(event){
+									
+												// do stuff here that should be executed whenever a point cloud has been loaded.
+												// event.pointcloud returns the point cloud object
+												console.log("a point cloud has been loaded");
+												nextPcl();
+											}; 
+									
+										
+											viewer = new Potree.Viewer(document.getElementById("potree_render_area"), {
+												"onPointCloudLoaded": onPointCloudLoaded
+											});
+											
+											viewer.setEDLEnabled(false);
+											viewer.setPointSize(3);
+											viewer.setMaterial("RGB");
+											viewer.setFOV(60);
+											viewer.setPointSizing("Fixed");
+											viewer.setQuality("Squares");
+											viewer.setPointBudget(1*1000*1000);
+											//viewer.setOpacity(0.03);
+											//viewer.setMinNodeSize(100);
+											
+											// viewer.setDescription("Potree 1.4RC. Use this for testing purposes only! Check <a href='https://twitter.com/m_schuetz' target='_blank'>here</a> for new updates.<br>"
+											// 	+ "Report issues on the <a href='https://github.com/potree/potree' target='_blank'>github repository</a> or <a href='mailto:mschuetz@potree.org' target='_blank'>mschuetz@potree.org</a><br>"
+											//);
+											
+											//ADDING ALL THE POINTS CLOUDS
+											viewer.addPointCloud("../Castle/resources/pointclouds/castle/cloud.js");  //Aerial_Castle
+											
+											viewer.loadGUI();
+									
+											var materialImg1 = THREE.ImageUtils.loadTexture('../Castle/img/castle_ground.png');
+											var img1 = new THREE.MeshBasicMaterial({ map: materialImg1, transparent:true });
+										    //img.map.needsUpdate = true;
+									
+										    var materialImg2 = THREE.ImageUtils.loadTexture('../Castle/img/castle_floor.png');
+											var img2 = new THREE.MeshBasicMaterial({ map: materialImg2, transparent:true });
+									
+									
+											var materialImg_hs = THREE.ImageUtils.loadTexture('../Castle/img/label_torre.png');
+											var img_hs= new THREE.MeshBasicMaterial({ map: materialImg_hs, transparent:true });
+											
+											var materialImg_hs2 = THREE.ImageUtils.loadTexture('../Castle/img/label_loggia.png');
+											var img_hs2= new THREE.MeshBasicMaterial({ map: materialImg_hs2, transparent:true });
+									
+									
+											hotspots = new THREE.Object3D();
+											planes=new THREE.Object3D();
+									
+											//// cube of the torre aquila
+											geom = new THREE.BoxGeometry( 13, 13, 13 )
+											mat = new THREE.MeshBasicMaterial({color: 0xFF00FF, transparent: true, opacity: 0})
+											cube = new THREE.Mesh(geom, mat );
+											cube.position.x = 52;
+											cube.position.y = 32;
+											cube.position.z = 80 
+											
+											//// cube of the loggia
+											geom = new THREE.BoxGeometry( 14, 30, 30 )  //initial ( 2, 14, 38 )
+											mat = new THREE.MeshBasicMaterial({color: 0xFF00FF, transparent: true, opacity: 0.5})
+											cube3 = new THREE.Mesh(geom, mat );
+											cube3.position.x = 33;
+											cube3.position.y = 26;
+											cube3.position.z = -39; 
+											cube3.rotation.y = (0.4);
+											
+											//???????
+											// geom = new THREE.BoxGeometry( 5, 18, 12)
+											// mat = new THREE.MeshBasicMaterial({color: 0xFF00FF, transparent: true, opacity: 0.5})
+											// cube2 = new THREE.Mesh(geom, mat);
+											// cube2.position.x = -38
+											// cube2.position.y = 10
+											// cube2.position.z = -90
+											// //cube2.rotation.x = (-Math.PI / 2);
+										 //    cube2.rotation.y = (0.31);
+									
+									
+											plane1 = new THREE.Mesh(new THREE.PlaneGeometry(2281, 614),img1);
+											plane1.overdraw = true;
+											plane1.rotation.x = (-Math.PI / 2);
+										    plane1.rotation.z = (-1.15);
+										    plane1.position.x = 25;
+										    plane1.position.y = 3;
+										    plane1.position.z = -48;
+										    plane1.scale.x = 0.116;
+										    plane1.scale.y = 0.160;
+										    plane1.scale.z= 0.14;   
+									
+											plane2 = new THREE.Mesh(new THREE.PlaneGeometry(2281, 614),img2);
+											plane2.overdraw = true;
+											plane2.rotation.x = (-Math.PI / 2);
+										    plane2.rotation.z = (-1.15);
+										    plane2.position.x = 25;
+										    plane2.position.y = 15;
+										    plane2.position.z = -48;
+										    plane2.scale.x = 0.116;
+										    plane2.scale.y = 0.160;
+										    plane2.scale.z= 0.14; 
+											
+											//plane of the torre aquila
+											plane_hs = new THREE.Mesh(new THREE.PlaneGeometry(961, 870),img_hs);
+											plane_hs.overdraw = true;
+											plane_hs.position.x = 52;
+											plane_hs.position.y = 80;
+											plane_hs.position.z = 80;
+											plane_hs.scale.x = 0.05;
+											plane_hs.scale.y = 0.05;
+											plane_hs.scale.z = 0.05;
+											
+											//plane of the loggia
+											plane_hs2 = new THREE.Mesh(new THREE.PlaneGeometry(961, 870),img_hs2);
+											plane_hs2.overdraw = true;
+											plane_hs2.position.x = 35;
+											plane_hs2.position.y = 80;
+											plane_hs2.position.z = -39;
+											plane_hs2.scale.x = 0.05;
+											plane_hs2.scale.y = 0.05;
+											plane_hs2.scale.z = 0.05;
+									
+									
+											viewer.scenePointCloud.add(hotspots);
+											hotspots.add(cube);
+											//hotspots.add(cube2);
+											hotspots.add(cube3);
+									
+									
+											viewer.scenePointCloud.add(planes);
+											planes.add(plane1);
+											planes.add(plane2);
+											planes.add(plane_hs);
+											planes.add(plane_hs2); ////// plane of the loggia
+									
+											plane1.visible=false
+											plane2.visible=false
+											plane_hs.visible=false
+											plane_hs2.visible=false  /////////plane of the loggia
+									
+											plane_hs.lookAt(viewer.camera.position);
+											plane_hs2.lookAt(viewer.camera.position);  //////plane of the loggia
+											
+											//addCheckRaster(plane1,plane2)
+											//document.addEventListener('mouseover', onMouseOver, false);
+											document.addEventListener('mousedown', onDocumentMouseDown, false);
+											document.addEventListener('mousemove', onMouseMove, false);
+											//console.log(txt);
+								</script>
+					</div>
+				</div>
+
+			
+				<div class="col-lg-6 col-md-5 col-sm-12 col-xs-12 col-xxs-12">
+					<h3 class="headers">Description</h3>
+					<div id="descrizione">
+						<div id="descrizione_box">
+							<div id="description_paragraph" >
+						        <p>Il castello è stato edificato con funzioni difensive sopra un rilievo roccioso, originariamente sede di un castrum romano. Il dosso in cui venne edificata la fortezza a partire dal XIII secolo era denominato Malconsey. Già a partire dal 1300 il toponimo anticamente utilizzato per indicare il piccolo colle non venne più utilizzato e si preferì modificare il nome originario, adottando un termine più positivo: il castello Malconsey divenne Buonconsilii (del Buonconsiglio). La sua attuale struttura è il risultato di una plurisecolare aggregazione edilizia: sono infatti ben distinguibili diverse sezioni e strutture, risalenti a secoli diversi. Il castello del Buonconsiglio rappresenta uno dei più grandi complessi fortificati delle Alpi.La parte più antica è quella di gusto romanico, rappresentata dal nucleo duecentesco del Castelvecchio (che venne poi ricostruito nel 1440) e dell'ampio torrione circolare (chiamato torre d'Augusto). In una fase successiva, tra la fine del Trecento e l'inizio del Quattrocento, la struttura venne profondamente modificata dai principi vescovi Giorgio di Liechtenstein e Giovanni IV Hinderbach. Il primo collegò al Castelvecchio la torre Aquila, che fece affrescare con il Ciclo dei Mesi, uno straordinario esempio di Gotico Internazionale. Giovanni IV Hiderbach fece costruire la grande merlatura e il loggiato di gusto gotico-veneziano. Nel 1500 il cardinale Bernardo Clesio, impegnato in un progetto di ristrutturazione e riqualificazione urbanistica dell'intera città, fece edificare a sud del complesso una costruzione rinascimentale, il Magno Palazzo, nuova dimora di principi vescovi, affrescata da Dosso Dossi e da Girolamo Romanino. In età barocca, il vescovo Francesco Alberto Poia costruì la Giunta Albertiana, struttura che permette la comunicazione diretta fra la sezione medievale e il Magno Palazzo.</p>
+						       <br>
+						       <p><h5>Fonte <italic>wikipedia.org</italic></h5></p>
+					       	</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xxs-12">
+					<h2>Elements used</h2>
+				    <p>Here a list of the elements used</p>
+				    <div class = "media">
+			           	<a class = "pull-left" href = "terrestrial_wall.html">
+			              	<img class = "media-object" width="60" height="60" src="assets/img/ext_wall.png" >
+			           	</a>
+			           	<div class = "media-body">
+			              <a href = "terrestrial_wall.html"><h4 class = "media-heading">External Walls</h4></a>
+			              This is some sample text. This is some sample text. 
+			              This is some sample text. This is some sample text.
+			              This is some sample text. This is some sample text. 
+			              This is some sample text. This is some sample text.
+			           	</div>	
+				   	</div>
+				        
+				    <div class = "media">
+			           	<a class = "pull-left" href = "facade.html">
+			              	<img class = "media-object" width="60" height="60" src="assets/img/facade.png" >
+			           	</a>
+				        <div class = "media-body">
+				              <a href = "facade.html"><h4 class = "media-heading">Facade</h4></a>
+				              This is some sample text. This is some sample text. 
+				              This is some sample text. This is some sample text.
+				              This is some sample text. This is some sample text. 
+				              This is some sample text. This is some sample text.
+				        </div>
+				    </div>
+				        
+				    <div class = "media">
+			           	<a class = "pull-left" href = "diamond_door.html">
+			              <img class = "media-object" width="60" height="60" src="assets/img/door2.png" >
+			           	</a>
+			           
+			          	 <div class = "media-body">
+			             <a  href = "diamond_door.html"> <h4 class = "media-heading">Porta del diamante</h4></a>
+			              This is some sample text. This is some sample text. 
+			              This is some sample text. This is some sample text.
+			              This is some sample text. This is some sample text. 
+			              This is some sample text. This is some sample text.
+			           	</div>
+				    </div>
+				        
+			        <div class = "media">
+			           	<a class = "pull-left" href = "door.html">
+			              <img class = "media-object" width="60" height="60" src="assets/img/door1.png" >
+			           	</a>
+			           
+			           	<div class = "media-body">
+			             <a href = "door.html"> <h4 class = "media-heading">Porta d'ingresso</h4></a>
+			              This is some sample text. This is some sample text. 
+			              This is some sample text. This is some sample text.
+			              This is some sample text. This is some sample text. 
+			              This is some sample text. This is some sample text.
+			           	</div>
+			        </div>
+				        			
+			        <div class = "media">
+			           <a class = "pull-left" href = "aerial.html">
+			              <img class = "media-object" width="60" height="60" src="assets/img/aerial.png" >
+			           </a>
+			           
+			           <div class = "media-body">
+			              <a href = "aerial.html"><h4 class = "media-heading">Aerial Data</h4></a>
+			              This is some sample text. This is some sample text. 
+			              This is some sample text. This is some sample text.
+			              This is some sample text. This is some sample text. 
+			              This is some sample text. This is some sample text.
+			           </div>
+			        </div>
+
+				</div>
+			</div>
+		</div>
+
+
+	
+
+
+		<!-- Bootstrap Core scripts -->
+		<script src="assets/js/bootstrap.min.js"></script>
+
+  </body>
+</html>
+

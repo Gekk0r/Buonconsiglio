@@ -44,9 +44,20 @@
 	</head>
 	<body>
 
+		<script src="../libs/jquery-2.1.4/jquery-2.1.4.min.js"></script>
+		<script src="../libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+		<script src="../libs/three.js/build/three.js"></script>
+		<script src="../libs/other/stats.min.js"></script>
+		<script src="../libs/other/BinaryHeap.js"></script>
+		<script src="../libs/tween/tween.min.js"></script>
+		<script src="../libs/d3/d3.js"></script>
+		<script src="../libs/proj4/proj4.js"></script>
+		<script src="../libs/openlayers3/ol.js"></script>
+		<script src="../libs/potree/potree_v3.js"></script>
+
 		<!-- Navigation -->
-		
-	    <nav class="navbar navbar-default navbar-inverse" role="navigation">
+
+		<nav class="navbar navbar-default navbar-inverse" role="navigation">
 			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
@@ -56,38 +67,52 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="index.html">HOME</a>
-				</div>				
+					<a class="navbar-brand" href="home.html">HOME</a>
+				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
-				
-<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
-				<li><a href="progetto.html">Sul progetto</a></li>
-				<li><a href="../index.html">il Castello</a></li>
-				<li><a href="loggia_web.html">la Loggia del Romanino</a></li>
-				 <li class="dropdown">
-				        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">il Ciclo dei mesi <span class="caret"></span></a>
-				        <ul class="dropdown-menu">
-					        <li><a href="torre_web.html">Stanza</a></li>
-					        <li role="separator" class="divider"></li>
-					        <li><a href="torre_icon/january.html">Gennaio</a></li>
-					        <li><a href="torre_icon/february.html">Febbraio </a></li>
-					        <li><a href="torre_icon/april.html">Aprile</a></li>
-					        <li><a href="torre_icon/may.html">Maggio</a></li>
-					        <li><a href="torre_icon/june.html">Giugno</a></li>
-					        <li><a href="torre_icon/july.html">Luglio</a></li>
-					        <li><a href="torre_icon/august.html">Agosto</a></li>
-					        <li><a href="torre_icon/september.html">Settembre</a></li>
-					        <li><a href="torre_icon/october.html">Ottobre</a></li>
-					        <li><a href="torre_icon/november.html">Novembre</a></li>
-					        <li><a href="torre_icon/december.html">Dicembre</a></li>								        </ul>
-				      </li>       
-			</ul>
-		</div>
-	</div>
-	<div class = "clearfix"></div>
-</nav>
-				
+
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li><a href="progetto.html">Sul progetto</a></li>
+						<li class="dropdown">
+					        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">il Castello<span class="caret"></span></a>
+					        <ul class="dropdown-menu">
+						        <li><a href="index.html">Castello</a></li>
+						        <li role="separator" class="divider"></li>
+						        <li><a href="diamond_door.html">Porta del diamante</a></li>
+						        <li><a href="terrestrial_wall.html">Mura esterne</a></li>
+						        <li><a href="facade.html">Facade</a></li>
+						        <li><a href="aerial.html">Aerial Acquisition</a></li>
+						        <li><a href="door.html">Porta ingresso</a></li>
+							</ul>
+						</li> 
+						<li><a href="loggia_web.html">La Loggia del Romanino</a></li>
+						<li><a href="torre_web.html">Ciclo dei mesi </a></li>
+						<!-- <li class="dropdown">
+						        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Il Ciclo dei mesi <span class="caret"></span></a>
+						        <ul class="dropdown-menu">
+							        <li><a href="#">Stanza</a></li>
+							        <li role="separator" class="divider"></li>
+							        <li><a href="#">Gennaio</a></li>
+							        <li><a href="#">Febbraio </a></li>
+							        <li><a href="#">Aprile</a></li>
+							        <li><a href="#">Maggio</a></li>
+							        <li><a href="#">Giugno</a></li>
+							        <li><a href="#">Luglio</a></li>
+							        <li><a href="#">Agosto</a></li>
+							        <li><a href="#">Settembre</a></li>
+							        <li><a href="#">Ottobre</a></li>
+							        <li><a href="#">Novembre</a></li>
+							        <li><a href="#">Dicembre</a></li>									        
+							    </ul>
+						</li> -->
+					</ul>
+				</div>
+			</div>
+			<div class = "clearfix">
+			</div>
+		</nav>
+
 
 		<!-- Page Content -->
 		<div class="container-fluid">

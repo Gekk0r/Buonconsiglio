@@ -31,9 +31,7 @@
 	        margin: 0;
 	        padding: 0;
 	      }
-	      .navbar-default {
-	        /*background-color: #333;*/
-	      }
+	     
 	    </style>
 
 		<!-- Conditional comment containing JS files for IE6 - 8 -->
@@ -45,16 +43,16 @@
 	</head>
 	<body>
 
-		<script src="../torre/libs/jquery-2.1.4/jquery-2.1.4.min.js"></script>
-		<script src="../torre/libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
-		<script src="../torre/libs/three.js/build/three.js"></script>
-		<script src="../torre/libs/other/stats.min.js"></script>
-		<script src="../torre/libs/other/BinaryHeap.js"></script>
-		<script src="../torre/libs/tween/tween.min.js"></script>
-		<script src="../torre/libs/d3/d3.js"></script>
-		<script src="../torre/libs/proj4/proj4.js"></script>
-		<script src="../torre/libs/openlayers3/ol.js"></script>
-		<script src="../torre/libs/potree/potree_v3.js"></script>
+		<script src="../libs/jquery-2.1.4/jquery-2.1.4.min.js"></script>
+		<script src="../libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+		<script src="../libs/three.js/build/three.js"></script>
+		<script src="../libs/other/stats.min.js"></script>
+		<script src="../libs/other/BinaryHeap.js"></script>
+		<script src="../libs/tween/tween.min.js"></script>
+		<script src="../libs/d3/d3.js"></script>
+		<script src="../libs/proj4/proj4.js"></script>
+		<script src="../libs/openlayers3/ol.js"></script>
+		<script src="../libs/potree/potree_v3.js"></script>
 
 		<!-- Navigation -->
 
@@ -68,14 +66,25 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="index.html">HOME</a>
+					<a class="navbar-brand" href="home.html">HOME</a>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li><a href="progetto.html">Sul progetto</a></li>
-						<li><a href="../index.html">Il Castello</a></li>
+						<li class="dropdown">
+					        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">il Castello<span class="caret"></span></a>
+					        <ul class="dropdown-menu">
+						        <li><a href="index.html">Castello</a></li>
+						        <li role="separator" class="divider"></li>
+						        <li><a href="diamond_door.html">Porta del diamante</a></li>
+						        <li><a href="terrestrial_wall.html">Mura esterne</a></li>
+						        <li><a href="facade.html">Facade</a></li>
+						        <li><a href="aerial.html">Aerial Acquisition</a></li>
+						        <li><a href="door.html">Porta ingresso</a></li>
+							</ul>
+						</li> 
 						<li><a href="loggia_web.html">La Loggia del Romanino</a></li>
 						<li><a href="torre_web.html">Ciclo dei mesi </a></li>
 						<!-- <li class="dropdown">
@@ -411,8 +420,6 @@
 						       </div>
 					       </div>
 				       </div>
-				
-
 			</div>
 
 
