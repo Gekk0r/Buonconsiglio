@@ -161,7 +161,7 @@ function onDocumentMouseDown( event )
 							        Very much attention is given to the seasonal changes. The winter landscape, bare and white, becomes rich with lush vegetation during spring; summer crops mark the peak of of agricultural activity, while the trees in November are surrounded by dry leaves fallen on the ground. The keen precision that the author put in the depiction of the changes in color can be found again in the details of the clothes, which, underling the local aristocratic customs, help us discover the fashion of the time. The working class is instead always depicted with humble vests during their typical working activity. The Ciclo dei Mesi allow us to picture the various activities: the plowing, the grape harvest, the sowing, the harvesting of wood for the farmers and outdoor games comprising medieval joust and hunt. The frescoes are spatially contiguous, and each of them is separated by a thin painted column, as well as identified by the name of the corresponding sign of the zodiac.
 							        Different iconographical models are used, most notably the <em>“Tacuinum sanitatis"</em>, the <em>“Livre de la chasse"</em> di Gaston Phoebus and the <em>“Très riches heures du Duc de Berry”</em>.</p>
 							       <br>\
-							       <p><h5><em>Fonte wikipedia.org</em></h5></p>\
+							       \
 						       </div>\
 					       </div>");
 	}
