@@ -56,7 +56,7 @@
 
 		<!-- Navigation -->
 
-		<nav class="navbar navbar-default navbar-inverse" role="navigation">
+<nav class="navbar navbar-default navbar-inverse" role="navigation">
 			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
@@ -427,18 +427,19 @@
 
 
 				<!--script for showing the rest of the table-->
-					<script type="text/javascript">
-								              $(document).ready(function() {
-								      	         $("#HiddenRowsNotice").html("<tr><td colspan='3'> <a href='#'><b>Click here to show the whole table</b> </a></td></tr>");
-								      	         $("#ShowHide").html("<tr><td colspan='3'><a href='#'><em>Show/Hide Elements</em></a></td></tr>");
-								      	        $("#HiddenRows").hide();
-				
-								      	        $('#ShowHide,#HiddenRowsNotice').click( function() {
-								      	            $('#HiddenRows').toggle();
-								      		        $('#HiddenRowsNotice').toggle();
-								      	        });
-								              });
-							          </script>				          
+				<script type="text/javascript">
+				              $(document).ready(function() {
+				      	         $("#HiddenRowsNotice").html("<tr><td colspan='3'> <a href='#'><b>Cliccare qui per espandere la tabella</b> </a></td></tr>");
+				      	         $("#ShowHide").html("<tr><td colspan='3'><a href='#'><em>Mostra/Nascondi</em></a></td></tr>");
+				      	        $("#HiddenRows").hide();
+
+				      	        $('#ShowHide,#HiddenRowsNotice').click( function() {
+				      	            $('#HiddenRows').toggle();
+				      		        $('#HiddenRowsNotice').toggle();
+				      	        });
+				              });
+				          </script>
+				          
 				          <script>
 				          $(document).ready(function(){
 				              $('[data-toggle="popover"]').popover();   
