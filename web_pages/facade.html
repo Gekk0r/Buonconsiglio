@@ -72,20 +72,21 @@
 
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li><a href="progetto.html">Sul progetto</a></li>
+						<li><a href="progetto.html">The Project</a></li>
 						<li class="dropdown">
-					        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">il Castello<span class="caret"></span></a>
-					        <ul class="dropdown-menu">
-						        <li><a href="index.html">Castello</a></li>
+						    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">The Castle<span class="caret"></span></a>
+						    <ul class="dropdown-menu">
+						        <li><a href="index.html">Castle</a></li>
 						        <li role="separator" class="divider"></li>
+						        <li class="dropdown-header">Elements used</li>
 						        <li><a href="diamond_door.html">Porta del diamante</a></li>
-						        <li><a href="terrestrial_wall.html">Mura esterne</a></li>
+						        <li><a href="terrestrial_wall.html">External door</a></li>
 						        <li><a href="facade.html">Facade</a></li>
 						        <li><a href="aerial.html">Aerial Acquisition</a></li>
-						        <li><a href="door.html">Porta ingresso</a></li>
+						        <li><a href="door.html">Entrance Door</a></li>
 							</ul>
 						</li> 
-						<li><a href="loggia_web.html">La Loggia del Romanino</a></li>
+						<li><a href="loggia_web.html">Loggia del Romanino</a></li>
 						<li><a href="torre_web.html">Ciclo dei mesi </a></li>
 						<!-- <li class="dropdown">
 						        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Il Ciclo dei mesi <span class="caret"></span></a>
@@ -193,19 +194,18 @@
 				
 				<!--script for showing the rest of the table-->
 				
-					<script type="text/javascript">
-								              $(document).ready(function() {
-								      	         $("#HiddenRowsNotice").html("<tr><td colspan='3'> <a href='#'><b>Cliccare qui per espandere la tabella</b> </a></td></tr>");
-								      	         $("#ShowHide").html("<tr><td colspan='3'><a href='#'><em>Mostra/Nascondi</em></a></td></tr>");
-								      	        $("#HiddenRows").hide();
-				
-								      	        $('#ShowHide,#HiddenRowsNotice').click( function() {
-								      	            $('#HiddenRows').toggle();
-								      		        $('#HiddenRowsNotice').toggle();
-								      	        });
-								              });
-								          </script>
-								          
+						<script type="text/javascript">
+									              $(document).ready(function() {
+									      	         $("#HiddenRowsNotice").html("<tr><td colspan='3'> <a href='#'><b>Click here to show the whole table</b> </a></td></tr>");
+									      	         $("#ShowHide").html("<tr><td colspan='3'><a href='#'><em>Show/Hide Elements</em></a></td></tr>");
+									      	        $("#HiddenRows").hide();
+					
+									      	        $('#ShowHide,#HiddenRowsNotice').click( function() {
+									      	            $('#HiddenRows').toggle();
+									      		        $('#HiddenRowsNotice').toggle();
+									      	        });
+									              });
+								          </script>								          
 								         <script>
 								         $(document).ready(function(){
 								             $('[data-toggle="popover"]').popover();   
