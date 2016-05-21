@@ -160,54 +160,35 @@
 							}; 
 						
 							viewer = new Potree.Viewer(document.getElementById("potree_render_area"), {
-								"onPointCloudLoaded": onPointCloudLoaded
-							});
+															"onPointCloudLoaded": onPointCloudLoaded
+														});
+														
+														viewer.setEDLEnabled(false);
+														viewer.setPointSize(1.78);
+														viewer.setMaterial("RGB");
+														viewer.setFOV(60);
+														viewer.setPointSizing("Fixed");
+														viewer.setQuality("Squares");
+														viewer.setPointBudget(1*3000*1000);
+														viewer.controls.rotateLeft(0.3);
+														viewer.controls.rotateUp(-0.5);
+														
+													viewer.addPointCloud("../Castle/resources/pointclouds/door/cloud.js", function(res){ 
+																		            
+																			        var pc = new THREE.Object3D(); 
+																			        pc = res.pointcloud;
+																			        viewer.zoomTo(pc,1);
+																			      
+																			        
+																			        
+													            				});
+														
 							
-							viewer.setEDLEnabled(false);
-							viewer.setPointSize(3);
-							viewer.setMaterial("RGB");
-							viewer.setFOV(60);
-							viewer.setPointSizing("Fixed");
-							viewer.setQuality("Squares");
-							viewer.setPointBudget(1*1000*1000);
+														viewer.loadGUI();
 							
-							viewer.addPointCloud("../Castle/resources/pointclouds/door/cloud.js", function(res){ 
-					            var geometry = new THREE.SphereGeometry( 1, 32, 32 );
-						      	var material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
-						      	var sphere = new THREE.Mesh( geometry, material );
-								
-								viewer.scenePointCloud.add( sphere );
+														
 
-						      	sphere.position.x = -6;
-						        sphere.position.y = 7.75;
-						        sphere.position.z = -14.6;
-
-						        sphere.visible = false;
-
-						        var pc = new THREE.Object3D(); 
-						        pc = res.pointcloud;
-
-						        pc.rotation.x = 0.1;
-						  		// var quaternion = new THREE.Quaternion();
-								// quaternion.setFromAxisAngle( new THREE.Vector3( 0, 1, 0 ), 0.5 );
-								// pc.matrix.setRotationFromQuaternion(quaternion);
-
-								viewer.controls.rotateLeft(0.7);
-								viewer.controls.rotateUp(-1);
-						        
-						        // viewer.cameraPointCloud.lookAt(new THREE.Vector3( 100, 100, 100 ));
-						        viewer.zoomTo(sphere,1);
-
-						        // viewer.controls.rotateLeft(1.14);
-						        // viewer.camera.rotation._x = 1.14;
-						        // viewer.camera.rotation._y = 1.14;
-						        // viewer.camera.rotation._z = 1.14;
-
-						        
-            				});
 							
-
-							viewer.loadGUI();
 						</script>
 					</div>
 				</div>
