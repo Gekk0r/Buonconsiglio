@@ -148,6 +148,107 @@
 </div>
 </div>
 
+<div class="col-sm-8">
+<div class="row">
+
+<!--script for the table-->
+		<script type="text/javascript">
+					              $(document).ready(function() {
+					      	         $("#HiddenRowsNotice").html("<tr><td colspan='3'> <a href='#'><b>Click here to show the whole table</b> </a></td></tr>");
+					      	         $("#ShowHide").html("<tr><td colspan='3'><a href='#'><em>Show/Hide Elements</em></a></td></tr>");
+					      	        $("#HiddenRows").hide();
+	
+					      	        $('#ShowHide,#HiddenRowsNotice').click( function() {
+					      	            $('#HiddenRows').toggle();
+					      		        $('#HiddenRowsNotice').toggle();
+					      	        });
+					              });
+				          </script>				          
+				         <script>
+				         $(document).ready(function(){
+				             $('[data-toggle="popover"]').popover();   
+				         });
+				         </script>
+  
+  
+  <p><h2>Metadata</h2></p>
+  
+  
+  
+  <!-- table -->
+<table class="table table-hover" style="position: relative; clear: both;" >
+<tbody id="ShowHide" style="color: black;"></tbody>
+		 <tr>
+		   <td><b>Register</b></td>
+		   <td><b>Descriptor</b></td>
+		   <td><b>Value</b></td> 
+		   </tr>
+		</tr>
+		<tr>
+		  <td>Project Register</td>
+		  <td><a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="A title given for the project to help identify it in the future.">Project Title</a></td>
+		  <td>Castello del Buonconsiglio Acquisition</td>
+		</tr>
+		<tr>
+				<td>Project Register</td>
+		  	<td><a href="#" <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="The institution or person for which/whom the project is undertaken">Digitization to be produced for</a></td>
+		  	<td>Castello del Buonconsiglio di Trento</td>
+		</tr>
+
+   <tbody id="HiddenRowsNotice"></tbody>
+   <tbody id="HiddenRows">
+   <tr>
+     	<td>Project Register</td>
+     	<td><a href="#" <a href="#"  data-toggle="popover" data-trigger="hover" data-placement="top" data-content="The institution or person undertaking the responsibility for the execution of the project.">Institution responsible</a></td>
+     	<td>Fondazione Bruno Kessler</td> 
+   </tr>
+   <tr>
+     	<td>Project Register</td>
+     	<td><a href="#" <a href="#"  data-toggle="popover" data-trigger="hover" data-placement="top" data-content="List of individuals assigned to the project and the general role assigned to them">Project Members</a></td>
+     	<td>Elisavet Konstantina Stathopoulou</td> 
+   </tr>
+   <tr>
+     	<td>Project Register</td>
+     	<td><a href="#" <a href="#"  data-toggle="popover" data-trigger="hover" data-placement="top" data-content="List of individuals assigned to the project and the general role assigned to them">Project Members</a></td>
+     	<td>Magdalena Ramos Calles</td> 
+   </tr>
+   <tr>
+     	<td>Project Register</td>
+     	<td><a href="#" <a href="#"  data-toggle="popover" data-trigger="hover" data-placement="top" data-content="List of individuals assigned to the project and the general role assigned to them">Project Members</a></td>
+     	<td>Diego Bellido Castaneda</td> 
+   </tr>
+   <tr>
+     	<td>Project Register</td>
+     	<td><a href="#" <a href="#"  data-toggle="popover" data-trigger="hover" data-placement="top" data-content="List of individuals assigned to the project and the general role assigned to them">Project Members</a></td>
+     	<td>Nicola Carboni</td> 
+   </tr>
+   <tr>
+     	<td>Project Register</td>
+     	<td><a href="#" <a href="#"  data-toggle="popover" data-trigger="hover" data-placement="top" data-content="List of individuals assigned to the project and the general role assigned to them">Project Members</a></td>
+     	<td>Gina Stavropoulou</td> 
+   </tr>
+   <tr>
+     	<td>Project Register</td>
+     	<td><a href="#" <a href="#"  data-toggle="popover" data-trigger="hover" data-placement="top" data-content="List of individuals assigned to the project and the general role assigned to them">Project Members</a></td>
+     	<td>Matevž Domajnko</td> 
+   </tr>
+   <tr>
+   <td>Project Register</td>
+   <td><a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="A list of the object or objects that are the focus of the project">Object in consideration</a></td>
+     <td>Castello del Buonconsiglio</td> 
+   </tr>
+   <tr>
+   <td>Object Register</td>
+        <td><a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Place where object is currently located (Country, City, Building, Drawer… as you known)">Location / Storage Place</a></td>
+     <td>Trento</td> 
+   <tr>
+</tbody>
+</table>
+</div>
+
+
+</div>
+
 					
 				
 					
