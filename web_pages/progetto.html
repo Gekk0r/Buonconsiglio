@@ -44,9 +44,20 @@
 	</head>
 	<body>
 
+		<script src="../libs/jquery-2.1.4/jquery-2.1.4.min.js"></script>
+		<script src="../libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+		<script src="../libs/three.js/build/three.js"></script>
+		<script src="../libs/other/stats.min.js"></script>
+		<script src="../libs/other/BinaryHeap.js"></script>
+		<script src="../libs/tween/tween.min.js"></script>
+		<script src="../libs/d3/d3.js"></script>
+		<script src="../libs/proj4/proj4.js"></script>
+		<script src="../libs/openlayers3/ol.js"></script>
+		<script src="../libs/potree/potree_v3.js"></script>
+
 		<!-- Navigation -->
-		
-	    <nav class="navbar navbar-default navbar-inverse" role="navigation">
+
+		<nav class="navbar navbar-default navbar-inverse" role="navigation">
 			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
@@ -56,38 +67,53 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="index.html">HOME</a>
-				</div>				
+					<a class="navbar-brand" href="home.html">HOME</a>
+				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
-				
-<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
-				<li><a href="progetto.html">Sul progetto</a></li>
-				<li><a href="../index.html">il Castello</a></li>
-				<li><a href="loggia_web.html">la Loggia del Romanino</a></li>
-				 <li class="dropdown">
-				        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">il Ciclo dei mesi <span class="caret"></span></a>
-				        <ul class="dropdown-menu">
-					        <li><a href="torre_web.html">Stanza</a></li>
-					        <li role="separator" class="divider"></li>
-					        <li><a href="torre_icon/january.html">Gennaio</a></li>
-					        <li><a href="torre_icon/february.html">Febbraio </a></li>
-					        <li><a href="torre_icon/april.html">Aprile</a></li>
-					        <li><a href="torre_icon/may.html">Maggio</a></li>
-					        <li><a href="torre_icon/june.html">Giugno</a></li>
-					        <li><a href="torre_icon/july.html">Luglio</a></li>
-					        <li><a href="torre_icon/august.html">Agosto</a></li>
-					        <li><a href="torre_icon/september.html">Settembre</a></li>
-					        <li><a href="torre_icon/october.html">Ottobre</a></li>
-					        <li><a href="torre_icon/november.html">Novembre</a></li>
-					        <li><a href="torre_icon/december.html">Dicembre</a></li>								        </ul>
-				      </li>       
-			</ul>
-		</div>
-	</div>
-	<div class = "clearfix"></div>
-</nav>
-				
+
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li><a href="progetto.html">The Project</a></li>
+						<li class="dropdown">
+						    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">The Castle<span class="caret"></span></a>
+						    <ul class="dropdown-menu">
+						        <li><a href="index.html">Castle</a></li>
+						        <li role="separator" class="divider"></li>
+						        <li class="dropdown-header">Elements used</li>
+						        <li><a href="diamond_door.html">Porta dei diamanti</a></li>
+						        <li><a href="terrestrial_wall.html">External door</a></li>
+						        <li><a href="facade.html">Facade</a></li>
+						        <li><a href="aerial.html">Aerial Acquisition</a></li>
+						        <li><a href="door.html">Entrance Door</a></li>
+							</ul>
+						</li> 
+						<li><a href="loggia_web.html">Loggia del Romanino</a></li>
+						<li><a href="torre_web.html">Ciclo dei mesi </a></li>
+						<!-- <li class="dropdown">
+						        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Il Ciclo dei mesi <span class="caret"></span></a>
+						        <ul class="dropdown-menu">
+							        <li><a href="#">Stanza</a></li>
+							        <li role="separator" class="divider"></li>
+							        <li><a href="#">Gennaio</a></li>
+							        <li><a href="#">Febbraio </a></li>
+							        <li><a href="#">Aprile</a></li>
+							        <li><a href="#">Maggio</a></li>
+							        <li><a href="#">Giugno</a></li>
+							        <li><a href="#">Luglio</a></li>
+							        <li><a href="#">Agosto</a></li>
+							        <li><a href="#">Settembre</a></li>
+							        <li><a href="#">Ottobre</a></li>
+							        <li><a href="#">Novembre</a></li>
+							        <li><a href="#">Dicembre</a></li>									        
+							    </ul>
+						</li> -->
+					</ul>
+				</div>
+			</div>
+			<div class = "clearfix">
+			</div>
+		</nav>
+
 
 		<!-- Page Content -->
 		<div class="container-fluid">
@@ -106,20 +132,116 @@
 				
 				
 				
-				<div class="col-sm-11">
+				<div class="col-sm-8">
 
-
-					
-					<p> Questo sito, e ivi compresi i suoi contenuti, sono il risultato di un progetto, capitanato dalla <a href="http://www.fbk.eu/">Fondazione Bruno Kessler</a>, è  realizzato in collaborazione con un equipe di ricercatori provenienti da tutta Europa, e appartenenti al progetto Europeo <a href="http://itn-dch.eu/">Marie-Curie Initial Training Network in Digital Cultural Heritage</a>.</p>
-					<p>Lo scopo principe del progetto è stato quello di documentare geometricamente <a href="https://www.buonconsiglio.it/">il castello del Buonconsiglio</a>di Trento. La sua digitalizzazione, avvenuta completamente attraverso l'uso di tecniche fotogrammetriche, ha richiesto la fusione di dati UAV resi disponibili da FBK, nonché di diverse acquisizioni fatte in-situ.
+					<p>This website and its contents are the outcome results of a collaborative project between a group of researchers coming from several fields: ontology, surveying and computer science.</p>
+					<p>The project leader is the <a href="http://3dom.fbk.eu">3DOM </a>laboratory, part of the <a href="http://www.fbk.eu/">Fondazione Bruno Kessler</a>, and it was developed under an European Marie Curie Project called <a href="http://itn-dch.eu/">ITN-DCH (Initial Training Network for Digital Cultural Heritage)</a>.</p>
+					<p>The main goal was to obtain the fully 3D documentation of the external part of the castle, as well as several internal spaces decorated with frescoes. The digitalization was performed using terrestrial photogrammetry. The newest one was referenced and scaled to a previously available point cloud, produced by FBK during an aerial image acquisition .</p>
+					<p>All the produced data is now free to be explored in the website, and in order to allow other professionals to critically assess our work, we additionally enriched the produced data with a series of semantic information with describe the acquisition process.
 					</p>
-					<p> Vista la mole del lavoro, nonché l'interesse per questo sito, si è deciso, attraverso la costruzione di queste pagine, di permettere anche ai non addetti ai lavori di poter consultare, attraverso un interfaccia web, le informazioni relative a questo complesso monumentale. E' perciò ora possibile consultare il risultato di questo lavoro completamente in linea. 
-					</p>
-					<p>Come è possibile notare fin dalla prima pagina, il lavoro di documentazione è stato arricchito da alcune informazioni che permettono di navigare questo grande e complesso oggetto architettonico, nonché di accedere ad informazioni supplementari. La pagina dedicata al castello è comprensiva dei varie piante dei piani, e di annotazioni che permettono l'accesso ad alcune tra le più importanti aree dell'edificio. Tra queste sicuramente da notare è la <a href="https://www.buonconsiglio.it/index.php/Castello-del-Buonconsiglio/monumento/Percorso-di-visita/Torri/Torre-Aquila">Torre dell'Aquila</a>, ove è ora possibile accedere e visionare il famoso Ciclo dei Mesi. Quest'ultimo è arricchito da annotazioni che permettono l'accesso a maggiori informazioni su ognuno dei vari pannelli.
-					</p>
-					<p>Vorremmo dedicare queste ultime righe per ringraziare coloro che hanno permesso di portare avanti questo lavoro partendo dallo lo staff del Castello del Buonconsiglio, che, portando avanti una politica fortemente innovativa, si è fatta promotrice, insieme all'altro grande protagonista di questo progetto, la Fondazione Bruno Kessler, di questa  iniziative. Importantissimo il lavoro svolto proprio dal laboratorio <a href="http://3dom.fbk.eu/">3DOM di FBK</a>, che si è messo in contatto con vari partner europei interessati all'iniziativa, coordinando fin dal principio questo grande lavoro e tenendo sempre davanti a se una visione d'insieme del progetto.
-					</p>
+					<p>Last but not least, the authors would like to thank  all the personnel of Buonconsiglio castle in Trento (Italy). In particular we wish to acknowledge Silvano Zamboni, Adriano Conci and Matteo Rapanà for their kindness and support during the data collection days.</p>
+					</div>
 </div>
+
+<div class="col-sm-8">
+<div class="row">
+
+<!--script for the table-->
+		<script type="text/javascript">
+					              $(document).ready(function() {
+					      	         $("#HiddenRowsNotice").html("<tr><td colspan='3'> <a href='#'><b>Click here to show the whole table</b> </a></td></tr>");
+					      	         $("#ShowHide").html("<tr><td colspan='3'><a href='#'><em>Show/Hide Elements</em></a></td></tr>");
+					      	        $("#HiddenRows").hide();
+	
+					      	        $('#ShowHide,#HiddenRowsNotice').click( function() {
+					      	            $('#HiddenRows').toggle();
+					      		        $('#HiddenRowsNotice').toggle();
+					      	        });
+					              });
+				          </script>				          
+				         <script>
+				         $(document).ready(function(){
+				             $('[data-toggle="popover"]').popover();   
+				         });
+				         </script>
+  
+  
+  <p><h2>Metadata</h2></p>
+  
+  
+  
+  <!-- table -->
+<table class="table table-hover" style="position: relative; clear: both;" >
+<tbody id="ShowHide" style="color: black;"></tbody>
+		 <tr>
+		   <td><b>Register</b></td>
+		   <td><b>Descriptor</b></td>
+		   <td><b>Value</b></td> 
+		   </tr>
+		</tr>
+		<tr>
+		  <td>Project Register</td>
+		  <td><a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="A title given for the project to help identify it in the future.">Project Title</a></td>
+		  <td>Castello del Buonconsiglio Acquisition</td>
+		</tr>
+		<tr>
+				<td>Project Register</td>
+		  	<td><a href="#" <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="The institution or person for which/whom the project is undertaken">Digitization to be produced for</a></td>
+		  	<td>Castello del Buonconsiglio di Trento</td>
+		</tr>
+
+   <tbody id="HiddenRowsNotice"></tbody>
+   <tbody id="HiddenRows">
+   <tr>
+     	<td>Project Register</td>
+     	<td><a href="#" <a href="#"  data-toggle="popover" data-trigger="hover" data-placement="top" data-content="The institution or person undertaking the responsibility for the execution of the project.">Institution responsible</a></td>
+     	<td>Fondazione Bruno Kessler</td> 
+   </tr>
+   <tr>
+     	<td>Project Register</td>
+     	<td><a href="#" <a href="#"  data-toggle="popover" data-trigger="hover" data-placement="top" data-content="List of individuals assigned to the project and the general role assigned to them">Project Members</a></td>
+     	<td>Elisavet Konstantina Stathopoulou</td> 
+   </tr>
+   <tr>
+     	<td>Project Register</td>
+     	<td><a href="#" <a href="#"  data-toggle="popover" data-trigger="hover" data-placement="top" data-content="List of individuals assigned to the project and the general role assigned to them">Project Members</a></td>
+     	<td>Magdalena Ramos Calles</td> 
+   </tr>
+   <tr>
+     	<td>Project Register</td>
+     	<td><a href="#" <a href="#"  data-toggle="popover" data-trigger="hover" data-placement="top" data-content="List of individuals assigned to the project and the general role assigned to them">Project Members</a></td>
+     	<td>Diego Bellido Castaneda</td> 
+   </tr>
+   <tr>
+     	<td>Project Register</td>
+     	<td><a href="#" <a href="#"  data-toggle="popover" data-trigger="hover" data-placement="top" data-content="List of individuals assigned to the project and the general role assigned to them">Project Members</a></td>
+     	<td>Nicola Carboni</td> 
+   </tr>
+   <tr>
+     	<td>Project Register</td>
+     	<td><a href="#" <a href="#"  data-toggle="popover" data-trigger="hover" data-placement="top" data-content="List of individuals assigned to the project and the general role assigned to them">Project Members</a></td>
+     	<td>Gina Stavropoulou</td> 
+   </tr>
+   <tr>
+     	<td>Project Register</td>
+     	<td><a href="#" <a href="#"  data-toggle="popover" data-trigger="hover" data-placement="top" data-content="List of individuals assigned to the project and the general role assigned to them">Project Members</a></td>
+     	<td>Matevž Domajnko</td> 
+   </tr>
+   <tr>
+   <td>Project Register</td>
+   <td><a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="A list of the object or objects that are the focus of the project">Object in consideration</a></td>
+     <td>Castello del Buonconsiglio</td> 
+   </tr>
+   <tr>
+   <td>Object Register</td>
+        <td><a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Place where object is currently located (Country, City, Building, Drawer… as you known)">Location / Storage Place</a></td>
+     <td>Trento</td> 
+   <tr>
+</tbody>
+</table>
+</div>
+
+
 </div>
 
 					
