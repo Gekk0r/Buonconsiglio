@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>Diamond door</title>
+		<title>la Loggia del Romanino</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="Description" lang="en" content="Potree representation">
 		<meta name="author" content="autore">
@@ -24,6 +24,7 @@
 		<link rel="stylesheet" type="text/css" href="../torre/libs/potree/potree.css">
 		<link rel="stylesheet" type="text/css" href="../torre/libs/jquery-ui-1.11.4/jquery-ui.css">
 		<link rel="stylesheet" href="../torre/libs/openlayers3/ol.css" type="text/css">
+		
 
 		<style>
 	      html, body {
@@ -40,10 +41,11 @@
 		<!--[if lt IE 9]>
 			<script src="assets/js/html5.js"></script>
 			<script src="assets/js/respond.min.js"></script>
+		
+			
 		<![endif]-->
 	</head>
 	<body>
-
 		<script src="../libs/jquery-2.1.4/jquery-2.1.4.min.js"></script>
 		<script src="../libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
 		<script src="../libs/three.js/build/three.js"></script>
@@ -72,27 +74,40 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav navbar-left">
-						<li><a href="progetto.html">The Project</a></li>
+					<ul class="nav navbar-nav">
+						<li><a href="progetto.html">Sul progetto</a></li>
 						<li class="dropdown">
-					        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">The Castle<span class="caret"></span></a>
+					        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">il Castello<span class="caret"></span></a>
 					        <ul class="dropdown-menu">
-						        <li><a href="index.html">Castle</a></li>
+						        <li><a href="index.html">Castello</a></li>
 						        <li role="separator" class="divider"></li>
-						        <li class="dropdown-header">Elements used</li>
-						        <li><a href="diamond_door.html">Porta dei diamanti</a></li>
-						        <li><a href="terrestrial_wall.html">External wall</a></li>
+						        <li><a href="diamond_door.html">Porta del diamante</a></li>
+						        <li><a href="terrestrial_wall.html">Mura esterne</a></li>
 						        <li><a href="facade.html">Facade</a></li>
 						        <li><a href="aerial.html">Aerial Acquisition</a></li>
-						        <li><a href="door.html">Entrance Door</a></li>
+						        <li><a href="door.html">Porta ingresso</a></li>
 							</ul>
 						</li> 
-						<li><a href="loggia_web.html">Loggia del Romanino</a></li>
+						<li><a href="loggia_web.html">La Loggia del Romanino</a></li>
 						<li><a href="torre_web.html">Ciclo dei mesi </a></li>
-						</ul>
-						<ul class="nav navbar-nav navbar-right">
-						<li><a href="diamon_door_it.html" class="language" rel="it-IT"><img src="assets/img/flag/ita.png" style="width: 100%; height: auto;" alt="Italiano" /></a></li>
-						<!--<li><a href="loggia_web.html" class="language" rel="en-US"><img src="assets/img/flag/uk.png" style="width: 100%; height: auto;" alt="English" /></a></li>-->
+						<!-- <li class="dropdown">
+						        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Il Ciclo dei mesi <span class="caret"></span></a>
+						        <ul class="dropdown-menu">
+							        <li><a href="#">Stanza</a></li>
+							        <li role="separator" class="divider"></li>
+							        <li><a href="#">Gennaio</a></li>
+							        <li><a href="#">Febbraio </a></li>
+							        <li><a href="#">Aprile</a></li>
+							        <li><a href="#">Maggio</a></li>
+							        <li><a href="#">Giugno</a></li>
+							        <li><a href="#">Luglio</a></li>
+							        <li><a href="#">Agosto</a></li>
+							        <li><a href="#">Settembre</a></li>
+							        <li><a href="#">Ottobre</a></li>
+							        <li><a href="#">Novembre</a></li>
+							        <li><a href="#">Dicembre</a></li>									        
+							    </ul>
+						</li> -->
 					</ul>
 				</div>
 			</div>
@@ -101,44 +116,31 @@
 		</nav>
 
 	
-				
-		<!-- Page Content -->
+
+			<!-- Page Content -->
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-md-12">
-					<!-- <div class ="page-header"> -->
-						<h3>Porta dei diamanti</h3>
-					<!-- </div> -->
-					<!-- <div class = "clearfix"></div> -->
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-12" style="height:500px; width:100%"> 
-					<script src="../loggia/libs/jquery-2.1.4/jquery-2.1.4.min.js"></script>
-					<script src="../loggia/libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
-					<script src="../loggia/libs/three.js/build/three.js"></script>
-					<script src="../loggia/libs/other/stats.min.js"></script>
-					<script src="../loggia/libs/other/BinaryHeap.js"></script>
-					<script src="../loggia/libs/tween/tween.min.js"></script>
-					<script src="../loggia/libs/d3/d3.js"></script>
-					<script src="../loggia/libs/proj4/proj4.js"></script>
-					<script src="../loggia/libs/openlayers3/ol.js"></script>
+				<div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 col-xxs-12">
+					<h3>la Loggia del Romanino</h3>
+					<div id="viewer_box" style="height:500px; width:100% position: relative;" class="redbox">
 					<script src="../loggia/libs/potree/potree.js"></script>
-
-					<div class="potree_container">
-						<div id="potree_render_area">
-							<img class="potree_menu_toggle" src="../torre/resources/icons/menu_button.svg" onclick="viewer.toggleSidebar()" />
-							<img id="potree_map_toggle" src="../torre/resources/icons/map_icon.png" onclick="viewer.toggleMap()" style="display: none"/>
-							
-							<div id="potree_map" class="mapBox" style="position: absolute; left: 50px; top: 50px; width: 400px; height: 400px; display: none">
-								<div id="potree_map_header" style="position: absolute; width: 100%; height: 25px; top: 0px; background-color: rgba(0,0,0,0.5); z-index: 1000; border-top-left-radius: 3px; border-top-right-radius: 3px;">
-								</div>
+						<div class="potree_container" >
+							<div id="potree_render_area">
+								<img class="potree_menu_toggle" src="../torre/resources/icons/menu_button.svg" onclick="viewer.toggleSidebar()" />
+								<img id="potree_map_toggle" src="../torre/resources/icons/map_icon.png" onclick="viewer.toggleMap()" style="display: none"/>
 								
-								<div id="potree_map_content" class="map" style="position: absolute; z-index: 100; top: 25px; width: 100%; height: calc(100% - 25px); border: 2px solid rgba(0,0,0,0.5); box-sizing: border-box;">
-								</div>
-							</div>							
+								<div id="potree_map" class="mapBox" style="position: absolute; left: 50px; top: 50px; width: 400px; height: 400px; display: none">
+									<div id="potree_map_header" style="position: absolute; width: 100%; height: 25px; top: 0px; background-color: rgba(0,0,0,0.5); z-index: 1000; border-top-left-radius: 3px; border-top-right-radius: 3px;">
+									</div>
+									
+									<div id="potree_map_content" class="map" style="position: absolute; z-index: 100; top: 25px; width: 100%; height: calc(100% - 25px); border: 2px solid rgba(0,0,0,0.5); box-sizing: border-box;">
+									</div>
+								</div>							
+							</div>
+						
+						<div id="potree_sidebar_container">
+						</div> 
 						</div>
-						<div id="potree_sidebar_container"> </div>
 						<script>		
 							var onPointCloudLoaded = function(event){
 								// do stuff here that should be executed whenever a point cloud has been loaded.
@@ -147,46 +149,85 @@
 							}; 
 						
 							viewer = new Potree.Viewer(document.getElementById("potree_render_area"), {
-														"onPointCloudLoaded": onPointCloudLoaded
-													});
-													
-													viewer.setEDLEnabled(false);
-													viewer.setPointSize(1.78);
-													viewer.setMaterial("RGB");
-													viewer.setFOV(60);
-													viewer.setPointSizing("Fixed");
-													viewer.setQuality("Squares");
-													viewer.setPointBudget(1*3000*1000);
-													viewer.controls.rotateUp(-0.1);
-													viewer.controls.rotateLeft(0.2);
-													
-												viewer.addPointCloud("../Castle/resources/pointclouds/door2/cloud.js", function(res){ 
-																	            
-																		        var pc = new THREE.Object3D(); 
-																		        pc = res.pointcloud;
-																		        viewer.zoomTo(pc,0.7);
-																		        
-																		        
-												            				});
+								"onPointCloudLoaded": onPointCloudLoaded
+							});
 							
-					
+							viewer.setEDLEnabled(false);
+							viewer.setPointSize(1.78);
+							viewer.setMaterial("RGB");
+							viewer.setFOV(60);
+							viewer.setPointSizing("Fixed");
+							viewer.setQuality("Squares");
+							viewer.setPointBudget(3*1000*1000);
+							
+							viewer.addPointCloud("../loggia/pointclouds/loggia/cloud.js", function(res){ 
+					            var geometry = new THREE.SphereGeometry( 1, 32, 32 );
+						      	var material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
+						      	var sphere = new THREE.Mesh( geometry, material );
+								
+								viewer.scenePointCloud.add( sphere );
+
+						      	sphere.position.x = -6;
+						        sphere.position.y = 7.75;
+						        sphere.position.z = -14.6;
+
+						        sphere.visible = false;
+
+						        var pc = new THREE.Object3D(); 
+						        pc = res.pointcloud;
+
+						        pc.rotation.x = 0.1;
+						  		// var quaternion = new THREE.Quaternion();
+								// quaternion.setFromAxisAngle( new THREE.Vector3( 0, 1, 0 ), 0.5 );
+								// pc.matrix.setRotationFromQuaternion(quaternion);
+
+								viewer.controls.rotateLeft(0.7);
+								viewer.controls.rotateUp(-1);
+						        
+						        // viewer.cameraPointCloud.lookAt(new THREE.Vector3( 100, 100, 100 ));
+						        viewer.zoomTo(sphere,1);
+
+						        // viewer.controls.rotateLeft(1.14);
+						        // viewer.camera.rotation._x = 1.14;
+						        // viewer.camera.rotation._y = 1.14;
+						        // viewer.camera.rotation._z = 1.14;
+
+						        
+            				});
 							
 
 							viewer.loadGUI();
 						</script>
 					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-12">
-				
-				<!--script for showing the rest of the table-->
-				
 
+			
+				<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 col-xxs-12">
+					<h3 class="headers">Description</h3>
+					<div id="descrizione">
+						<div id="descrizione_box">
+							<div id="description_paragraph" >
+						        <p>La Loggia, called “del Romanino”, takes its name from its painter, Girolamo Romani, called “il Romanino”. The loggia open on the Cortile dei Leoni, it is centrally located on the first floor of the Magno Palazzo, in the intersection between to the corridors behind the old kitchens, the upper floor, and therefore to the apartment of the prince-bishop and the Sala Grande, and the external garden.
+						        The frescoes, executed between 1531 and 1532, decorate the loggia with allegorical, mythological, biblical and roman theme, and are part of the revival of humanistic culture carried out by Bernardo Cles. At the center of the ceiling the biggest panel depict Fetonte, the son of Apollo, on the sun and moon chariot running throughout the sky. On the sides allegories of seasons, sun and moon. On the pendentive male nude help create a spatial three dimensional effect.
+						        After the restoration of this part of the castle in 1985-86 the frescoes finally come back to their original status, after the male nudes were being covered by different vests during XVIII century.
+						        in all their beauty</p>
+						       <br>
+						       
+					       	</div>
+						</div>
+					</div>
+				</div>
+
+
+
+<div class="col-sm-12">
+<div class="row">
+
+<!--script for the table-->
 	<script type="text/javascript">
 				              $(document).ready(function() {
-				      	         $("#HiddenRowsNotice").html("<tr><td colspan='3'> <a href='#'><b>Click here to show the whole table</b> </a></td></tr>");
-				      	         $("#ShowHide").html("<tr><td colspan='3'><a href='#'><em>Show/Hide Elements</em></a></td></tr>");
+				      	         $("#HiddenRowsNotice").html("<tr><td colspan='3'> <a href='#'><b>Cliccare qui per espandere la tabella</b> </a></td></tr>");
+				      	         $("#ShowHide").html("<tr><td colspan='3'><a href='#'><em>Mostra/Nascondi</em></a></td></tr>");
 				      	        $("#HiddenRows").hide();
 
 				      	        $('#ShowHide,#HiddenRowsNotice').click( function() {
@@ -194,7 +235,7 @@
 				      		        $('#HiddenRowsNotice').toggle();
 				      	        });
 				              });
-			          </script>
+				          </script>
 				          
 				         <script>
 				         $(document).ready(function(){
@@ -296,19 +337,12 @@
    </tr>
    </tbody>
 </table>
-
-				
-		
-		</div>			
-					
-		
+</div>
+</div>
 
 
 
-
-
-
-		</div>
+	
 
 		
 		<!-- JQuery scripts 
